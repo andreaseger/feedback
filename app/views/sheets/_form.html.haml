@@ -1,0 +1,16 @@
+- form_for @sheet do |f|
+  = f.error_messages
+  %p
+    = f.label :semester
+    %br
+    = f.text_field :semester
+  %p
+    = f.label :company
+    %br
+    = f.text_field :company
+  %p
+    = f.label :boss
+    %br
+    = f.text_field :boss
+  %p
+    = f.submit

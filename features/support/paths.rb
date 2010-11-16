@@ -11,6 +11,13 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /Anzeigeseite des Feedbackbogens/
+      sheet_path(Sheet.last.id)
+
+    when /the sheets show page/
+      sheet_path(Sheet.last.id)
+
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
@@ -31,3 +38,4 @@ module NavigationHelpers
 end
 
 World(NavigationHelpers)
+

@@ -1,0 +1,51 @@
+- title "Sheet"
+
+%ul
+  %li=@sheet.semester
+  %li=@sheet.company
+  %li=@sheet.address_application
+  %li=@sheet.job_site
+  %li=@sheet.department
+  %li=@sheet.boss
+  %li=@sheet.handler
+  %li=@sheet.note_company
+  %br
+  %li=@sheet.intership_length
+  %li=@sheet.extention?
+  %li=@sheet.vacation?
+  %li=@sheet.release?
+  %li=@sheet.working_hours
+  %li=@sheet.flextime?
+  %li=@sheet.salary
+  %li=@sheet.required_languages
+  %li=@sheet.reachability
+  %li=@sheet.accessibility
+  %li=@sheet.note_conditions
+  %br
+  %li=@sheet.percentage_of_women
+  %li=@sheet.working_atmosphere
+  %li=@sheet.satisfaction_with_support
+  %li=@sheet.stress_factor
+  %li=@sheet.apartment_market
+  %li=@sheet.satisfaction_with_internship
+  %li=@sheet.note_personal_impression
+  %br
+  %li=@sheet.big_project?
+  %li=@sheet.teamsize
+  %li=@sheet.independent_work
+  %li=@sheet.reference_to_the_study
+  %li=@sheet.learning_effect
+  %li=@sheet.required_previous_knowledge
+  %br
+  %li=@sheet.note_project
+  %li=@sheet.note_general
+
+
+
+%p
+  = link_to "Edit", edit_sheet_path(@sheet)
+  |
+  = link_to "Destroy", @sheet, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", sheets_path
+
