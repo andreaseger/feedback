@@ -12,11 +12,11 @@ Factory.define :full_sheet, :class => :sheet do |f|
   f.handler "g"
   f.note_company "h"
   f.intership_length  18
-  f.extention?  true
-  f.vacation? false
-  f.release? true
+  f.extention  true
+  f.vacation false
+  f.release true
   f.working_hours 42
-  f.flextime? true
+  f.flextime true
   f.salary 523
   f.required_languages "i"
   f.reachability 2
@@ -29,7 +29,7 @@ Factory.define :full_sheet, :class => :sheet do |f|
   f.apartment_market 2
   f.satisfaction_with_internship 1
   f.note_personal_impression "k"
-  f.big_project? true
+  f.big_project true
   f.teamsize 13
   f.independent_work 4
   f.reference_to_the_study 2

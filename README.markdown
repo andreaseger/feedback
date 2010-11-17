@@ -7,6 +7,9 @@ Eine Webapplikation zur Erstellung, Verwaltung und organisation von Feedbackbög
 Implementierte Features
 -----------------------
 
+- Anzeige des Feedbackbogens
+- Erstellen des Feedbackbogens
+
 
 
 Known Issues / Bugs
@@ -17,8 +20,7 @@ Known Issues / Bugs
 Features TODO
 -------------
 
-- Erstellen einer Feedbackbogens
-- Anschauen der Feedbackbögen
+- Pflichtattribute festlegen
 - Authentifizierung als Student, Professor, Admin (zunächst noch ohne LDAP)
 - Einschränken der Erstellung auf Praktikanten
 - Einschränken auf die Erstellung eines einzigen FB pro Praktikant
@@ -33,7 +35,7 @@ Hintergrund
 -----------
 
 - Ruby 1.9.2
-- Rails 3.0.1
+- Rails 3.0.3
 - RSpec
 - Cucumber
 - Spork

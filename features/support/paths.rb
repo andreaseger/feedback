@@ -16,8 +16,8 @@ module NavigationHelpers
 
     when /the sheets show page/
       sheet_path(Sheet.last.id)
-
-
+    when /the last sheets show page/
+      sheet_path(Sheet.last.id)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

@@ -11,11 +11,11 @@ class Sheet
   field :note_company
 
   field :intership_length
-  field :extention?, :type => Boolean
-  field :vacation?, :type => Boolean
-  field :release?, :type => Boolean
+  field :extention, :type => Boolean
+  field :vacation, :type => Boolean
+  field :release, :type => Boolean
   field :working_hours, :type => Integer
-  field :flextime?, :type => Boolean                       #Gleitzeit - Fixzeit
+  field :flextime, :type => Boolean                       #Gleitzeit - Fixzeit
   field :salary, :type => Integer
   field :required_languages
   field :reachability, :type => Integer
@@ -30,7 +30,7 @@ class Sheet
   field :satisfaction_with_internship, :type => Integer
   field :note_personal_impression
 
-  field :big_project?, :type => Boolean                    # ein großes Projekt - mehrere kleine Projekte
+  field :big_project, :type => Boolean                    # ein großes Projekt - mehrere kleine Projekte
   field :teamsize, :type => Integer
   field :independent_work, :type => Integer
   field :reference_to_the_study, :type => Integer

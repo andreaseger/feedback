@@ -1,16 +1,19 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.1'
+gem 'rails', '3.0.3'
 
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'inherited_resources'
-gem 'has_scope'
+#gem 'has_scope'
+gem 'simple_form'
+
 
 
 #MongoDB
 gem 'bson_ext'
 gem "mongoid", ">= 2.0.0.beta.20"
+
 
 group :development do
   gem 'nifty-generators'

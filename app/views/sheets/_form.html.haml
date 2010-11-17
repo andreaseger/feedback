@@ -1,16 +1,38 @@
-- form_for @sheet do |f|
-  = f.error_messages
-  %p
-    = f.label :semester
-    %br
-    = f.text_field :semester
-  %p
-    = f.label :company
-    %br
-    = f.text_field :company
-  %p
-    = f.label :boss
-    %br
-    = f.text_field :boss
-  %p
-    = f.submit
+= simple_form_for @sheet do |f|
+  = f.input :semester
+  = f.input :company
+  = f.input :address_application
+  = f.input :job_site
+  = f.input :department
+  = f.input :boss
+  = f.input :handler
+  = f.input :note_company, :as => :text
+  = f.input :intership_length
+  = f.input :extention, :as => :radio
+  = f.input :vacation, :as => :radio
+  = f.input :release, :as => :radio
+  = f.input :working_hours
+  %div{:class => 'input radio optional'}
+    = f.collection_radio :flextime?, [[true, 'Flextime'] ,[false, 'Fixed Time']], :first, :last
+  = f.input :salary
+  = f.input :required_languages
+  = f.input :reachability, :collection => 1..4, :as => :radio
+  = f.input :accessibility, :collection => 1..4, :as => :radio
+  = f.input :note_conditions, :as => :text
+  = f.input :percentage_of_women
+  = f.input :working_atmosphere, :collection => 1..4, :as => :radio
+  = f.input :satisfaction_with_support, :collection => 1..4, :as => :radio
+  = f.input :stress_factor, :collection => 1..4, :as => :radio
+  = f.input :apartment_market, :collection => 1..4, :as => :radio
+  = f.input :satisfaction_with_internship, :collection => 1..4, :as => :radio
+  = f.input :note_personal_impression, :as => :text
+  = f.input :big_project, :as => :radio
+  = f.input :teamsize
+  = f.input :independent_work, :collection => 1..4, :as => :radio
+  = f.input :reference_to_the_study, :collection => 1..4, :as => :radio
+  = f.input :learning_effect, :collection => 1..4, :as => :radio
+  = f.input :required_previous_knowledge, :collection => 1..4, :as => :radio
+  = f.input :note_project, :as => :text
+  = f.input :note_general, :as => :text
+  = f.button :submit
+
