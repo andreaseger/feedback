@@ -5,7 +5,9 @@ class Sheet
   field :semester
   field :company
   embeds_one :application_address, :class_name => "Address"
+  accepts_nested_attributes_for :application_address
   embeds_one :job_site_address, :class_name => "Address"
+  accepts_nested_attributes_for :job_site_address
   #field :address_application
   #field :job_site
   field :department
@@ -42,6 +44,8 @@ class Sheet
 
   field :note_project
   field :note_general
+
+  referenced_in :user
 
   validates_associated  :application_address,
                         :job_site_address

@@ -25,7 +25,7 @@ end
 
 Factory.define :full_sheet, :parent => :valid_sheet do |f|
   f.application_address {Factory.attributes_for(:application_address)}
-  f.job_site_address  {Factory.attributes_for(:application_address)}
+  f.job_site_address  {Factory.attributes_for(:job_site_address)}
   f.department  "ER TD HT FB"
   f.note_company "Lorem Ipsum"
   f.intership_length  18

@@ -11,7 +11,11 @@
       %td= sheet.company
       %td= sheet.boss
       %td= link_to 'Show', sheet
-      %td= link_to 'Edit', edit_sheet_path(sheet)
-      %td= link_to 'Destroy', sheet, :confirm => 'Are you sure?', :method => :delete
+      - if can? :update, sheet
+        %td= link_to 'Edit', edit_sheet_path(sheet)
+      - if can? :destroy, sheet
+        %td= link_to 'Destroy', sheet, :confirm => 'Are you sure?', :method => :delete
 
-%p= link_to "New Sheet", new_sheet_path
+- if can? :create, Sheet.new
+  %p= link_to "New Sheet", new_sheet_path
+

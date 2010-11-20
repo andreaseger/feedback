@@ -26,7 +26,6 @@ Spork.prefork do
 #  Capybara.register_driver :selenium do |app|
 #      Capybara::Driver::Selenium.new(app, :browser => :chrome)
 #    end
-
   # If you set this to false, any error raised from within your app will bubble
   # up to your step definition and out to cucumber unless you catch it somewhere
   # on the way. You can make Rails rescue errors and render error pages on a
@@ -42,15 +41,10 @@ end
 Spork.each_run do
   # How to clean your database when transactions are turned off. See
   # http://github.com/bmabey/database_cleaner for more info.
-  begin
-   require 'database_cleaner'
-   require 'database_cleaner/cucumber'
-   DatabaseCleaner.strategy = :truncation
-   DatabaseCleaner.orm = "mongo_mapper"
+  Before do
+    require 'factory_girl'
+    Dir.glob(File.join(File.dirname(__FILE__), '../../spec/factories/*.rb')).each {|f| require f }
   end
 
-  Before do
-    DatabaseCleaner.clean
-  end
 end
 

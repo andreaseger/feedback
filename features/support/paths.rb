@@ -15,9 +15,14 @@ module NavigationHelpers
       sheet_path(Sheet.last.id)
 
     when /the sheets show page/
-      sheet_path(Sheet.last.id)
+      sheet_path(Sheet.last)
     when /the last sheets show page/
-      sheet_path(Sheet.last.id)
+      sheet_path(Sheet.last)
+    when /login/
+      new_user_session_path
+
+    when /sheets edit page/
+      edit_sheet_path(Sheet.last)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

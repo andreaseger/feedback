@@ -1,4 +1,4 @@
-Given /^(?:|I )have no sheets$/ do
+Given /^There are no sheets$/ do
   Sheet.delete_all
 end
 

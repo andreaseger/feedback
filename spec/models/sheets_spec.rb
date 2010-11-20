@@ -47,7 +47,6 @@ describe Sheet do
       sheet = Factory(:valid_sheet, :required_languages => nil, :speeches=>["foo", "bar", "baz", "lorem"])
       sheet.required_languages.should == "foo bar baz lorem"
     end
-
   end
 end
 
