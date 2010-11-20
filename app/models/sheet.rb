@@ -1,5 +1,6 @@
 class Sheet
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :semester
   field :company
@@ -42,6 +43,8 @@ class Sheet
   field :note_project
   field :note_general
 
+  validates_associated  :application_address,
+                        :job_site_address
   validates_presence_of :semester,
                         :company,
                         :boss,

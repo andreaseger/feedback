@@ -26,6 +26,8 @@ Features TODO
 
 - Struktur des FB verbessern ...
 - Versioning für FB
+- paranoia mode => FB bei delete nicht wirklich löschen nur als gelöscht markieren
+- updaten des FB durchtesten(auch über controller)
 - Authentifizierung als Student, Professor, Admin (zunächst noch ohne LDAP oder mit fakeldap)
 - Einschränken der Erstellung auf Praktikanten
 - Einschränken auf die Erstellung eines einzigen FB pro Praktikant
