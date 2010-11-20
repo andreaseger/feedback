@@ -14,6 +14,11 @@ gem 'simple_form'
 gem 'bson_ext'
 gem "mongoid", ">= 2.0.0.beta.20"
 
+#security
+gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'master'
+gem 'omniauth'
+
+
 
 group :development do
   gem 'nifty-generators'
