@@ -10,7 +10,14 @@ describe "/sheets/show.html.haml" do
   @sheet.each do |key, value|
     it "should show #{key}" do
       render
-      rendered.should contain(value.to_s)
+      if key =~ /address/
+        rendered.should contain(value[:street])
+        rendered.should contain(value[:city])
+        rendered.should contain(value[:post_code])
+        rendered.should contain(value[:country])
+      else
+        rendered.should contain(value.to_s)
+      end
     end
   end
 end

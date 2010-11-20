@@ -1,17 +1,18 @@
 Feature: managing sheets
 
-Scenario Outline: Show me the Attributes
-  Given I have a "Sheet" with "<attribut>" equals "<value>"
-   When I am on the sheets show page
-   Then I should see "<value>"
-
-  Examples:
-    | attribut            | value     |
-    | company             | Audi      |
-    | semester            | SS2009    |
-    | salary              | 750       |
-    | intership_length    | 20        |
-    | required_languages  | spanish   |
+# wegen der Pflichtattribute nicht mehr sinnvoll
+#Scenario Outline: Show me the Attributes
+#  Given I have a "Sheet" with "<attribut>" equals "<value>"
+#   When I am on the sheets show page
+#   Then I should see "<value>"
+#
+#  Examples:
+#    | attribut            | value     |
+#    | company             | Audi      |
+#    | semester            | SS2009    |
+#    | salary              | 750       |
+#    | intership_length    | 20        |
+#    | required_languages  | spanish   |
 
 Scenario: Creating a new sheet
   Given I have no sheets
@@ -20,8 +21,12 @@ Scenario: Creating a new sheet
     And fill in the following:
       | sheet_semester                      | SS1999                |
       | sheet_company                       | Siemens               |
-      | sheet_address_application           | bb Str 1              |
-      | sheet_job_site                      | aa Str 2              |
+      | sheet_application_address_street    | Foostr 23             |
+      | sheet_application_address_city      | Agrestic              |
+      | sheet_application_address_post_code | 83642                 |
+      | sheet_job_site_address_street       | Barstr 23             |
+      | sheet_job_site_address_city         | Boston                |
+      | sheet_job_site_address_post_code    | 49242                 |
       | sheet_department                    | ST WP AS              |
       | sheet_boss                          | Mr Black              |
       | sheet_handler                       | Mr White              |
@@ -36,6 +41,8 @@ Scenario: Creating a new sheet
       | sheet_teamsize                      | 42                    |
       | sheet_note_project                  | Nulla nunc ligula     |
       | sheet_note_general                  | Class aptent taciti   |
+    And select "Egypt" from "sheet_application_address_country"
+    And select "United States" from "sheet_job_site_address_country"
     And choose "sheet_extention_true"
     And choose "sheet_vacation_false"
     And choose "sheet_release_true"

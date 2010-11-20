@@ -11,21 +11,25 @@ Implementierte Features
 - Erstellen des Feedbackbogens
 - Pflichtattribute
 - Benötigte Sprachen als Array
+- Adressen in eigenes Dokument
 
 Known Issues / Bugs
 -------------------
+
+- Länderliste im Moment noch mit englischen Namen
+
 
 
 
 Features TODO
 -------------
 
-- Addressen in eigenes Dokument
 - Struktur des FB verbessern ...
 - Versioning für FB
 - Authentifizierung als Student, Professor, Admin (zunächst noch ohne LDAP oder mit fakeldap)
 - Einschränken der Erstellung auf Praktikanten
 - Einschränken auf die Erstellung eines einzigen FB pro Praktikant
+- Multistep Formular für den FB
 - Suche für die Feedbackbögen
 - Adminitrationsbereich
 - Administrieren mehrere Studenten gleichzeitig

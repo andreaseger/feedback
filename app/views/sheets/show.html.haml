@@ -3,8 +3,16 @@
 %ul
   %li=@sheet.semester
   %li=@sheet.company
-  %li=@sheet.address_application
-  %li=@sheet.job_site
+  %ul
+    %li=@sheet.application_address.street
+    %li=@sheet.application_address.city
+    %li=@sheet.application_address.post_code
+    %li=@sheet.application_address.country
+  %ul
+    %li=@sheet.job_site_address.street
+    %li=@sheet.job_site_address.city
+    %li=@sheet.job_site_address.post_code
+    %li=@sheet.job_site_address.country
   %li=@sheet.department
   %li=@sheet.boss
   %li=@sheet.handler

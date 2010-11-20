@@ -3,8 +3,10 @@ class Sheet
 
   field :semester
   field :company
-  field :address_application
-  field :job_site
+  embeds_one :application_address, :class_name => "Address"
+  embeds_one :job_site_address, :class_name => "Address"
+  #field :address_application
+  #field :job_site
   field :department
   field :boss
   field :handler

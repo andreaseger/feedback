@@ -1,8 +1,10 @@
 = simple_form_for @sheet do |f|
   = f.input :semester
   = f.input :company
-  = f.input :address_application
-  = f.input :job_site
+  = f.simple_fields_for :application_address do |ff|
+    = render :partial => 'address', :locals => {:f => ff}
+  = f.simple_fields_for :job_site_address do |ff|
+    = render :partial => 'address', :locals => {:f => ff}
   = f.input :department
   = f.input :boss
   = f.input :handler
