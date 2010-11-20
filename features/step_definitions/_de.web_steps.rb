@@ -1,4 +1,4 @@
-Wenn /(?:ich )gehe auf (.+)/ do |page|
+Wenn /(?:|ich )gehe auf (.+)/ do |page|
   # nutze den vorhandenen englischen Schritt
   Given %{I go to #{page}}
 end

@@ -9,7 +9,7 @@ Implementierte Features
 
 - Anzeige des Feedbackbogens
 - Erstellen des Feedbackbogens
-
+- Pflichtattribute
 
 
 Known Issues / Bugs
@@ -20,7 +20,7 @@ Known Issues / Bugs
 Features TODO
 -------------
 
-- Pflichtattribute festlegen
+- Benötigte Sprachen als Arraz speichern
 - Authentifizierung als Student, Professor, Admin (zunächst noch ohne LDAP)
 - Einschränken der Erstellung auf Praktikanten
 - Einschränken auf die Erstellung eines einzigen FB pro Praktikant

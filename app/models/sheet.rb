@@ -40,6 +40,24 @@ class Sheet
   field :note_project
   field :note_general
 
+  validates_presence_of :semester,
+                        :company,
+                        :boss,
+                        :handler,
+                        :intership_length,
+                        :reachability,
+                        :accessibility,
+                        :working_atmosphere,
+                        :satisfaction_with_support,
+                        :stress_factor,
+                        :apartment_market,
+                        :satisfaction_with_internship,
+                        :big_project,
+                        :independent_work,
+                        :reference_to_the_study,
+                        :learning_effect,
+                        :required_previous_knowledge
+
   validates_each  :reachability,
                   :accessibility,
                   :working_atmosphere,
