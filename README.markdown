@@ -10,7 +10,7 @@ Implementierte Features
 - Anzeige des Feedbackbogens
 - Erstellen des Feedbackbogens
 - Pflichtattribute
-
+- Benötigte Sprachen als Array
 
 Known Issues / Bugs
 -------------------
@@ -20,8 +20,10 @@ Known Issues / Bugs
 Features TODO
 -------------
 
-- Benötigte Sprachen als Arraz speichern
-- Authentifizierung als Student, Professor, Admin (zunächst noch ohne LDAP)
+- Addressen in eigenes Dokument
+- Struktur des FB verbessern ...
+- Versioning für FB
+- Authentifizierung als Student, Professor, Admin (zunächst noch ohne LDAP oder mit fakeldap)
 - Einschränken der Erstellung auf Praktikanten
 - Einschränken auf die Erstellung eines einzigen FB pro Praktikant
 - Suche für die Feedbackbögen

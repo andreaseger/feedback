@@ -17,7 +17,7 @@ class Sheet
   field :working_hours, :type => Integer
   field :flextime, :type => Boolean                       #Gleitzeit - Fixzeit
   field :salary, :type => Integer
-  field :required_languages
+  field :speeches, :type => Array
   field :reachability, :type => Integer
   field :accessibility, :type => Integer
   field :note_conditions
@@ -72,5 +72,14 @@ class Sheet
     record.errors.add attr, 'not in 1..4' unless ( value == nil || (1..4).include?(value) )
   end
 
+  def required_languages=(value)
+    unless value.nil?
+      self.speeches = value.scan(/\w+|,|\./).delete_if{|t| t =~ /,|\./}
+    end
+  end
+
+  def required_languages
+    speeches.join(" ") if speeches
+  end
 end
 

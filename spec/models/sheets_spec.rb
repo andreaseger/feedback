@@ -25,5 +25,30 @@ describe Sheet do
       end
     end
   end
+
+  describe '#required_languages' do
+    it 'should split strings with a dot correctly' do
+      sheet = Factory(:valid_sheet, :required_languages => "foo. lorem")
+      sheet.speeches.should == ["foo", "lorem"]
+    end
+    it 'should split strings with a comma correctly' do
+      sheet = Factory(:valid_sheet, :required_languages => "foo, lorem")
+      sheet.speeches.should == ["foo", "lorem"]
+    end
+    it 'should split strings with a space correctly' do
+      sheet = Factory(:valid_sheet, :required_languages => "foo lorem")
+      sheet.speeches.should == ["foo", "lorem"]
+    end
+    it 'should split the input on space, komma' do
+      sheet = Factory.build(:valid_sheet, :required_languages => "greek spanish, english,latin")
+      sheet.speeches.should == ["greek", "spanish", "english", "latin"]
+    end
+
+    it 'should give a string of all assigned speeches' do
+      sheet = Factory(:valid_sheet, :required_languages => nil, :speeches=>["foo", "bar", "baz", "lorem"])
+      sheet.required_languages.should == "foo bar baz lorem"
+    end
+
+  end
 end
 
