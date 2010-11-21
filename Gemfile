@@ -37,7 +37,7 @@ group :test, :development do
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'launchy'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :test do
@@ -46,7 +46,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'rack-test',
-    :git => 'git://github.com/brynary/rack-test.git'
+  #gem 'rack-test',
+  #  :git => 'git://github.com/brynary/rack-test.git'
 end
 
