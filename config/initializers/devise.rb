@@ -14,7 +14,7 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/mongoid'
 
-  #config.omniauth :ldap, :host => '0.0.0.0', :port => 389, :method => :plain, :base => 'dc=intridea, dc=com', :uid => 'sAMAccountName', :try_sasl => true, :sasl_mechanisms => "GSS-SPNEGO"
+  #config.omniauth :ldap, :host => 'host.de', :port => 389, :method => :plain, :base => 'dc=example, dc=com', :uid => 'sAMAccountName', :try_sasl => false
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating an user. By default is
