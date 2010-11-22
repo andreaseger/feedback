@@ -5,7 +5,7 @@ gem 'rails', '3.0.3'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'inherited_resources'
-#gem 'has_scope'
+gem 'has_scope'
 gem 'simple_form'
 
 
@@ -37,7 +37,7 @@ group :test, :development do
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'launchy'
-  #gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :test do

@@ -13,6 +13,8 @@ Implementierte Features
 - Benötigte Sprachen als Array
 - Adressen in eigenes Dokument
 - Authentifizierung als Student, Praktiant, Professor und Admin
+- Administrieren einzelner User möglich
+
 
 Known Issues / Bugs
 -------------------
@@ -30,7 +32,7 @@ Features TODO
 - paranoia mode => FB bei delete nicht wirklich löschen nur als gelöscht markieren
 - Multistep Formular für den FB
 - Suche für die Feedbackbögen
-- Adminitrationsbereich
+- Adminitrationsbereich, mehr Funktionen
 - Administrieren mehrere Studenten gleichzeitig
 - LDAP
 - automatisiertes deployment auf Apache + Passanger

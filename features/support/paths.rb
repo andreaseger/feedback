@@ -23,6 +23,9 @@ module NavigationHelpers
 
     when /sheets edit page/
       edit_sheet_path(Sheet.last)
+
+    when /user admin page/
+      admin_users_path
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

@@ -19,6 +19,5 @@ describe Admin::UsersController do
       assigns(:users).should eq([mock_user])
     end
   end
-
 end
 

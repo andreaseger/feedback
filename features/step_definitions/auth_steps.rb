@@ -26,3 +26,8 @@ Given /^(?:|I )am a new, authenticated (admin|student|intern|prof)(?: with email
   And %{I press "Sign in"}
 end
 
+Then /^I should have a user "([^"]*)" with the role "([^"]*)"$/ do |user, role|
+  u = User.where(:email => user).first
+  u.role?(role).should be_true
+end
+
