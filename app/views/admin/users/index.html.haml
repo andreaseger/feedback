@@ -4,16 +4,17 @@
   - User::ROLES.each do |role|
     %li= link_to role.titleize.pluralize, params.merge(:with_role => role)
   %li= link_to "All", params.merge(:with_role => "")    # or link_to "All" admin_users_path
-%ul.users
-  - @users.each do |user|
-    %li.user
-      %ul{:class => 'user horizontal'}
-        %li=user.email
-        %li=user.roles.join(" ").titleize
-        - if user.sheet
-          %li=link_to "Sheet", sheet_path(user.sheet)
-    %li=link_to "Edit #{user.email}", edit_admin_user_path(user)
 
-=#link_to "Manage Interns", interns_admin_user_path
-=#link_to "Manage Interns", interns_admin_user_path
+= form_tag edit_multiple_admin_users_path do
+  %ul.users
+    - @users.each do |user|
+      %li.user
+        %ul{:class => 'user horizontal'}
+          %li=user.email
+          %li=user.roles.join(" ").titleize
+          - if user.sheet
+            %li=link_to "Sheet", sheet_path(user.sheet)
+          %li= check_box_tag "user_ids[]", user.id
+          %li= link_to "Edit #{user.email}", edit_admin_user_path(user)
+  = submit_tag "Edit Checked"
 

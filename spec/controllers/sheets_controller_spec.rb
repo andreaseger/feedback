@@ -9,10 +9,14 @@ describe SheetsController do
     end
     describe '#new' do
       it 'should create new Address Objects' do
-        pending "kA wie ich das testen soll"
+        pending "kA wie ich das testen soll, schaff es nicht @sheet richtig zu mocken"
         # ich kann weder testen ob @sheet dann 2 Adressen hat noch
         # kann ich testen ob @sheet die befehle build_application_address ... empfängt
-        Address.should_receive(:new)
+        s = Sheet.new()
+        Sheet.stubs(:new).returns(s)
+        Sheet.any_instance.expects(:build_application_address)
+        Sheet.any_instance.expects(:job_site_address=)
+        Sheet.any_instance.expects(:build_job_site_address)
         get :new
       end
     end

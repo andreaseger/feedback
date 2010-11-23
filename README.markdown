@@ -14,7 +14,9 @@ Implementierte Features
 - Adressen in eigenes Dokument
 - Authentifizierung als Student, Praktiant, Professor und Admin
 - Administrieren einzelner User möglich
-
+- Administrieren mehrer User gleichzeitig möglich
+- Praktikant muss Student sein
+- Student darf kein Prof sein
 
 Known Issues / Bugs
 -------------------
@@ -44,6 +46,7 @@ Hintergrund
 - Ruby 1.9.2
 - Rails 3.0.3
 - RSpec
+- Mocha
 - Cucumber
 
 Feedback &copy; Eger Andreas 2010

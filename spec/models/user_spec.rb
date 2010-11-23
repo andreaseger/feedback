@@ -25,5 +25,16 @@ describe User do
       end
     end
   end
+
+  describe '#roles' do
+    it 'should not allow interns who are no students' do
+      user = Factory.build(:bob, :roles => ["intern"])
+      user.should_not be_valid
+    end
+    it 'should not allow users to be student and prof at the same time' do
+      user = Factory.build(:bob, :roles => ["student", "prof"])
+      user.should_not be_valid
+    end
+  end
 end
 

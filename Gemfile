@@ -31,7 +31,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '>= 2.0.0.beta.22'
   gem 'spork', '>= 0.9.0.rc2'
-  #gem 'mocha'
+  gem 'mocha'
   gem 'autotest'
   gem 'autotest-rails'
   gem 'cucumber'

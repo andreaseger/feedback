@@ -1,0 +1,11 @@
+- title "Edit users"
+
+= simple_form_for :user, :url => update_multiple_admin_users_path, :html => { :method => :put } do |f|
+  %ul
+    - @users.each do |user|
+      %li= user.email
+      %li= hidden_field_tag "user_ids[]", user.id
+  - roles = User::ROLES.map{|r| [r.titleize, r]}
+  = f.input :roles, :collection => roles, :as => :check_boxes
+  = f.button :submit
+
