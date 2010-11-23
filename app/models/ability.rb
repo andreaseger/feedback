@@ -7,7 +7,7 @@ class Ability
     if user.role? :admin
       can :manage, :all
     elsif user.role? :student
-      can :read, :all
+      can :read, Sheet
       if user.role? :intern
         can :create, Sheet do
           user.sheet == nil
@@ -16,6 +16,8 @@ class Ability
           sheet.try(:user) == user
         end
       end
+    elsif user.role? :prof
+      can :read, Sheet
     end
   end
 end

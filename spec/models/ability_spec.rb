@@ -66,7 +66,14 @@ describe Ability do
   end
 
   describe '#prof' do
-    # kA was profs im Allgemeinen allen können sollen
+    before(:each) do
+      user = Factory(:bob, :roles => ["prof"])
+      @ability = Ability.new(user)
+    end
+    it 'should be able to read sheets' do
+      @ability.should be_able_to(:read, Sheet.last)
+    end
+    # TODO Klären wie hier die Rechte aussehen sollen
   end
 end
 
