@@ -3,11 +3,21 @@ require 'spec_helper'
 describe SheetsController do
   include Devise::TestHelpers
   describe '#logged in' do
-    before do
+    before(:each) do
       @user = Factory(:bob)
       sign_in :user, @user
     end
+    describe '#new' do
+      it 'should create new Address Objects' do
+        pending "kA wie ich das testen soll"
+        # ich kann weder testen ob @sheet dann 2 Adressen hat noch
+        # kann ich testen ob @sheet die befehle build_application_address ... empfängt
+        Address.should_receive(:new)
+        get :new
+      end
+    end
   end
+
   describe '#not logged in' do
     before(:each) do
       sign_out :user

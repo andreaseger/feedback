@@ -4,8 +4,8 @@ class SheetsController < InheritedResources::Base
   load_and_authorize_resource
 
   def new
-    @sheet.application_address = Address.new()
-    @sheet.job_site_address = Address.new()
+    @sheet.build_application_address()
+    @sheet.build_job_site_address()
   end
   def create
     @sheet.user = current_user

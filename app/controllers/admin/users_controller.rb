@@ -13,7 +13,7 @@ class Admin::UsersController < InheritedResources::Base
   def update
     # delete empty string
     params[:user][:roles].delete_if{|r| r.empty?}
-    update!{collection_url}
+    update!{ collection_url }
   end
 
 end
