@@ -41,10 +41,10 @@ end
 Spork.each_run do
   # How to clean your database when transactions are turned off. See
   # http://github.com/bmabey/database_cleaner for more info.
-  Before do
-    require 'factory_girl'
-    Dir.glob(File.join(File.dirname(__FILE__), '../../spec/factories/*.rb')).each {|f| require f }
-  end
+  #Before do
+  #  require 'factory_girl'
+  #  Dir.glob(File.join(File.dirname(__FILE__), '../../spec/factories/*.rb')).each {|f| require f }
+  #end
 
 end
 

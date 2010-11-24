@@ -1,28 +1,50 @@
-Factory.define :user do |f|
-  f.password "secret"
-  f.password_confirmation "secret"
+Factory.sequence :nds, 10000 do |n|
+  "abc#{n}"
 end
 
-Factory.define :bob, :parent => :user do |f|
-  f.email "bob@foo.com"
-end
-Factory.define :amy, :parent => :user do |f|
-  f.email "amy@foo.com"
-  f.roles ["student"]
-end
+FactoryGirl.define do
+  factory :user do
+    password "secret"
+    password_confirmation "secret"
+    nds
+  end
 
-Factory.define :intern, :parent => :user do |f|
-  f.email "intern@foo.com"
-  f.roles ["student", "intern"]
-end
+  factory :bob, :parent => :user do
+    firstname "Bob"
+    lastname "Doe"
+    email { "#{firstname}.#{lastname}@example.com".downcase }
+    nds
+  end
+  factory :amy, :parent => :user do
+    firstname "Amy"
+    lastname "Doe"
+    email { "#{firstname}.#{lastname}@example.com".downcase }
+    roles ["student"]
+    nds
+  end
 
-Factory.define :prof, :parent => :user do |f|
-  f.email "prof@foo.com"
-  f.roles ["prof"]
-end
+  factory :intern, :parent => :user do
+    firstname "Intern"
+    lastname "Doe"
+    email { "#{firstname}.#{lastname}@example.com".downcase }
+    roles ["student", "intern"]
+    nds
+  end
 
-Factory.define :admin, :parent => :user do |f|
-  f.email "admin@foo.com"
-  f.roles ["admin"]
+  factory :prof, :parent => :user do
+    firstname "Prof"
+    lastname "Doe"
+    email { "#{firstname}.#{lastname}@example.com".downcase }
+    roles ["prof"]
+    nds
+  end
+
+  factory :admin, :parent => :user do
+    firstname "John"
+    lastname "Doe"
+    email { "#{firstname}.#{lastname}@example.com".downcase }
+    roles ["admin"]
+    nds
+  end
 end
 

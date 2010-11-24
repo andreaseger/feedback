@@ -25,6 +25,13 @@ group :development do
   gem 'rails3-generators'
   #gem "hpricot", "0.8.2" # Only required for 'rails g devise:views'
   #gem "ruby_parser", "2.0.5" # Only required for 'rails g devise:views'
+
+  #irb stuff
+  gem 'wirble'
+  gem 'hirb'
+  gem 'awesome_print'
+  gem 'bond'
+  gem 'sketches'
 end
 
 
@@ -37,7 +44,7 @@ group :test, :development do
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'launchy'
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :test do
@@ -45,7 +52,8 @@ group :test do
   gem 'webrat'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
+  gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git'
   #gem 'rack-test',
   #  :git => 'git://github.com/brynary/rack-test.git'
 end

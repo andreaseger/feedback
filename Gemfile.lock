@@ -8,6 +8,20 @@ GIT
       orm_adapter (~> 0.0.2)
       warden (~> 1.0.2)
 
+GIT
+  remote: git://github.com/thoughtbot/factory_girl.git
+  revision: 2d1c77984b365dabb43b7571eaa77f626ef65abc
+  specs:
+    factory_girl (2.0.0.beta1)
+
+GIT
+  remote: git://github.com/thoughtbot/factory_girl_rails.git
+  revision: 544868740c3e26d8a5e8337940f9de4990b1cd0b
+  specs:
+    factory_girl_rails (1.1.beta1)
+      factory_girl (~> 2.0.0.beta)
+      railties (>= 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -40,12 +54,13 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     addressable (2.2.2)
-    archive-tar-minitar (0.5.2)
     arel (2.0.4)
     autotest (4.4.5)
     autotest-rails (4.1.0)
       ZenTest
+    awesome_print (0.3.1)
     bcrypt-ruby (2.1.2)
+    bond (0.3.3)
     bson (1.1.2)
     bson_ext (1.1.2)
     builder (2.1.2)
@@ -62,7 +77,6 @@ GEM
     celerity (0.8.4)
     childprocess (0.1.4)
       ffi (~> 0.6.3)
-    columnize (0.3.2)
     configuration (1.2.0)
     cucumber (0.9.4)
       builder (~> 2.1.2)
@@ -77,10 +91,6 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    factory_girl (1.3.2)
-    factory_girl_rails (1.0)
-      factory_girl (~> 1.3)
-      rails (>= 3.0.0.beta4)
     faraday (0.5.3)
       addressable (~> 2.2.2)
       multipart-post (~> 1.0.1)
@@ -97,6 +107,7 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     has_scope (0.5.0)
+    hirb (0.3.5)
     i18n (0.4.2)
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
@@ -109,8 +120,6 @@ GEM
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
-    linecache19 (0.5.11)
-      ruby_core_source (>= 0.1.4)
     mail (2.2.10)
       activesupport (>= 2.3.6)
       i18n (~> 0.4.1)
@@ -203,19 +212,9 @@ GEM
     rspec-mocks (2.1.0)
     rspec-rails (2.1.0)
       rspec (~> 2.1.0)
-    ruby-debug-base19 (0.11.24)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby_core_source (>= 0.1.4)
-    ruby-debug19 (0.11.6)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby-debug-base19 (>= 0.11.19)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
-    ruby_core_source (0.1.4)
-      archive-tar-minitar (>= 0.5.2)
     rubyntlm (0.1.1)
     rubyzip (0.9.4)
     selenium-webdriver (0.1.0)
@@ -227,6 +226,7 @@ GEM
     simplecov (0.3.7)
       simplecov-html (>= 0.3.7)
     simplecov-html (0.3.9)
+    sketches (0.1.1)
     spork (0.9.0.rc2)
     term-ansicolor (1.0.5)
     thor (0.14.6)
@@ -240,6 +240,7 @@ GEM
       rack (>= 1.0)
       rack-test (>= 0.5.3)
     will_paginate (3.0.pre2)
+    wirble (0.1.3)
     xpath (0.1.2)
       nokogiri (~> 1.3)
 
@@ -249,6 +250,8 @@ PLATFORMS
 DEPENDENCIES
   autotest
   autotest-rails
+  awesome_print
+  bond
   bson_ext
   cancan
   capybara
@@ -256,9 +259,11 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise!
-  factory_girl_rails
+  factory_girl!
+  factory_girl_rails!
   haml-rails
   has_scope
+  hirb
   inherited_resources
   jquery-rails
   launchy
@@ -269,8 +274,9 @@ DEPENDENCIES
   rails (= 3.0.3)
   rails3-generators
   rspec-rails (>= 2.0.0.beta.22)
-  ruby-debug19
   simple_form
   simplecov (>= 0.3.5)
+  sketches
   spork (>= 0.9.0.rc2)
   webrat
+  wirble

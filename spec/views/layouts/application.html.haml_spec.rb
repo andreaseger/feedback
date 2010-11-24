@@ -30,7 +30,7 @@ describe '/layouts/application.html.haml' do
       render
       rendered.should have_selector("div", :id => "user_nav") do
         contain "Home"
-        contain "Signed in as bob"
+        contain "Signed in as Bob Doe"
         contain "Logout"
         contain "Edit Profile"
       end

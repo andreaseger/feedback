@@ -4,13 +4,19 @@ class User
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :registerable,
-         :recoverable,
          :rememberable,
          :trackable,
-         :validatable,
-         :omniauthable
+         :validatable
 
   references_one :sheet
+
+  #weiß noch nicht was ich alles aus LDAP bekommen
+  field :nds
+  field :firstname   #Vorname
+  field :lastname    #Nachname
+
+  validates_presence_of :nds
+  validates_uniqueness_of :nds
 
   #field :roles_mask, :type => Integer, :default => 2
   field :roles, :type => Array, :default => ["student"]
@@ -23,6 +29,10 @@ class User
   end
   def self.with_role(role)
     where(:roles => /#{role}/i)
+  end
+
+  def fullname
+    [firstname , lastname].join(" ")
   end
 
   private
