@@ -14,8 +14,6 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/mongoid'
 
-  #config.omniauth :ldap, :host => 'host.de', :port => 389, :method => :plain, :base => 'dc=example, dc=com', :uid => 'sAMAccountName', :try_sasl => false
-
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating an user. By default is
   # just :email. You can configure it to use [:username, :subdomain], so for

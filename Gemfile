@@ -16,7 +16,8 @@ gem "mongoid", ">= 2.0.0.beta.20"
 
 #security
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'master'
-gem 'omniauth'
+
+gem 'oa-enterprise', :git => 'git://github.com/intridea/omniauth.git', :require => 'omniauth/enterprise'
 gem "cancan"
 
 
@@ -44,6 +45,7 @@ group :test, :development do
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'launchy'
+  gem 'ruby-debug'
   #gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
