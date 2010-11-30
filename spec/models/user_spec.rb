@@ -50,10 +50,31 @@ describe User do
       user.should_not be_valid
     end
   end
-  describe '#full_name' do
-    it 'should write the full name' do
-      user = Factory(:bob, :firstname => "John", :lastname => "Doe")
-      user.fullname.should == "John Doe"
+
+  describe '#DN' do
+    before(:each) do
+      @dn = "cn=amy12345,ou=1,ou=stud,o=fooo,c=de"
+      # stub for the ldap connection
+      #entries = [Net::LDAP::Entry.new(@dn)]
+      #Net::LDAP.any_instance.stubs(:search).returns(entries)
+    end
+
+    it 'should return the cached_dn if available' do
+      user = Factory.build(:amy, :cached_dn => @dn)
+      user.dn.should == @dn
+    end
+    it 'should call fetchDN if nothing cached yet' do
+      user = Factory.build(:amy, :cached_dn => nil)
+      l = Ldap.new
+      Ldap.expects(:new).returns(l)
+      l.expects(:fetchDN).with(user.nds).returns(@dn)
+      user.dn.should == @dn
+    end
+    it 'should save the DN in cached_dn if its newly fetched' do
+      user = Factory.build(:amy, :cached_dn => nil)
+      Ldap.any_instance.stubs(:fetchDN).returns(@dn)
+      user.dn
+      user.cached_dn.should == @dn
     end
   end
 end

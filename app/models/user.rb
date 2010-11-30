@@ -14,6 +14,8 @@ class User
   field :nds
   field :firstname   #Vorname
   field :lastname    #Nachname
+  field :name
+  field :cached_dn
 
   validates_presence_of :nds
   validates_uniqueness_of :nds
@@ -31,8 +33,12 @@ class User
     where(:roles => /#{role}/i)
   end
 
-  def fullname
-    [firstname , lastname].join(" ")
+  def dn
+    if cached_dn
+      return cached_dn
+    else
+      self.cached_dn = (Ldap.new).fetchDN(nds)
+    end
   end
 
   private

@@ -40,7 +40,7 @@ describe Ldap do
       @ldap.expects(:search).with(:filter => fil, :return_result => true)
       @connection.fetchDN(@nds)
     end
-    describe '#one entrie found' do
+    describe '#only one entrie found' do
       it 'should return the entrie' do
         @connection.fetchDN(@nds).should == @dn
       end
