@@ -16,6 +16,7 @@ gem "mongoid", ">= 2.0.0.beta.20"
 
 #security
 gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'master'
+gem 'net-ldap'
 gem 'omniauth'
 gem "cancan"
 
@@ -25,13 +26,6 @@ group :development do
   gem 'rails3-generators'
   #gem "hpricot", "0.8.2" # Only required for 'rails g devise:views'
   #gem "ruby_parser", "2.0.5" # Only required for 'rails g devise:views'
-
-  #irb stuff
-  gem 'wirble'
-  gem 'hirb'
-  gem 'awesome_print'
-  gem 'bond'
-  gem 'sketches'
 end
 
 
@@ -45,6 +39,13 @@ group :test, :development do
   gem 'cucumber-rails'
   gem 'launchy'
   #gem 'ruby-debug19', :require => 'ruby-debug'
+
+  #irb stuff
+  gem 'wirble'
+  gem 'hirb'
+  gem 'awesome_print'
+  gem 'bond'
+  gem 'sketches'
 end
 
 group :test do
