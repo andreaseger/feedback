@@ -1,0 +1,6 @@
+%h2 Sign in
+= simple_form_for :user, :url => 'login', :method => 'post' do |f|
+  = f.input :nds
+  = f.input :password
+  = f.button :submit
+

@@ -1,9 +1,9 @@
 Feedback::Application.routes.draw do
   devise_for :users
-  namespace :auth do
-    match ':provider/callback' => "ldap#create"
-    match 'failure' => 'ldap#failure'
-  end
+
+  get 'login' => 'ldap#login', :as => 'login'   # login form
+  post 'login' => 'ldap#create'
+
   namespace :admin do
     resources :users do
       collection do
