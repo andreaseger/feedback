@@ -54,9 +54,6 @@ describe User do
   describe '#DN' do
     before(:each) do
       @dn = "cn=amy12345,ou=1,ou=stud,o=fooo,c=de"
-      # stub for the ldap connection
-      #entries = [Net::LDAP::Entry.new(@dn)]
-      #Net::LDAP.any_instance.stubs(:search).returns(entries)
     end
 
     it 'should return the cached_dn if available' do

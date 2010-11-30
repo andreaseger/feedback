@@ -3,6 +3,12 @@ Feedback
 
 Eine Webapplikation zur Erstellung, Verwaltung und organisation von Feedbackbögen im Praktikumssemester.
 
+Neuste Features
+---------------
+
+- LDAP auth, fetchen des DN
+
+
 
 Implementierte Features
 -----------------------
@@ -35,8 +41,7 @@ Features TODO
 - Multistep Formular für den FB
 - Suche für die Feedbackbögen
 - Adminitrationsbereich, mehr Funktionen
-- Administrieren mehrere Studenten gleichzeitig
-- LDAP
+- LDAP => in arbeit
 - automatisiertes deployment auf Apache + Passanger
 
 
