@@ -12,12 +12,14 @@ FactoryGirl.define do
   factory :bob, :parent => :user do
     firstname "Bob"
     lastname "Doe"
+    name {"#{firstname} #{lastname}"}
     email { "#{firstname}.#{lastname}@example.com".downcase }
     nds
   end
   factory :amy, :parent => :user do
     firstname "Amy"
     lastname "Doe"
+    name {"#{firstname} #{lastname}"}
     email { "#{firstname}.#{lastname}@example.com".downcase }
     roles ["student"]
     nds
@@ -26,6 +28,7 @@ FactoryGirl.define do
   factory :intern, :parent => :user do
     firstname "Intern"
     lastname "Doe"
+    name {"#{firstname} #{lastname}"}
     email { "#{firstname}.#{lastname}@example.com".downcase }
     roles ["student", "intern"]
     nds
@@ -34,6 +37,7 @@ FactoryGirl.define do
   factory :prof, :parent => :user do
     firstname "Prof"
     lastname "Doe"
+    name {"#{firstname} #{lastname}"}
     email { "#{firstname}.#{lastname}@example.com".downcase }
     roles ["prof"]
     nds
@@ -42,6 +46,7 @@ FactoryGirl.define do
   factory :admin, :parent => :user do
     firstname "John"
     lastname "Doe"
+    name {"#{firstname} #{lastname}"}
     email { "#{firstname}.#{lastname}@example.com".downcase }
     roles ["admin"]
     nds

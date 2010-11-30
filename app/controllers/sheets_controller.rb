@@ -1,5 +1,4 @@
 class SheetsController < InheritedResources::Base
-  #belongs_to :user, :singleton => true
   before_filter :authenticate_user!
   load_and_authorize_resource
 

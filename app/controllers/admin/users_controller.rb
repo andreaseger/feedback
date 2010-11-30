@@ -17,7 +17,10 @@ class Admin::UsersController < InheritedResources::Base
   end
 
   def edit_multiple
-    if @users.count == 1
+    case @users.count
+    when 0
+      redirect_to collection_url
+    when 1
       # render the normal edit form if only one user is selected
       @user = @users.first
       render :edit

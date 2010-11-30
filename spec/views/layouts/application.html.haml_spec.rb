@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe '/layouts/application.html.haml' do
-  include Devise::TestHelpers
 
   describe 'not authenticated' do
     before :each do

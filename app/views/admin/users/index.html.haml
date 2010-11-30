@@ -10,7 +10,7 @@
     - @users.each do |user|
       %li.user{:id => "user_#{user.nds}"}
         %ul.horizontal
-          %li=user.fullname
+          %li=user.name
           %li=user.email
           %li=user.nds
           %li=user.roles.join(" ").titleize
