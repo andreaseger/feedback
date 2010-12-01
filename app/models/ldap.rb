@@ -15,5 +15,9 @@ class Ldap
       nil
     end
   end
+
+  def authenticate(nds, password)
+
+  end
 end
 

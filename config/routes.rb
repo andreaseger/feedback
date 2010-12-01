@@ -1,5 +1,9 @@
 Feedback::Application.routes.draw do
-  devise_for :users
+  #devise_for :users
+
+  resources :sessions
+#  match "/auth/ldap/callback" => "sessions#create"
+#  match "/auth/ldap/failure" => "sessions#create"
 
   namespace :admin do
     resources :users do

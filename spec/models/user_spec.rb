@@ -74,5 +74,9 @@ describe User do
       user.cached_dn.should == @dn
     end
   end
+
+  describe '#create_with_ldap' do
+    #TODO
+  end
 end
 

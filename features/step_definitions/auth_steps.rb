@@ -1,9 +1,7 @@
-Given /^(?:|I )have one\s+user "([^\"]*)" with password "([^\"]*)" and the roles "([^\"]*)"$/ do |nds, password, roles|
+Given /^(?:|I )have one\s+user "([^\"]*)" with password "([^"]*)" and the roles "([^\"]*)"$/ do |nds, password, roles|
   email = "#{nds.to_s}@abc.com"
   User.create!(:nds => nds,
            :email => email,
-           :password => password,
-           :password_confirmation => password,
            :roles => roles.split(' '))
 end
 

@@ -1,7 +1,10 @@
 class Admin::UsersController < InheritedResources::Base
-  before_filter :authenticate_user!, :except => [:edit_multiple, :update_multiple]
+  before_filter :authenticate!#, :except => [:edit_multiple, :update_multiple]
   load_and_authorize_resource :except => [:edit_multiple, :update_multiple]
-  before_filter :auth_admin_for_multiple, :only => [:edit_multiple, :update_multiple]
+
+  before_filter :load_and_authorize_for_multiple, :only => [:edit_multiple, :update_multiple]
+
+
   before_filter :remove_empty_roles, :only => [:update, :update_multiple]
 
   actions :all, :except => [:show, :new, :create, :destroy]
@@ -43,8 +46,7 @@ class Admin::UsersController < InheritedResources::Base
   end
 
   private
-  def auth_admin_for_multiple
-    user_signed_in?
+  def load_and_authorize_for_multiple
     authorize! :manage, User
     @users = User.find(params["user_ids"])
   end

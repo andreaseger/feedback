@@ -13,13 +13,15 @@ describe Ldap do
 
   describe '#fetchDN' do
     # ask the LDAP server for the full DN of the user with the given nds
-    before(:each) do
+    before(:all) do
       @nds = "asd12345"
       @dn = "cn=#{@nds},ou=1,ou=stud,o=fooo,c=de"
-      entries = [Net::LDAP::Entry.new(@dn)]
-      Net::LDAP.any_instance.stubs(:search).returns(entries)
       @connection = Ldap.new
       @ldap = Net::LDAP.new(@connection.config)
+    end
+    before(:each) do
+      entries = [Net::LDAP::Entry.new(@dn)]
+      Net::LDAP.any_instance.stubs(:search).returns(entries)
     end
     it 'should create a new net::ldap object' do
       Net::LDAP.expects(:new).returns(@ldap)
@@ -56,5 +58,13 @@ describe Ldap do
     end
   end
 
+  describe '#fetchData' do
+    #TODO
+  end
+
+
+  describe '#authenticate' do
+    #TODO
+  end
 end
 

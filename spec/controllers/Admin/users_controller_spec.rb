@@ -39,15 +39,20 @@ describe Admin::UsersController do
       @u = Factory.stub(:amy)
       @uu = Factory.stub(:bob)
     end
-    it 'should render the edit_multiple page for more than one user id' do
-      User.stubs(:find).returns([@u, @uu])
-      post :edit_multiple, :user_ids => [@u.id, @uu.id]
-      response.should render_template('admin/users/edit_multiple')
+    it 'should redirect to all users if none was selected' do
+      User.stubs(:find).returns([])
+      post :edit_multiple, :user_ids => [@u.id]
+      response.should redirect_to(admin_users_path)
     end
     it 'should render edit if only one user_id' do
       User.stubs(:find).returns([@u])
       post :edit_multiple, :user_ids => [@u.id]
       response.should render_template('admin/users/edit')
+    end
+    it 'should render the edit_multiple page for more than one user id' do
+      User.stubs(:find).returns([@u, @uu])
+      post :edit_multiple, :user_ids => [@u.id, @uu.id]
+      response.should render_template('admin/users/edit_multiple')
     end
   end
 

@@ -3,7 +3,8 @@ Feature: Manage Users and thier Roles
   I want to be able to change the roles of one or many users
 
 Background:
-  Given I am a new, authenticated admin with nds "foo12345"
+  #Given I am a new, authenticated admin with nds "foo12345"
+  Given I am a authenticated admin with nds "foo12345"
     And I have one user "amy11111" with password "secret" and the roles "student"
     And I have one user "bob22222" with password "secret" and the roles "student intern"
     And I have one user "joe33333" with password "secret" and the roles "admin"

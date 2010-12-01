@@ -2,19 +2,19 @@ class User
   include Mongoid::Document
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable,
-         :registerable,
-         :rememberable,
-         :trackable,
-         :validatable
+  #devise :database_authenticatable,
+  #       :registerable,
+  #       :rememberable,
+  #       :trackable,
+  #       :validatable
 
   references_one :sheet
 
-  #weiß noch nicht was ich alles aus LDAP bekommen
   field :nds
   field :firstname   #Vorname
   field :lastname    #Nachname
   field :name
+  field :email
   field :cached_dn
 
   validates_presence_of :nds
@@ -39,6 +39,10 @@ class User
     else
       self.cached_dn = (Ldap.new).fetchDN(nds)
     end
+  end
+
+  def self.create_with_ldap!(entry)
+
   end
 
   private

@@ -1,16 +1,13 @@
 require 'spec_helper'
 
 describe SheetsController do
-  include Devise::TestHelpers
   describe '#logged in' do
     before(:each) do
-      #@user = Factory(:bob)
-      #sign_in :user, @user
       @user = Factory.stub(:bob)
       @controller.stubs(:authenticate_user!).returns(true)
       @controller.stubs(:current_user).returns(@user)
     end
-    describe '#new' do
+    describe '#GET new' do
       it 'should create new Address Objects' do
         pending "kA wie ich das testen soll, schaff es nicht @sheet richtig zu mocken"
         # ich kann weder testen ob @sheet dann 2 Adressen hat noch
@@ -23,18 +20,22 @@ describe SheetsController do
         get :new
       end
     end
+    describe '#POST create' do
+      it 'should set the user to current_user' do
+        pending
+        #TODO
+      end
+    end
   end
 
   describe '#not logged in' do
     before(:each) do
-      sign_out :user
-      #@controller.stubs(:authenticate_user!).returns(false)
-      #@controller.stubs(:current_user).returns(nil)
+      controller.stubs(:user_signed_in?).returns(false)
     end
     # perhaps i should add tests for the other actions, but its always the same before filter
     it 'should redirect me to the login site' do
       get :index
-      response.should redirect_to(new_user_session_url)
+      response.should redirect_to(new_session_url)
     end
   end
 end

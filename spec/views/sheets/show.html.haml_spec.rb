@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe "/sheets/show.html.haml" do
-  include Devise::TestHelpers
+  #include Devise::TestHelpers
   before :each do
     assign(:sheet, Factory.stub(:full_sheet))
     @user = Factory.stub(:bob)
-    #@view.stubs(:authenticate).returns(true)
-    @view.stubs(:current_user).returns(@user)
+    @controller.stubs(:current_user).returns(@user)
   end
 
   @sheet = Factory.attributes_for(:full_sheet)

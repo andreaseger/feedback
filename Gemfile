@@ -15,9 +15,9 @@ gem 'bson_ext'
 gem "mongoid", ">= 2.0.0.beta.20"
 
 #security
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'master'
+#gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'master'
 gem 'net-ldap'
-gem 'omniauth'
+#gem 'omniauth', :git => ''
 gem "cancan"
 
 
