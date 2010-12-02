@@ -6,7 +6,8 @@ Eine Webapplikation zur Erstellung, Verwaltung und organisation von Feedbackbög
 Neuste Features
 ---------------
 
-- Komplettes Session Handling implementiert
+- LDAP Authentifizierung und fetchen der User daten
+- Komplettes Session Handling
 - Devise und Omniauth entfernt
 - LDAP auth, fetchen des DN
 

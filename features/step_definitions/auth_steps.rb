@@ -1,29 +1,21 @@
-Given /^(?:|I )have one\s+user "([^\"]*)" with password "([^"]*)" and the roles "([^\"]*)"$/ do |nds, password, roles|
-  email = "#{nds.to_s}@abc.com"
-  User.create!(:nds => nds,
-           :email => email,
-           :roles => roles.split(' '))
+Given /^(?:|I )have one\s+user "([^\"]*)" with the roles "([^\"]*)"$/ do |nds, roles|
+  Factory(:bob, :nds => nds, :roles => roles.split(' '))
 end
 
-Given /^(?:|I )am a new, authenticated (admin|student|intern|prof)(?: with nds "([^\"]*)"(?: and password "([^\"]*)")?)?$/ do |type, nds, password|
+Given /^(?:|I )am a new, authenticated (admin|student|intern|prof)(?: with nds "([^\"]*)")?$/ do |type, nds|
   nds = "joe#{rand(99999)}" unless nds
-  password = 'secretpass' unless password
-  case type
-  when "admin"
-    roles = "admin"
-  when "student"
-    roles = "student"
-  when "intern"
-    roles = "student:intern"
-  when "prof"
-    roles = "prof"
-  end
+  password = 'secretpass'
 
-  Given %{I have one user "#{nds}" with password "#{password}" and the roles "#{roles}"}
-  And %{I go to login}
+  @user = Factory(type.to_sym, :nds => nds, :cached_dn => 'foo')
+  @ldap = Ldap.new
+  @ldap.stubs(:authenticate).returns(true)
+  Ldap.stubs(:new).returns(@ldap)
+  User.stubs(:where).returns([@user])
+
+  Given %{I go to login}
   And %{I fill in "user_nds" with "#{nds}"}
   And %{I fill in "user_password" with "#{password}"}
-  And %{I press "Sign in"}
+  And %{I press "Login"}
 end
 
 Then /^I should have a user "([^"]*)" with the role "([^"]*)"$/ do |user, role|

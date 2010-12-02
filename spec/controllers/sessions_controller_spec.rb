@@ -16,13 +16,13 @@ describe SessionsController do
       Ldap.stubs(:new).returns(@ldap)
     end
     it 'should search for a user with the entered nds' do
-      User.expects(:find).with(:nds => @nds).returns([])
+      User.expects(:where).with(:nds => @nds).returns([])
       post :create, :user => {:nds => @nds}
     end
 
     describe '#user exists in db and has a cached DN(, or will it fetch on the way anyway)' do
       before(:each) do
-        User.stubs(:find).returns([@user])
+        User.stubs(:where).returns([@user])
       end
 
       it 'should create ldap instance' do
@@ -62,7 +62,7 @@ describe SessionsController do
 
     describe '#user exists not yet' do
       before(:each) do
-        User.stubs(:find).returns([])
+        User.stubs(:where).returns([])
       end
 
       it 'should create ldap instance' do

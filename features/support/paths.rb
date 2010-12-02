@@ -19,7 +19,7 @@ module NavigationHelpers
     when /the last sheets show page/
       sheet_path(Sheet.last)
     when /login/
-      new_user_session_path
+      new_session_path
 
     when /sheets edit page/
       edit_sheet_path(Sheet.last)

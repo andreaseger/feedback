@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     # look if a user with that nds exists
-    user = User.find(:nds => params[:user][:nds]).first
+    user = User.where(:nds => params[:user][:nds]).first
     ldap = Ldap.new
     if user && user.dn
       if ldap.authenticate(user.dn, params[:user][:password])

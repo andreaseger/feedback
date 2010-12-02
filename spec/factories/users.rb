@@ -25,6 +25,15 @@ FactoryGirl.define do
     nds
   end
 
+  factory :student, :parent => :user do
+    firstname "Student"
+    lastname "Doe"
+    name {"#{firstname} #{lastname}"}
+    email { "#{firstname}.#{lastname}@example.com".downcase }
+    roles ["student"]
+    nds
+  end
+
   factory :intern, :parent => :user do
     firstname "Intern"
     lastname "Doe"
