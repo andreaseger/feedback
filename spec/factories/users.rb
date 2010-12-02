@@ -43,12 +43,12 @@ FactoryGirl.define do
     nds
   end
 
-  factory :prof, :parent => :user do
-    firstname "Prof"
+  factory :extern, :parent => :user do
+    firstname "extern"
     lastname "Doe"
     name {"#{firstname} #{lastname}"}
     email { "#{firstname}.#{lastname}@example.com".downcase }
-    roles ["prof"]
+    roles ["extern"]
     nds
   end
 

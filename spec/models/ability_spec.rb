@@ -65,9 +65,9 @@ describe Ability do
     end
   end
 
-  describe '#prof' do
+  describe '#extern' do
     before(:each) do
-      user = Factory(:bob, :roles => ["prof"])
+      user = Factory(:bob, :roles => ["extern"])
       @ability = Ability.new(user)
     end
     it 'should be able to read sheets' do

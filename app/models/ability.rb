@@ -16,7 +16,7 @@ class Ability
           sheet.try(:user) == user
         end
       end
-    elsif user.role? :prof
+    elsif user.role? :extern
       can :read, Sheet
     end
   end

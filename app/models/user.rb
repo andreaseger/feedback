@@ -24,7 +24,7 @@ class User
   field :roles, :type => Array, :default => ["student"]
   validate :check_roles
 
-  ROLES = %w[admin student intern prof]
+  ROLES = %w[admin student intern extern]
 
   def role?(role)
     roles.include? role.to_s
@@ -41,8 +41,24 @@ class User
     end
   end
 
-  def self.create_with_ldap!(entry)
+  def dn=(value)
+    self.cached_dn = value
+  end
 
+  def self.create_with_ldap!(entry)
+    if entry.class == Net::LDAP::Entry.new.class
+      u = new( :nds => entry.cn,
+                :dn  => entry.dn,
+                :firstname => entry.urrzgivenname,
+                :lastname => entry.urrzsurname,
+                :name => entry.urrzfullname,
+                :email => entry.mail,
+                :roles => entry.dn.include?("stud") ? ["student"] : ["extern"] )
+      if u.save
+        return u
+      end
+    end
+    nil
   end
 
   private
@@ -50,8 +66,13 @@ class User
     if self.role?("intern") && !self.role?("student")
       errors.add :roles, "a intern has to be a student too"
     end
-    if self.role?("prof") && self.role?("student")
-      errors.add :roles, "a student can't be prof at the same time'"
+    if self.role?("extern") && self.role?("student")
+      errors.add :roles, "a student can't be extern at the same time"
+    end
+    roles.each do |role|
+      unless ROLES.include?(role)
+        errors.add :roles, "the role #{role} was not defined"
+      end
     end
   end
 

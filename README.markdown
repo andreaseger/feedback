@@ -6,11 +6,13 @@ Eine Webapplikation zur Erstellung, Verwaltung und organisation von Feedbackbög
 Neuste Features
 ---------------
 
-- LDAP Authentifizierung und fetchen der User daten
-- Komplettes Session Handling
-- Devise und Omniauth entfernt
-- LDAP auth, fetchen des DN
-
+- LDAP Authentifizierung komplett
+  - User erstellung automatisiert
+  - LDAP fetchen der User daten
+  - Komplettes Session Handling
+  - Devise und Omniauth entfernt
+  - LDAP auth, fetchen des DN
+- Rolle prof entfernt, neue Rolle extern
 
 
 
@@ -22,11 +24,11 @@ Implementierte Features
 - Pflichtattribute
 - Benötigte Sprachen als Array
 - Adressen in eigenes Dokument
-- Authentifizierung als Student, Praktiant, Professor und Admin
+- Authentifizierung als Student, Praktiant, Extern und Admin
 - Administrieren einzelner User möglich
 - Administrieren mehrer User gleichzeitig möglich
 - Praktikant muss Student sein
-- Student darf kein Prof sein
+- Student darf kein extern sein
 
 Known Issues / Bugs
 -------------------
@@ -45,7 +47,6 @@ Features TODO
 - Multistep Formular für den FB
 - Suche für die Feedbackbögen
 - Adminitrationsbereich, mehr Funktionen
-- LDAP => in arbeit
 - automatisiertes deployment auf Apache + Passanger
 
 
