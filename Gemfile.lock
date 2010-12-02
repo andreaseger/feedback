@@ -66,7 +66,6 @@ GEM
     childprocess (0.1.4)
       ffi (~> 0.6.3)
     columnize (0.3.2)
-    configuration (1.2.0)
     cucumber (0.9.4)
       builder (~> 2.1.2)
       diff-lcs (~> 1.1.2)
@@ -102,9 +101,6 @@ GEM
       thor (~> 0.14.4)
     json (1.4.6)
     json_pure (1.4.6)
-    launchy (0.3.7)
-      configuration (>= 0.0.5)
-      rake (>= 0.8.1)
     linecache (0.43)
     mail (2.2.11)
       activesupport (>= 2.3.6)
@@ -209,7 +205,6 @@ DEPENDENCIES
   hirb
   inherited_resources
   jquery-rails
-  launchy
   mocha
   mongoid (>= 2.0.0.beta.20)
   net-ldap

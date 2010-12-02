@@ -6,3 +6,8 @@ Then /^(?:|I )should have (\d+) "([^"]*)"$/ do |count, klass|
   klass.constantize.count.should == count.to_f
 end
 
+Given /debugger/ do
+  debugger
+  puts "foo"
+end
+

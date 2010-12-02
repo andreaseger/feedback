@@ -15,9 +15,7 @@ gem 'bson_ext'
 gem "mongoid", ">= 2.0.0.beta.20"
 
 #security
-#gem 'devise', :git => 'git://github.com/plataformatec/devise.git', :branch => 'master'
 gem 'net-ldap'
-#gem 'omniauth', :git => ''
 gem "cancan"
 
 
@@ -37,7 +35,7 @@ group :test, :development do
   gem 'autotest-rails'
   gem 'cucumber'
   gem 'cucumber-rails'
-  gem 'launchy'
+  #gem 'launchy'
   gem 'ruby-debug'
   #gem 'ruby-debug19', :require => 'ruby-debug'
 

