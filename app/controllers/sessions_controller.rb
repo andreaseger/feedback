@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
       end
     else
       data = ldap.fetchData(nds)
-      if ldap.authenticate(data.dn, password)
+      if data && ldap.authenticate(data.dn, password)
         # successfully authenticated
         user = User.create_with_ldap!(data)
         if user

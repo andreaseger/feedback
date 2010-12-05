@@ -3,9 +3,10 @@ Feature: Create a sheet
   I want to be able to edit my sheet
 
 Background:
-  Given I am a new, authenticated intern
-    And I have a sheet
+  Given I am authenticated as "intern"
+    And The user "intern" has a sheet
 
+@wip
 Scenario: Edit my sheet
   Given I am on the sheets edit page
    When I fill in "sheet_boss" with "Mr Fox"

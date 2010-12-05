@@ -3,8 +3,7 @@ Feature: Create a sheet
   I want to be able to create a new sheet
 
 Background:
-  Given I am a new, authenticated intern
-
+  Given I am authenticated as "intern"
 
 Scenario: Creating a new sheet
   Given There are no sheets

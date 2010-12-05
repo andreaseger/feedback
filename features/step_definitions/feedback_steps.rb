@@ -1,8 +1,11 @@
-Given /(?:|I ) have a sheet/ do
-  Factory(:full_sheet, :user => User.last)
+Given /The user "([^\"]*)" has a sheet/ do |user|
+  user = User.where(:nds => user).first
+  Factory(:full_sheet, :user => user)
 end
 
-Given /(?:|I ) have no sheet/ do
-  User.last.sheet = nil
+Given /The user "([^\"]*)" has no sheet/ do |user|
+  user = User.where(:nds => user).first
+  user.sheet = nil
+  user.save
 end
 

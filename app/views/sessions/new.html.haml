@@ -1,4 +1,4 @@
-= simple_form_for :user, :url => '/sessions' do |f|
+= simple_form_for :user, :url => {:controller => 'sessions', :action => 'create'}do |f|
   = f.input :nds
   = f.input :password
   = f.submit "Login"

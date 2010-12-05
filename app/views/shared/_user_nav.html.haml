@@ -9,6 +9,6 @@
         =# link_to "Edit Profile", edit_user_registration_path(current_user)
     - else
       %li
-        = link_to "Login", "/auth/ldap"
+        = link_to_unless_current "Login", new_session_path
     %li.last About
 

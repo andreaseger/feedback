@@ -3,11 +3,11 @@ Feature: Manage Users and thier Roles
   I want to be able to change the roles of one or many users
 
 Background:
-  Given I am a new, authenticated admin with nds "foo12345"
-    And I have one user "amy11111" with the roles "student"
+  Given I have one user "amy11111" with the roles "student"
     And I have one user "bob22222" with the roles "student intern"
     And I have one user "joe33333" with the roles "admin"
-    And I have one user "tom44444" with the roles "prof"
+    And I have one user "tom44444" with the roles "extern"
+  Given I am authenticated as "admin"
     And I am on the user admin page
 
 Scenario: Edit one User
@@ -27,7 +27,7 @@ Scenario Outline: Scope Students
     | Students | amy11111     | tom44444   |
     | Interns  | bob22222     | amy11111   |
     | Admins   | joe33333     | bob22222   |
-    | Profs    | tom44444     | joe33333   |
+    | Extern   | tom44444     | joe33333   |
 
 
 Scenario: Edit multiple

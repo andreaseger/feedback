@@ -4,7 +4,6 @@ class Ldap
     @config = { :host => LDAP_CONFIG["host"],
                     :port => LDAP_CONFIG["port"],  #evtl hier auch auf ssl wechseln
                     :base => LDAP_CONFIG["base"]}
-    #@do_auth = LDAP_CONFIG["authenticate"]
   end
   def fetchDN(nds)
     data = fetchData(nds)

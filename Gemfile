@@ -45,6 +45,11 @@ group :test, :development do
   gem 'awesome_print'
   gem 'bond'
   gem 'sketches'
+
+  #factories
+  gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
+  gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git'
+
 end
 
 group :test do
@@ -52,8 +57,6 @@ group :test do
   gem 'webrat'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
-  gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git'
   #gem 'rack-test',
   #  :git => 'git://github.com/brynary/rack-test.git'
 end
