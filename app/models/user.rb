@@ -20,17 +20,24 @@ class User
   validates_presence_of :nds
   validates_uniqueness_of :nds
 
-  #field :roles_mask, :type => Integer, :default => 2
-  field :roles, :type => Array, :default => ["student"]
+  field :roles, :type => Array, :default => ["extern"]
   validate :check_roles
+
+  #scopes
+  scope :with_role, lambda { |role| where(:roles => /#{role}/i) }
+
+
+
+
+
+
+
+
 
   ROLES = %w[admin student intern extern]
 
   def role?(role)
     roles.include? role.to_s
-  end
-  def self.with_role(role)
-    where(:roles => /#{role}/i)
   end
 
   def dn
@@ -40,7 +47,6 @@ class User
       self.cached_dn = (Ldap.new).fetchDN(nds)
     end
   end
-
   def dn=(value)
     self.cached_dn = value
   end

@@ -14,7 +14,12 @@ Feedback::Application.routes.draw do
     end
   end
 
-  resources :sheets
+  resources :sheets do
+    collection do
+      get 'search'
+    end
+  end
+
   root :to => "sheets#index"
 end
 

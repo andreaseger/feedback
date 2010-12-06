@@ -1,14 +1,13 @@
 #user_nav
-  %ul
+  %ul.controls
     %li.first= link_to "Home", root_url
     - if user_signed_in?
       %li
         = "Hello #{current_user.name}. Not you?"
-        =# link_to "Logout", destroy_session_path
-      %li
-        =# link_to "Edit Profile", edit_user_registration_path(current_user)
+        = link_to "Logout", {:controller => :sessions, :action => :destroy, :id => 123}, :method => :delete
     - else
       %li
         = link_to_unless_current "Login", new_session_path
+    %li= link_to "Search", search_sheets_path
     %li.last About
 

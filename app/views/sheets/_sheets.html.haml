@@ -1,0 +1,10 @@
+-if @sheets
+  %ul#sheets
+    - for sheet in @sheets
+      %li.sheet
+        %ul.horizontal
+          %li= sheet.semester
+          %li= sheet.company
+          %li= link_to 'Show', sheet
+          %p= sheet.note_general.truncate(100)
+

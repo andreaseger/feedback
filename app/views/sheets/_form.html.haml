@@ -15,7 +15,7 @@
   = f.input :release, :as => :radio
   = f.input :working_hours
   %div{:class => 'input radio optional'}
-    = f.collection_radio :flextime?, [[true, 'Flextime'] ,[false, 'Fixed Time']], :first, :last
+    = f.collection_radio :flextime, [[true, 'Flextime'] ,[false, 'Fixed Time']], :first, :last
   = f.input :salary
   = f.input :required_languages
   = f.input :reachability, :collection => 1..4, :as => :radio

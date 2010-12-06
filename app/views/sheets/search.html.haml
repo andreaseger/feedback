@@ -1,0 +1,41 @@
+- title "Search"
+
+= simple_form_for :search, :url => {:controller => :sheets, :action => 'search'}, :html =>{:method => :get,  :id => "sheets_search" } do |f|
+  #general
+    = f.input :semester, :required => false
+    = f.input :company, :required => false
+    =# f.input :people
+    = f.input :required_languages, :required => false
+    -#boolean
+    = f.input :extention, :as => :radio, :required => false
+    = f.input :vacation, :as => :radio, :required => false
+    = f.input :release, :as => :radio, :required => false
+    = f.input :big_project, :as => :radio, :required => false
+    %div{:class => 'input radio optional'}
+      = f.collection_radio :flextime, [[true, 'Flextime'] ,[false, 'Fixed Time']], :first, :last
+  #less_than
+    %strong
+      less than
+    = f.input :working_hours, :required => false
+    = f.input :stress_factor, :collection => 1..4, :as => :radio, :required => false
+  #greater_than
+    %strong
+      greater than
+    = f.input :salary, :required => false
+    = f.input :percentage_of_women, :required => false
+    = f.input :reachability, :collection => 1..4, :as => :radio, :required => false
+    = f.input :accessibility, :collection => 1..4, :as => :radio, :required => false
+    = f.input :working_atmosphere, :collection => 1..4, :as => :radio, :required => false
+    = f.input :satisfaction_with_support, :collection => 1..4, :as => :radio, :required => false
+    = f.input :apartment_market, :collection => 1..4, :as => :radio, :required => false
+    = f.input :satisfaction_with_internship, :collection => 1..4, :as => :radio, :required => false
+    = f.input :independent_work, :collection => 1..4, :as => :radio, :required => false
+    = f.input :reference_to_the_study, :collection => 1..4, :as => :radio, :required => false
+    = f.input :learning_effect, :collection => 1..4, :as => :radio, :required => false
+    = f.input :required_previous_knowledge, :collection => 1..4, :as => :radio, :required => false
+  = f.submit "Search"
+  %h2
+    Results
+  #results
+    = render 'sheets'
+

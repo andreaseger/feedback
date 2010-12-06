@@ -1,6 +1,7 @@
 class SheetsController < InheritedResources::Base
   before_filter :authenticate!
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :search
+
 
   def new
     @sheet.build_application_address()
@@ -9,6 +10,15 @@ class SheetsController < InheritedResources::Base
   def create
     @sheet.user = current_user
     create!
+  end
+
+  def search
+    authorize! :read, Sheet
+    if params[:search]
+      s = params[:search].reject{ |key, value| value.empty? }
+      @sheets = Sheet.search(s).all
+      @search = Sheet.new(s)
+    end
   end
 end
 
