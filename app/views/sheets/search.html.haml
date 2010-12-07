@@ -18,6 +18,7 @@
       ="...should be less than"
     = f.input :working_hours, :required => false
     = f.input :stress_factor, :collection => 1..4, :as => :radio, :required => false
+    = f.input :required_previous_knowledge, :collection => 1..4, :as => :radio, :required => false
   #greater_than
     %strong
       ="...should be greater than"
@@ -32,7 +33,6 @@
     = f.input :independent_work, :collection => 1..4, :as => :radio, :required => false
     = f.input :reference_to_the_study, :collection => 1..4, :as => :radio, :required => false
     = f.input :learning_effect, :collection => 1..4, :as => :radio, :required => false
-    = f.input :required_previous_knowledge, :collection => 1..4, :as => :radio, :required => false
   = f.submit "Search"
   %h2
     Results

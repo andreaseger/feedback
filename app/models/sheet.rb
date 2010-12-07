@@ -128,7 +128,7 @@ class Sheet
 private
   STEXT=%w(company semester note_project note_company note_personal_impression note_conditions note_general department)
   SBOOLEAN=%w(vacation extendable flextime big_project release)
-  SNUMBER_MIN=%w(apartment_market satisfaction_with_support teamsize reference_to_the_study independent_work satisfaction_with_internship intership_length reachability required_previous_knowledge percentage_of_women accessibility salary learning_effect working_atmosphere)
-  SNUMBER_MAX=%w(working_hours stress_factor)
+  SNUMBER_MIN=%w(apartment_market satisfaction_with_support teamsize reference_to_the_study independent_work satisfaction_with_internship intership_length reachability percentage_of_women accessibility salary learning_effect working_atmosphere)
+  SNUMBER_MAX=%w(working_hours stress_factor required_previous_knowledge)
 end
 
