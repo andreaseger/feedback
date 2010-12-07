@@ -18,5 +18,14 @@ $(function () {
     $.get($('#sheets_search').attr('action'),  $('#sheets_search').serialize(), null, 'script');
     return false;
   });
+  $("#sheets_search input[type='radio']").change(function () {
+    $.get($('#sheets_search').attr('action'),  $('#sheets_search').serialize(), null, 'script');
+    return false;
+  });
+  $("#sheets_search select").change(function () {
+    $.get($('#sheets_search').attr('action'),  $('#sheets_search').serialize(), null, 'script');
+    return false;
+  });
+
 });
 

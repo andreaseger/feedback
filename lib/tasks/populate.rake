@@ -24,7 +24,7 @@ namespace :db do
         roles = ['extern']
       end
 
-      user = User.create!(:firstname => firstname, :lastname => lastname, :nds => nds, :email => email, :name => name, :roles => roles)
+      user = User.create!(:firstname => firstname, :lastname => lastname, :nds => nds, :email => email, :name => name, :roles => roles, :created_at => r.rand(2.years.ago..Time.now))
       if user.role? :intern
         y=r.rand(1990..2020)
         semester = r.rand(0..1) == 0 ? "SS#{y}" : "WS#{y}/#{y+1}"
@@ -63,7 +63,7 @@ namespace :db do
           :note_personal_impression => Faker::Lorem.paragraph(r.rand(3..6)),
           :teamsize => r.rand(5..50),
           :note_project => Faker::Lorem.paragraph(r.rand(3..6)),
-          :note_general => Faker::Lorem.paragraph(r.rand(3..6))   )
+          :note_general => Faker::Lorem.paragraph(r.rand(5..10))   )
       end
     end
     puts "#{User.count} User und "

@@ -12,7 +12,7 @@ Neuste Features
 - Versionierung der Feedbackbögen
 - Suche über fast alle Felder, über Spike und TDD Refactoring - noch nicht perfect
   - AJAX Suche
-  - Instant Search als Gimmick - macht bei jedem Tastendruck ne Abfrage in der DB. Ist wahrscheinlich bei steigender Documentzahl recht langsam und unpraktisch, vor allem da keine Indexe gesetzt sind.
+  - Instant Search als Gimmick - macht bei jedem Tastendruck ne Abfrage in der DB. Ist wahrscheinlich bei steigender Documentzahl recht langsam und unpraktisch, vor allem da keine Indexe gesetzt sind. - scheint bei ca 500 Sheets ohne indexe noch recht schnell zu sein, allerdings greift auch nur ein user darauf zu...
 
 
 Implementierte Features

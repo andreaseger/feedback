@@ -18,6 +18,8 @@ gem "mongoid", ">= 2.0.0.beta.20"
 gem 'net-ldap'
 gem "cancan"
 
+# Style
+gem "compass", ">= 0.10.6"
 
 group :development do
   gem 'nifty-generators'

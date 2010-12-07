@@ -12,7 +12,7 @@ class Admin::UsersController < InheritedResources::Base
   has_scope :with_role
 
   def index
-    @users = apply_scopes(User).paginate(:per_page => 20, :page => params[:page])
+    @users = apply_scopes(User).order_by(:lastname.asc).paginate(:per_page => 20, :page => params[:page])
   end
 
   def update

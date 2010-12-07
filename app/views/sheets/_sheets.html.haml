@@ -3,8 +3,15 @@
     - for sheet in @sheets
       %li.sheet
         %ul.horizontal
-          %li= sheet.semester
-          %li= sheet.company
+          %li.semester
+            = sheet.semester
+          %li.company
+            %strong= sheet.company
+        %ul.controls
           %li= link_to 'Show', sheet
-          %p= sheet.note_general.truncate(100)
+          - if can? :update, sheet
+            %li= link_to 'Edit', edit_sheet_path(sheet)
+          - if can? :destroy, sheet
+            %li= link_to 'Destroy', sheet, :confirm => 'Are you sure?', :method => :delete
+        %p= sheet.note_general.truncate(150)
 

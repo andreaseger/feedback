@@ -13,15 +13,15 @@
   = f.input :extendable, :as => :radio
   = f.input :vacation, :as => :radio
   = f.input :release, :as => :radio
-  = f.input :working_hours
-  %div{:class => 'input radio optional'}
+  = f.input :working_hours, :collection => 32..45
+  %div{:class => 'input radio optional no_label'}
     = f.collection_radio :flextime, [[true, 'Flextime'] ,[false, 'Fixed Time']], :first, :last
-  = f.input :salary
+  = f.input :salary, :collection => (400..1000).step(50)
   = f.input :required_languages
   = f.input :reachability, :collection => 1..4, :as => :radio
   = f.input :accessibility, :collection => 1..4, :as => :radio
   = f.input :note_conditions, :as => :text
-  = f.input :percentage_of_women
+  = f.input :percentage_of_women, :collection => (0..100).step(5)
   = f.input :working_atmosphere, :collection => 1..4, :as => :radio
   = f.input :satisfaction_with_support, :collection => 1..4, :as => :radio
   = f.input :stress_factor, :collection => 1..4, :as => :radio

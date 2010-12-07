@@ -1,18 +1,7 @@
 - title "Sheets"
 
-%ul#sheets
-  - for sheet in @sheets
-    %li.sheet
-      %ul.horizontal
-        %li= sheet.semester
-        %li= sheet.company
-        %li= link_to 'Show', sheet
-        - if can? :update, sheet
-          %li= link_to 'Edit', edit_sheet_path(sheet)
-        - if can? :destroy, sheet
-          %li= link_to 'Destroy', sheet, :confirm => 'Are you sure?', :method => :delete
-        %p= sheet.note_general.truncate(100)
-
 - if can? :create, Sheet.new
   %p= link_to "New Sheet", new_sheet_path
+= will_paginate @sheets
+= render 'sheets'
 

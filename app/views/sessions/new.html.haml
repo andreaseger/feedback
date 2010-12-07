@@ -1,5 +1,5 @@
-= simple_form_for :user, :url => {:controller => 'sessions', :action => 'create'}do |f|
-  = f.input :nds
-  = f.input :password
+= simple_form_for :user, :url => {:controller => 'sessions', :action => 'create'}, :html => {:id => 'login'} do |f|
+  = f.input :nds, :required => false
+  = f.input :password, :required => false
   = f.submit "Login"
 

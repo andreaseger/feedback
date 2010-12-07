@@ -1,7 +1,7 @@
 - title "Search"
 
 = simple_form_for :search, :url => {:controller => :sheets, :action => 'search'}, :html =>{:method => :get,  :id => "sheets_search" } do |f|
-  #general
+  #left
     = f.input :semester, :required => false
     = f.input :company, :required => false
     = f.input :handler, :label => "People", :required => false
@@ -11,19 +11,18 @@
     = f.input :vacation, :as => :radio, :required => false
     = f.input :release, :as => :radio, :required => false
     = f.input :big_project, :as => :radio, :required => false
-    %div{:class => 'input radio optional'}
+    %div{:class => 'input radio optional no_label'}
       = f.collection_radio :flextime, [[true, 'Flextime'] ,[false, 'Fixed Time']], :first, :last
-  #less_than
     %strong
       ="...should be less than"
-    = f.input :working_hours, :required => false
+    = f.input :working_hours, :required => false, :collection => 32..45
     = f.input :stress_factor, :collection => 1..4, :as => :radio, :required => false
     = f.input :required_previous_knowledge, :collection => 1..4, :as => :radio, :required => false
-  #greater_than
+  #right
     %strong
       ="...should be greater than"
-    = f.input :salary, :required => false
-    = f.input :percentage_of_women, :required => false
+    = f.input :salary, :required => false, :collection => (400..1000).step(50)
+    = f.input :percentage_of_women, :required => false, :collection => (0..100).step(5)
     = f.input :reachability, :collection => 1..4, :as => :radio, :required => false
     = f.input :accessibility, :collection => 1..4, :as => :radio, :required => false
     = f.input :working_atmosphere, :collection => 1..4, :as => :radio, :required => false
@@ -33,9 +32,10 @@
     = f.input :independent_work, :collection => 1..4, :as => :radio, :required => false
     = f.input :reference_to_the_study, :collection => 1..4, :as => :radio, :required => false
     = f.input :learning_effect, :collection => 1..4, :as => :radio, :required => false
-  = f.submit "Search"
-  %h2
-    Results
-  #results
-    = render 'sheets'
+  #full
+    = f.submit "Search"
+    %h2
+      Results
+    #results
+      = render 'sheets'
 

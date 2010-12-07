@@ -26,6 +26,9 @@ module NavigationHelpers
 
     when /user admin page/
       admin_users_path
+
+    when /search page/
+      search_sheets_path
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

@@ -23,11 +23,8 @@ Scenario: Creating a new sheet
       | sheet_handler                                  | Mr White              |
       | sheet_note_company                             | Lorem Ipsum           |
       | sheet_intership_length                         | 18                    |
-      | sheet_working_hours                            | 42                    |
-      | sheet_salary                                   | 780                   |
       | sheet_required_languages                       | greek                 |
       | sheet_note_conditions                          | In id nisi dolor      |
-      | sheet_percentage_of_women                      | 45                    |
       | sheet_note_personal_impression                 | Aliquam a tellus      |
       | sheet_teamsize                                 | 42                    |
       | sheet_note_project                             | Nulla nunc ligula     |
@@ -39,6 +36,9 @@ Scenario: Creating a new sheet
     And choose "sheet_release_true"
     And choose "sheet_flextime_true"
     And choose "sheet_big_project_true"
+    And select "750" from "sheet_salary"
+    And select "35" from "sheet_working_hours"
+    And select "35" from "sheet_percentage_of_women"
 
     And choose "sheet_reachability_1"
     And choose "sheet_accessibility_3"
@@ -55,6 +55,6 @@ Scenario: Creating a new sheet
    Then I should have 1 "Sheet"
     And I should be on the last sheets show page
     And I should see "Egypt"
-    And I should see "780"
+    And I should see "750"
     And I should see "Aliquam a tellus"
 

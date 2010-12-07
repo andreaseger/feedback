@@ -1,0 +1,190 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+//@import "compass/reset"
+@import "blueprint/reset"
+
+@import partials/base.scss
+@import partials/flash_errors.sass
+@import partials/simple_form.sass
+
+// Import all the default blueprint modules so that we can access their mixins.
+@import blueprint
+// Import the non-default scaffolding module.
+@import "blueprint/scaffolding"
+@import compass/utilities
+
+//Recommended Blueprint configuration with scoping and semantic layout:
++blueprint-typography
++blueprint-scaffolding
++blueprint-utilities
+//+blueprint-debug
++blueprint-interaction
+
+body
+  background-color: $background
+  font-family: Verdana, Helvetica, Arial
+  font-size: 14px
+
+  #header
+    background-color: $header
+    margin:
+      top: 2px
+      bottom: 0
+      left: 2px
+      right: 2px
+    #banner
+      +replace-text("dummyimage_990x30.png")
+      width: 990px
+      height: 30px
+      margin: 0 auto
+
+    #user_nav
+      ul
+        +horizontal-list
+        width: $blueprint-container-size
+        margin: 0 auto
+        padding:
+          left: 10px
+          right: 20px
+        #logo
+          +replace-text("logo30.png")
+          height: 30px
+          width: 30px
+          float: left
+          margin:
+            :right 10px
+
+
+        li
+          margin: auto
+          padding:
+            top: 6px
+            bottom: 6px
+          a
+            padding: 3px 6px
+            color: white
+            text-decoration: none
+            border:
+              color: black
+              style: solid
+              width: 2px
+              radius: 11px
+            &:hover
+              background-color: black
+              border-color: white
+      font-size: 0.8em
+      background-color: black
+      border:
+        radius: 6px
+      padding:
+        top: 10px
+        left: 35px
+        bottom: 10px
+        right: 35px
+      color: white
+
+  #container
+    +container
+    //+showgrid
+    padding:
+      top: 5px
+      left: 20px
+      right: 20px
+    margin: 0 auto
+
+    background-color: white
+    border-style: none
+
+    ul
+      +no-bullets
+    .controls, .horizontal
+      +horizontal-list
+
+    i
+      color: $silver
+      font-size: 0.7em
+
+    #sheets
+      +column(22,true)
+      .sheet
+        padding:
+          left: 5px
+          top: 5px
+          right: 10px
+          bottom: 3px
+        margin-bottom: 5px
+        background-color: $posts
+        border:
+          style: solid
+          color: $border
+          width: 1px
+          radius: 1px
+        border-bottom:
+          width: 2px
+        p
+          margin-bottom: 5px
+        .semester
+        .company
+        .horizontal
+          width: 710px
+          float: left
+        .controls
+          +horizontal-list
+          float: right
+
+    #sheets_search
+      input.string
+        width: 18em
+      label
+        width: 170px
+        font-size: 80%
+      div.input
+        margin-bottom: 2px
+      .no_label
+        padding-left: 170px
+
+      #left
+        +column(11)
+        border-right:
+          width: 2px
+          style: solid
+          color: black
+      #right
+        +column(11, true)
+      #full
+        +column(22,true)
+        margin-top: 10px
+
+    #users
+      .name
+      .mail
+        font-size: 80%
+      .nds
+      .link_sheet
+      .cb_edit
+      .link_edit
+
+    #login
+      padding:
+        top: 20px
+        left: 10px
+      .input
+        margin-bottom: 5px
+
+
+
+
+
+
+
+
+
+
+
+
+
+// more room
+

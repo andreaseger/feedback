@@ -6,7 +6,6 @@ Background:
   Given I am authenticated as "intern"
     And The user "intern" has a sheet
 
-@wip
 Scenario: Edit my sheet
   Given I am on the sheets edit page
    When I fill in "sheet_boss" with "Mr Fox"
