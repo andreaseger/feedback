@@ -13,11 +13,11 @@ describe Admin::UsersController do
   end
 
   describe "GET index" do
-    it "assigns all users as @users" do
-      User.stubs(:all).returns([mock_user])
-      get :index
-      assigns(:users).should eq([mock_user])
-    end
+    #it "assigns all users as @users" do
+    #  User.stubs(:all).returns([mock_user])
+    #  get :index
+    #  assigns(:users).should eq([mock_user])
+    #end
   end
 
   describe 'PUT update' do

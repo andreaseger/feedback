@@ -7,6 +7,8 @@ Wird im Rahmen einer Bachelorarbeit der HS Regensburg entwickelt.
 Neuste Features
 ---------------
 
+- Pagination bei Suche und Userübersicht
+- Script zum seeden der Datenbank -> 1000-5000 User inkl FBs
 - Versionierung der Feedbackbögen
 - Suche über fast alle Felder, über Spike und TDD Refactoring - noch nicht perfect
   - AJAX Suche
@@ -36,8 +38,6 @@ Known Issues / Bugs
 - Länderliste im Moment noch mit englischen Namen
 
 
-
-
 Features TODO
 -------------
 
@@ -46,11 +46,13 @@ Features TODO
 - Multistep Formular für den FB, entweder über JS oder über ne StateMachine
 - Indexe zur schnelleren suche einbauen
 - Sortierung der Suchergebnisse
-- Pagination
 - Sortierfunktion für Semester ( WS2009/2010 -> SS2010 -> WS2010/2011 -> ...)
   - Automatisch setzen des aktuellen Semesters (SS von März bis Juli; WS von Oktober bis Januar; evtl lücken sinnvoll schließen)
 - deutsche Lokalisierung
 - Adminitrationsbereich, mehr Funktionen
+- User Statistics
+  - login count
+  - ...
 - automatisiertes deployment auf Apache + Passanger
 
 

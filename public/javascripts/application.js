@@ -1,4 +1,12 @@
 $(function () {
+  //paginatation
+  //$('#sheets th a, #products .pagination a').live('click', ↵
+  //  function () {
+  //    $.getScript(this.href);
+  //    return false;
+  //  }
+  //);
+
   // Search form.
   $('#sheets_search').submit(function () {
     $.get(this.action, $(this).serialize(), null, 'script');

@@ -7,7 +7,7 @@ gem 'jquery-rails'
 gem 'inherited_resources'
 gem 'has_scope'
 gem 'simple_form'
-
+gem 'will_paginate', '3.0.pre2'
 
 
 #MongoDB
@@ -24,6 +24,8 @@ group :development do
   gem 'rails3-generators'
   #gem "hpricot", "0.8.2" # Only required for 'rails g devise:views'
   #gem "ruby_parser", "2.0.5" # Only required for 'rails g devise:views'
+  gem 'backports'   #for the new Randomclass from 1.9.2
+  gem 'faker'
 end
 
 

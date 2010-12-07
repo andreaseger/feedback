@@ -2,7 +2,7 @@ class Sheet
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Versioning
-  
+
   # keep at most 5 versions of a record
   max_versions 5
 
@@ -64,11 +64,12 @@ class Sheet
                         :stress_factor,
                         :apartment_market,
                         :satisfaction_with_internship,
-                        :big_project,
                         :independent_work,
                         :reference_to_the_study,
                         :learning_effect,
                         :required_previous_knowledge
+
+  validates_inclusion_of :big_project, :in => [true, false]
 
   validates_each  :reachability,
                   :accessibility,

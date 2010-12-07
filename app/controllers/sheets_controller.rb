@@ -16,7 +16,7 @@ class SheetsController < InheritedResources::Base
     authorize! :read, Sheet
     if params[:search]
       s = params[:search].reject{ |key, value| value.empty? }
-      @sheets = Sheet.search(s).all
+      @sheets = Sheet.search(s)#.paginate(:per_page => 1, :page => params[:page])
       @search = Sheet.new(s)
     end
   end
