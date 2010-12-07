@@ -2,14 +2,29 @@ require 'spec_helper'
 
 describe User do
   describe '#validations' do
-    describe '#nds' do
-      it 'should be unique' do
-        Factory(:bob, :nds => "abc12345")
-        user = Factory.build(:amy, :nds => "abc12345")
+    it 'nds should be unique' do
+      Factory(:bob, :nds => "abc12345")
+      user = Factory.build(:amy, :nds => "abc12345")
+      user.should_not be_valid
+    end
+    %w(nds email name).each do |attrib|
+      it "##{attrib} should be present" do
+        user = Factory.build(:bob, attrib => nil)
         user.should_not be_valid
       end
-      it 'should be present' do
-        user = Factory.build(:amy, :nds => nil)
+    end
+
+    describe '#roles' do
+      it 'should not allow interns who are no students' do
+        user = Factory.build(:bob, :roles => ["intern"])
+        user.should_not be_valid
+      end
+      it 'should not allow users to be student and prof at the same time' do
+        user = Factory.build(:bob, :roles => ["student", "extern"])
+        user.should_not be_valid
+      end
+      it 'should check if all the assigned roles are defined' do
+        user = Factory.build(:bob, :roles => ["super"])
         user.should_not be_valid
       end
     end
@@ -37,21 +52,6 @@ describe User do
           user.role?(role).should be_true
         end
       end
-    end
-  end
-
-  describe '#roles' do
-    it 'should not allow interns who are no students' do
-      user = Factory.build(:bob, :roles => ["intern"])
-      user.should_not be_valid
-    end
-    it 'should not allow users to be student and prof at the same time' do
-      user = Factory.build(:bob, :roles => ["student", "extern"])
-      user.should_not be_valid
-    end
-    it 'should check if all the assigned roles are defined' do
-      user = Factory.build(:bob, :roles => ["super"])
-      user.should_not be_valid
     end
   end
 

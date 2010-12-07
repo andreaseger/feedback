@@ -7,14 +7,10 @@ Wird im Rahmen einer Bachelorarbeit der HS Regensburg entwickelt.
 Neuste Features
 ---------------
 
-- LDAP Authentifizierung komplett
-  - User erstellung automatisiert
-  - LDAP fetchen der User daten
-  - Komplettes Session Handling
-  - Devise und Omniauth entfernt
-  - LDAP auth, fetchen des DN
-- Rolle prof entfernt, neue Rolle extern
-
+- Versionierung der Feedbackbögen
+- Suche über fast alle Felder, über Spike und TDD Refactoring - noch nicht perfect
+  - AJAX Suche
+  - Instant Search als Gimmick - macht bei jedem Tastendruck ne Abfrage in der DB. Ist wahrscheinlich bei steigender Documentzahl recht langsam und unpraktisch, vor allem da keine Indexe gesetzt sind.
 
 
 Implementierte Features
@@ -30,6 +26,9 @@ Implementierte Features
 - Administrieren mehrer User gleichzeitig möglich
 - Praktikant muss Student sein
 - Student darf kein extern sein
+- LDAP Authentifizierung
+- Suche
+- Versionierung der Feedbackbögen
 
 Known Issues / Bugs
 -------------------
@@ -42,11 +41,15 @@ Known Issues / Bugs
 Features TODO
 -------------
 
+- Cucumber Features für die Suche
 - Struktur des FB verbessern ...
-- Versioning für FB
-- paranoia mode => FB bei delete nicht wirklich löschen nur als gelöscht markieren
-- Multistep Formular für den FB
-- Suche für die Feedbackbögen
+- Multistep Formular für den FB, entweder über JS oder über ne StateMachine
+- Indexe zur schnelleren suche einbauen
+- Sortierung der Suchergebnisse
+- Pagination
+- Sortierfunktion für Semester ( WS2009/2010 -> SS2010 -> WS2010/2011 -> ...)
+  - Automatisch setzen des aktuellen Semesters (SS von März bis Juli; WS von Oktober bis Januar; evtl lücken sinnvoll schließen)
+- deutsche Lokalisierung
 - Adminitrationsbereich, mehr Funktionen
 - automatisiertes deployment auf Apache + Passanger
 

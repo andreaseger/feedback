@@ -1,6 +1,10 @@
 class Sheet
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Versioning
+  
+  # keep at most 5 versions of a record
+  max_versions 5
 
   field :semester
   field :company
@@ -14,7 +18,7 @@ class Sheet
   field :note_company
 
   field :intership_length
-  field :extention, :type => Boolean
+  field :extendable, :type => Boolean
   field :vacation, :type => Boolean
   field :release, :type => Boolean
   field :working_hours, :type => Integer
@@ -82,7 +86,7 @@ class Sheet
 
   def required_languages=(value)
     unless value.nil?
-      self.speeches = value.scan(/\w+|,|\./).delete_if{|t| t =~ /,|\./}
+      self.speeches = Sheet.split_languages(value)
     end
   end
 
@@ -93,16 +97,19 @@ class Sheet
   def self.search(hash)
     aa = []
     hash.each do |key, value|
-      if Sheet::STEXT.include?(key)
+      case key
+      when *STEXT
         aa.push(Sheet.where(key.to_sym => /#{value}/i))
-      elsif Sheet::SBOOLEAN.include?(key)
+      when *SBOOLEAN
         aa.push(Sheet.where(key.to_sym => value))
-      elsif Sheet::SNUMBER_MIN.include?(key)
+      when *SNUMBER_MIN
         aa.push(Sheet.where(key.to_sym.gte => value))
-      elsif Sheet::SNUMBER_MAX.include?(key)
+      when *SNUMBER_MAX
         aa.push(Sheet.where(key.to_sym.lte => value))
-      elsif key == "people"
+      when "people", "handler" #workaround um das suchattribut wieder anzuzeigen
         aa.push(Sheet.any_of({:handler => /#{value}/i}, {:boss => /#{value}/i}))
+      when "speeches", "required_languages"
+        aa.push(Sheet.any_in(:speeches => split_languages(value).collect{|x| /#{x}/i} ))
       end
     end
     c = all
@@ -110,10 +117,17 @@ class Sheet
     return c
   end
 
+  #helper method
+  def self.split_languages(value)
+    value.scan(/\w+|,|\./).delete_if{|t| t =~ /,|\./}
+  end
+
+
+
 private
-  STEXT=%w(company boss semester handler note_project note_company note_personal_impression note_conditions note_general department required_languages)
-  SBOOLEAN=%w(vacation extention flextime big_project release)
+  STEXT=%w(company semester note_project note_company note_personal_impression note_conditions note_general department)
+  SBOOLEAN=%w(vacation extendable flextime big_project release)
   SNUMBER_MIN=%w(apartment_market satisfaction_with_support teamsize reference_to_the_study independent_work satisfaction_with_internship intership_length reachability required_previous_knowledge percentage_of_women accessibility salary learning_effect working_atmosphere)
-  SNUMBER_MAX=%(working_hours stress_factor)
+  SNUMBER_MAX=%w(working_hours stress_factor)
 end
 

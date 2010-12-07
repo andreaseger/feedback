@@ -29,7 +29,7 @@ Factory.define :full_sheet, :parent => :valid_sheet do |f|
   f.department  "ER TD HT FB"
   f.note_company "Lorem Ipsum"
   f.intership_length  18
-  f.extention  true
+  f.extendable  true
   f.vacation false
   f.release true
   f.working_hours 42

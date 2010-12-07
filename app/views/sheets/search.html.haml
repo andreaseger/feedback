@@ -4,10 +4,10 @@
   #general
     = f.input :semester, :required => false
     = f.input :company, :required => false
-    =# f.input :people
+    = f.input :handler, :label => "People", :required => false
     = f.input :required_languages, :required => false
     -#boolean
-    = f.input :extention, :as => :radio, :required => false
+    = f.input :extendable, :as => :radio, :required => false
     = f.input :vacation, :as => :radio, :required => false
     = f.input :release, :as => :radio, :required => false
     = f.input :big_project, :as => :radio, :required => false
@@ -15,12 +15,12 @@
       = f.collection_radio :flextime, [[true, 'Flextime'] ,[false, 'Fixed Time']], :first, :last
   #less_than
     %strong
-      less than
+      ="...should be less than"
     = f.input :working_hours, :required => false
     = f.input :stress_factor, :collection => 1..4, :as => :radio, :required => false
   #greater_than
     %strong
-      greater than
+      ="...should be greater than"
     = f.input :salary, :required => false
     = f.input :percentage_of_women, :required => false
     = f.input :reachability, :collection => 1..4, :as => :radio, :required => false

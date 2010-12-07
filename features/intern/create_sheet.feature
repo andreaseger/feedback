@@ -34,7 +34,7 @@ Scenario: Creating a new sheet
       | sheet_note_general                             | Class aptent taciti   |
     And select "Egypt" from "sheet_application_address_attributes_country"
     And select "United States" from "sheet_job_site_address_attributes_country"
-    And choose "sheet_extention_true"
+    And choose "sheet_extendable_true"
     And choose "sheet_vacation_false"
     And choose "sheet_release_true"
     And choose "sheet_flextime_true"

@@ -1,5 +1,5 @@
 Given /^(?:|I )have one\s+user "([^\"]*)" with the roles "([^\"]*)"$/ do |nds, roles|
-  User.create!(:nds => nds, :roles => roles.split(' '))
+  User.create!(:nds => nds, :roles => roles.split(' '), :email => "foo@bar.com", :name => "foobar")
 end
 
 #Given /^(?:|I )am a new, authenticated (admin|student|intern|prof)(?: with nds "([^\"]*)")?$/ do |type, nds|

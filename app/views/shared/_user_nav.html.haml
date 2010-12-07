@@ -4,7 +4,7 @@
     - if user_signed_in?
       %li
         = "Hello #{current_user.name}. Not you?"
-        = link_to "Logout", {:controller => :sessions, :action => :destroy, :id => 123}, :method => :delete
+        = link_to "Logout", {:controller => '/sessions', :action => :destroy, :id => 123}, :method => :delete
     - else
       %li
         = link_to_unless_current "Login", new_session_path

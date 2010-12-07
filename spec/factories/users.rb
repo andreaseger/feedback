@@ -4,8 +4,6 @@ end
 
 FactoryGirl.define do
   factory :user do
-    #password "secret"
-    #password_confirmation "secret"
     nds
   end
 

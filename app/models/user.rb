@@ -17,7 +17,7 @@ class User
   field :email
   field :cached_dn
 
-  validates_presence_of :nds
+  validates_presence_of :nds, :email, :name
   validates_uniqueness_of :nds
 
   field :roles, :type => Array, :default => ["extern"]
@@ -25,13 +25,6 @@ class User
 
   #scopes
   scope :with_role, lambda { |role| where(:roles => /#{role}/i) }
-
-
-
-
-
-
-
 
 
   ROLES = %w[admin student intern extern]
