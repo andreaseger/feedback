@@ -16,9 +16,10 @@ class User
   field :lastname    #Nachname
   field :name
   field :email
+  field :matnr, :type => Integer
   field :cached_dn
 
-  validates_presence_of :nds, :email, :name
+  validates_presence_of :nds, :email, :name, :matnr
   validates_uniqueness_of :nds
 
   field :roles, :type => Array, :default => ["extern"]
@@ -46,6 +47,15 @@ class User
   end
 
   def self.create_with_ldap!(entry)
+    user = new_with_ldap(entry)
+    if user.save
+      user
+    else
+      nil
+    end
+  end
+
+  def self.new_with_ldap(entry)
     if entry.class == Net::LDAP::Entry.new.class
       u = new( :nds => entry.cn,
                 :dn  => entry.dn,
@@ -54,11 +64,9 @@ class User
                 :name => entry.urrzfullname,
                 :email => entry.mail,
                 :roles => entry.dn.include?("stud") ? ["student"] : ["extern"] )
-      if u.save
-        return u
-      end
+      return u
     end
-    nil
+    new
   end
 
   private

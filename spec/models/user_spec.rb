@@ -7,7 +7,7 @@ describe User do
       user = Factory.build(:amy, :nds => "abc12345")
       user.should_not be_valid
     end
-    %w(nds email name).each do |attrib|
+    %w(nds email name matnr).each do |attrib|
       it "##{attrib} should be present" do
         user = Factory.build(:bob, attrib => nil)
         user.should_not be_valid
@@ -79,7 +79,7 @@ describe User do
     end
   end
 
-  describe '#create_with_ldap' do
+  describe '#new_with_ldap' do
     before(:all) do
       @nds = "foo12345"
       @dn = "cn=#{@nds},ou=3,ou=stud,o=dev-test,c=de"
@@ -94,18 +94,13 @@ urrzsurname: Doe"
       @entry = Net::LDAP::Entry.from_single_ldif_string(ldif)
     end
 
-    it 'should be nil if the entry is not a LDAP entry' do
-      user = User.create_with_ldap!(nil)
-      user.should be_nil
-    end
-
-    it 'should be a new, persitend user if the entry is a LDAP entry' do
-      user = User.create_with_ldap!(@entry)
-      user.persisted?.should be_true unless user.nil?
+    it 'should be invalid if the entry is not a LDAP entry' do
+      user = User.new_with_ldap(nil)
+      user.should_not be_valid
     end
 
     it "should have the entry's values"  do
-      user = User.create_with_ldap!(@entry)
+      user = User.new_with_ldap(@entry)
       user.nds.should == @nds
       user.dn.should == @dn
       user.email.should == @mail
@@ -114,15 +109,22 @@ urrzsurname: Doe"
     it 'should be a student if stud in dn' do
       #its that way in the default entry, see before block
       #@entry.dn = "cn=#{@nds},ou=3,ou=stud,o=dev-test,c=de"
-      user = User.create_with_ldap!(@entry)
+      user = User.new_with_ldap(@entry)
       user.role?(:student).should be_true
     end
 
     it 'should be a extern if no stud in dn' do
       @entry.dn = "cn=#{@nds},ou=3,o=dev-test,c=de"
-      user = User.create_with_ldap!(@entry)
+      user = User.new_with_ldap(@entry)
       user.role?(:student).should be_false
       user.role?(:extern).should be_true
+    end
+
+    context '#create_with_ldap' do
+      it 'should be a persitend user if the entry is a LDAP entry' do
+        user = User.create_with_ldap!(@entry)
+        user.persisted?.should be_true unless user.nil?
+      end
     end
   end
 end

@@ -2,6 +2,8 @@ Feedback::Application.routes.draw do
   #devise_for :users
 
   resources :sessions
+  get "users/new" => "users#new", :as => "new_user"
+  post "users" => "users#create"
 #  match "/auth/ldap/callback" => "sessions#create"
 #  match "/auth/ldap/failure" => "sessions#create"
 

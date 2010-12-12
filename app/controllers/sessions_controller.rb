@@ -37,7 +37,8 @@ class SessionsController < ApplicationController
           session[:user_id] = user.id
           redirect_to root_url, :notice => "Successfully logged in!"
         else
-          redirect_to new_session_url, :error => "Login failed - If this happends again you should probably contact the admin"
+          session[:user_info] = data
+          redirect_to new_user_url#, :error => "Login failed - If this happends again you should probably contact the admin"
         end
       else
         # failure

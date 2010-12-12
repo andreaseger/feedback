@@ -16,6 +16,8 @@ describe SessionsController do
       Ldap.stubs(:new).returns(@ldap)
     end
     it 'should search for a user with the entered nds' do
+      User.stubs(:create_with_ldap!).returns(nil)
+      User.stubs(:where).returns([])
       User.expects(:where).with(:nds => @nds).returns([])
       post :create, :user => {:nds => @nds}
     end
@@ -66,11 +68,13 @@ describe SessionsController do
       end
 
       it 'should create ldap instance' do
+        User.stubs(:create_with_ldap!).returns(nil)
         Ldap.expects(:new).returns(@ldap)
         post :create, :user => {:nds => @nds}
       end
 
       it 'should try to fetch the user data' do
+        User.stubs(:create_with_ldap!).returns(nil)
         @ldap.expects(:fetchData).with(@nds).returns(@entry)
         post :create, :user => {:nds => @nds}
       end
@@ -80,7 +84,7 @@ describe SessionsController do
         post :create, :user => {:nds => @nds, :password => @password}
       end
 
-      describe '#success' do
+      describe '#successfull user login' do
         before(:each) do
           @ldap.stubs(:authenticate).returns(true)
         end
@@ -89,22 +93,32 @@ describe SessionsController do
           post :create, :user => {:nds => @nds}
         end
 
-        it 'should redirect_to root_url' do
-          User.stubs(:create_with_ldap!).returns(@user)   #not really true but its just should pass the if-clouse
-          post :create, :user => {:nds => @nds}
-          response.should redirect_to(root_url)
-        end
+        context '#successfull user creation' do
+          it 'should redirect_to root_url' do
+            User.stubs(:create_with_ldap!).returns(@user)
+            post :create, :user => {:nds => @nds}
+            response.should redirect_to(root_url)
+          end
 
-        it 'should redirect_to root_url' do
-          User.stubs(:create_with_ldap!).returns(nil)
-          post :create, :user => {:nds => @nds}
-          response.should redirect_to(new_session_url)
+          it 'should save the new user in the session' do
+            User.stubs(:create_with_ldap!).returns(@user)
+            post :create, :user => {:nds => @nds}
+            session[:user_id].should == @user.id
+          end
         end
+        context '#user creation not successfull' do
+          it 'should redirect_to new_user_url' do
+            User.stubs(:create_with_ldap!).returns(nil)
+            post :create, :user => {:nds => @nds}
+            response.should redirect_to(new_user_url)
+          end
 
-        it 'should save the new user in the session' do
-          User.stubs(:create_with_ldap!).returns(@user)
-          post :create, :user => {:nds => @nds}
-          session[:user_id].should == @user.id
+          it 'should save the data to the session' do
+            @ldap.stubs(:fetchData).returns(@entry)
+            User.stubs(:create_with_ldap!).returns(nil)
+            post :create, :user => {:nds => @nds}
+            session[:user_info].should == @entry
+          end
         end
       end
       describe '#failure' do
