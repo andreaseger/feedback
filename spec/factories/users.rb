@@ -3,7 +3,7 @@ Factory.sequence :nds, 10000 do |n|
 end
 
 Factory.sequence :matnr, 1000000 do |n|
-  n
+  "#{n}"
 end
 
 

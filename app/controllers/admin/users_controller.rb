@@ -3,12 +3,9 @@ class Admin::UsersController < InheritedResources::Base
   load_and_authorize_resource :except => [:edit_multiple, :update_multiple]
 
   before_filter :load_and_authorize_for_multiple, :only => [:edit_multiple, :update_multiple]
-
-
   before_filter :remove_empty_roles, :only => [:update, :update_multiple]
 
   actions :all, :except => [:show, :new, :create, :destroy]
-
   has_scope :with_role
 
   def index

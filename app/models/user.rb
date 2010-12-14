@@ -16,7 +16,7 @@ class User
   field :lastname    #Nachname
   field :name
   field :email
-  field :matnr, :type => Integer
+  field :matnr#, :type => Integer
   field :cached_dn
 
   validates_presence_of :nds, :email, :name, :matnr

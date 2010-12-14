@@ -1,6 +1,10 @@
-Name:
+- title "Login"
+
+%strong
+  Name:
 = @user.name
-email:
+%strong
+  email:
 = @user.email
 
 = simple_form_for :user, :url => {:controller => 'users', :action => 'create'}, :html => {:id => 'login'} do |f|

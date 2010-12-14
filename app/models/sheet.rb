@@ -6,7 +6,8 @@ class Sheet
   # keep at most 5 versions of a record
   max_versions 5
 
-  field :semester
+  references_one :semester
+  #field :semester
   field :company
   embeds_one :application_address, :class_name => "Address"
   accepts_nested_attributes_for :application_address
@@ -52,8 +53,7 @@ class Sheet
   #validations
   validates_associated  :application_address,
                         :job_site_address
-  validates_presence_of :semester,
-                        :company,
+  validates_presence_of :company,
                         :boss,
                         :handler,
                         :intership_length,

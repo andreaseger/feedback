@@ -1,0 +1,13 @@
+- title "Semesters"
+
+- if can? :create, Semester.new
+  %p= link_to "New Semester", new_semester_path
+= will_paginate @semesters
+%ul.semesters
+  - @semesters.each do |semester|
+  %li
+    %ul.semester
+      %li=semester.text
+      %li=semester.sort
+      %li=semester.internslist
+

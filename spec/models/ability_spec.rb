@@ -3,7 +3,7 @@ require "cancan/matchers"
 
 describe Ability do
   before(:each) do
-    Factory(:valid_sheet, :semester => "SS1453")
+    Factory(:valid_sheet)
   end
 
   describe '#student' do
