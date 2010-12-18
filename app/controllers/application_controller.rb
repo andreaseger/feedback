@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user, :user_signed_in?
+  helper_method :current_user, :user_signed_in?, :current_semester
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied!"
@@ -19,6 +19,22 @@ class ApplicationController < ActionController::Base
 
   def authenticate!
     redirect_to new_session_url unless user_signed_in?
+  end
+
+  def current_semester
+    date = Date.today
+    year = date.year
+    if date.month >= 3 && date.month <= 9
+      # Sommersemester
+      flag = false
+    else
+      # Wintersemester
+      flag = true
+      if date.month < 3
+        year = date.year - 1
+      end
+    end
+    @current_semester ||= Semester.find_or_create_by(:year => year, :ws => flag)
   end
 end
 

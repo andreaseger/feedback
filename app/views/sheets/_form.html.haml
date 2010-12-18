@@ -1,5 +1,5 @@
 = simple_form_for @sheet do |f|
-  = f.collection :semester
+  = f.input :semester, :collection => Semester.order_by(:year.desc)
   = f.input :company
   = f.simple_fields_for :application_address do |ff|
     = render :partial => 'address', :locals => {:f => ff}

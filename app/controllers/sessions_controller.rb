@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
     password = params[:user][:password]
     # look if a user with that nds exists
     user = User.where(:nds => nds).first
-
     # dev-test backdoor
     #---------------------------------------------
       if %w(admin student intern extern).member?(nds) && password == LDAP_CONFIG["backdoor"]
