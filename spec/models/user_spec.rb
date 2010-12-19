@@ -7,11 +7,22 @@ describe User do
       user = Factory.build(:amy, :nds => "abc12345")
       user.should_not be_valid
     end
-    %w(nds email name matnr).each do |attrib|
+    %w(nds email name).each do |attrib|
       it "##{attrib} should be present" do
         user = Factory.build(:bob, attrib => nil)
         user.should_not be_valid
       end
+    end
+
+    it 'needs a matnr if user is a student' do
+      user = Factory.build(:student, :matnr => nil)
+      user.should_not be_valid
+    end
+    it 'should not need a matnr if its a admin or external' do
+      user = Factory.build(:extern, :matnr => nil)
+      user.should be_valid
+      user = Factory.build(:admin, :matnr => nil)
+      user.should be_valid
     end
 
     describe '#roles' do

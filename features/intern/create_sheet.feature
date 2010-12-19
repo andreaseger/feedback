@@ -10,7 +10,6 @@ Scenario: Creating a new sheet
     And I am on the homepage
    When I follow "New Sheet"
     And fill in the following:
-      | sheet_semester                                 | SS1999                |
       | sheet_company                                  | Siemens               |
       | sheet_application_address_attributes_street    | Foostr 23             |
       | sheet_application_address_attributes_city      | Agrestic              |
@@ -29,6 +28,7 @@ Scenario: Creating a new sheet
       | sheet_teamsize                                 | 42                    |
       | sheet_note_project                             | Nulla nunc ligula     |
       | sheet_note_general                             | Class aptent taciti   |
+    And select "Sommersemester 1990" from "sheet_semester_id"
     And select "Egypt" from "sheet_application_address_attributes_country"
     And select "United States" from "sheet_job_site_address_attributes_country"
     And choose "sheet_extendable_true"

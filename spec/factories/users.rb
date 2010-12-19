@@ -10,7 +10,6 @@ end
 FactoryGirl.define do
   factory :user do
     nds
-    matnr
   end
 
   factory :bob, :parent => :user do
@@ -25,6 +24,7 @@ FactoryGirl.define do
     name {"#{firstname} #{lastname}"}
     email { "#{firstname}.#{lastname}@example.com".downcase }
     roles ["student"]
+    matnr
   end
 
   factory :student, :parent => :user do
@@ -33,6 +33,7 @@ FactoryGirl.define do
     name {"#{firstname} #{lastname}"}
     email { "#{firstname}.#{lastname}@example.com".downcase }
     roles ["student"]
+    matnr
   end
 
   factory :intern, :parent => :user do
@@ -41,6 +42,7 @@ FactoryGirl.define do
     name {"#{firstname} #{lastname}"}
     email { "#{firstname}.#{lastname}@example.com".downcase }
     roles ["student", "intern"]
+    matnr
   end
 
   factory :extern, :parent => :user do

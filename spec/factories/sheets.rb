@@ -24,7 +24,7 @@ FactoryGirl.define do
 
 
   factory :full_sheet, :parent => :valid_sheet do
-    #association :semester, :factory => :semester
+    association :semester, :factory => :semester
     application_address {Factory.attributes_for(:application_address)}
     job_site_address  {Factory.attributes_for(:job_site_address)}
     department  "ER TD HT FB"

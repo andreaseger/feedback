@@ -8,7 +8,7 @@ describe Ability do
 
   describe '#student' do
     before(:each) do
-      user = Factory(:bob, :roles => ["student"])
+      user = Factory(:student, :roles => ["student"])
       @ability = Ability.new(user)
     end
     it 'should be able to read sheets' do
@@ -23,7 +23,7 @@ describe Ability do
 
   describe '#intern' do
     before(:each) do
-      @user = Factory(:bob, :roles => ["intern","student"])
+      @user = Factory(:student, :roles => ["intern","student"])
       @ability = Ability.new(@user)
       @sheet = Factory(:valid_sheet, :user => nil)
     end
@@ -53,7 +53,7 @@ describe Ability do
 
   describe '#admin' do
     before(:each) do
-      @user = Factory(:bob, :roles => ["admin"])
+      @user = Factory(:admin, :roles => ["admin"])
       @ability = Ability.new(@user)
       @sheet = Factory(:valid_sheet, :user => nil)
       @own_sheet = Factory(:valid_sheet, :user => @user)
@@ -67,7 +67,7 @@ describe Ability do
 
   describe '#extern' do
     before(:each) do
-      user = Factory(:bob, :roles => ["extern"])
+      user = Factory(:extern, :roles => ["extern"])
       @ability = Ability.new(user)
     end
     it 'should be able to read sheets' do

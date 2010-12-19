@@ -15,6 +15,10 @@ class SheetsController < InheritedResources::Base
     create!
   end
 
+  def update
+    update!
+  end
+
   def search
     authorize! :read, Sheet
     if params[:search]

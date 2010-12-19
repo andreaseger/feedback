@@ -6,6 +6,8 @@ class Semester
 
   field :interns, :type => Array
 
+  references_many :sheets
+
   validates_presence_of :year
   validates_inclusion_of :ws, :in => [true, false]
 

@@ -1,14 +1,14 @@
 - title "Sheet"
 
 %ul
-  %li=@sheet.semester
+  %li=@sheet.semester.long_text
   %li=@sheet.company
-  %ul
+  %ul.address
     %li=@sheet.application_address.street
     %li=@sheet.application_address.city
     %li=@sheet.application_address.post_code
     %li=@sheet.application_address.country
-  %ul
+  %ul.address
     %li=@sheet.job_site_address.street
     %li=@sheet.job_site_address.city
     %li=@sheet.job_site_address.post_code

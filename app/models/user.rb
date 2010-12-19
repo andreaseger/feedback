@@ -16,11 +16,13 @@ class User
   field :lastname    #Nachname
   field :name
   field :email
-  field :matnr#, :type => Integer
+  field :matnr
   field :cached_dn
 
-  validates_presence_of :nds, :email, :name, :matnr
+  validates_presence_of :nds, :email, :name
   validates_uniqueness_of :nds
+
+  validates_presence_of :matnr, :if => Proc.new{ self.role? :student}
 
   field :roles, :type => Array, :default => ["extern"]
   validate :check_roles
