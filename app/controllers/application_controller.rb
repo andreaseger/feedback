@@ -22,19 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_semester
-    date = Date.today
-    year = date.year
-    if date.month >= 3 && date.month <= 9
-      # Sommersemester
-      flag = false
-    else
-      # Wintersemester
-      flag = true
-      if date.month < 3
-        year = date.year - 1
-      end
-    end
-    @current_semester ||= Semester.find_or_create_by(:year => year, :ws => flag)
+    @current_semester ||= Semester.current
   end
 end
 

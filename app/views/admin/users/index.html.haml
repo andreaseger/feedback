@@ -6,6 +6,7 @@
 %ul{:class => "scope horizontal"}
   - User::ROLES.each do |role|
     %li= link_to role.titleize.pluralize, params.merge(:with_role => role)
+  %li= link_to 'intern'.titleize.pluralize, params.merge(:with_role => :intern)
   %li= link_to "All", params.merge(:with_role => "")    # or link_to "All" admin_users_path
 
 = will_paginate @users

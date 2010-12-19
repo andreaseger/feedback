@@ -24,17 +24,29 @@ class User
 
   validates_presence_of :matnr, :if => Proc.new{ self.role? :student}
 
+  references_many :semesters, :stored_as => :array, :inverse_of => :interns
   field :roles, :type => Array, :default => ["extern"]
+
   validate :check_roles
 
   #scopes
-  scope :with_role, lambda { |role| where(:roles => /#{role}/i) }
+  scope :with_role, lambda { |role|
+    if role.to_sym == :intern
+      Semester.current.interns
+    else
+      where(:roles => /#{role}/i)
+    end
+      }
 
 
-  ROLES = %w[admin student intern extern]
+  ROLES = %w[admin student extern]
 
   def role?(role)
-    roles.include? role.to_s
+    if role.to_sym == :intern
+      Semester.current.interns.include? self
+    else
+      roles.include? role.to_s
+    end
   end
 
   def dn

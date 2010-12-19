@@ -23,7 +23,9 @@ describe Ability do
 
   describe '#intern' do
     before(:each) do
-      @user = Factory(:student, :roles => ["intern","student"])
+      @user = Factory(:student, :roles => ["student"])
+      @semester = Factory(:semester, :interns =>[@user])
+      Semester.stubs(:current).returns(@semester)
       @ability = Ability.new(@user)
       @sheet = Factory(:valid_sheet, :user => nil)
     end

@@ -41,8 +41,10 @@ FactoryGirl.define do
     lastname "Doe"
     name {"#{firstname} #{lastname}"}
     email { "#{firstname}.#{lastname}@example.com".downcase }
-    roles ["student", "intern"]
+    roles ["student"]
     matnr
+    #association :semesters, :factory => :ws2010
+    semesters [Factory(:ws2010)]
   end
 
   factory :extern, :parent => :user do

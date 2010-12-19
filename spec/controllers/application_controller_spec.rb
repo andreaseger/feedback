@@ -60,54 +60,13 @@ describe ApplicationController do
   end
 
   describe '#current_semester' do
-    describe 'should be SS between March and September' do
-      before(:each) do
-        @ws2009 = Semester.create!(:year => 2009, :ws => true  , :interns => ['123'])
-        @ss2010 = Semester.create!(:year => 2010, :ws => false , :interns => ['123'])
-        @ws2010 = Semester.create!(:year => 2010, :ws => true  , :interns => ['123'])
-      end
-
-      it '#1' do
-        Date.stubs(:today).returns(Date.parse('13.4.2010'))
-        controller.instance_eval{current_semester}.should == @ss2010
-      end
-      it '#2' do
-        Date.stubs(:today).returns(Date.parse('13.9.2010'))
-        controller.instance_eval{current_semester}.should == @ss2010
-      end
-      it '#3' do
-        Date.stubs(:today).returns(Date.parse('01.3.2010'))
-        controller.instance_eval{current_semester}.should == @ss2010
-      end
-      it '#4 use the current years WS' do
-        Date.stubs(:today).returns(Date.parse('01.10.2010'))
-        controller.instance_eval{current_semester}.should == @ws2010
-      end
-      it '#5 use the last years WS' do
-        Date.stubs(:today).returns(Date.parse('28.2.2010'))
-        controller.instance_eval{current_semester}.should == @ws2009
-      end
-    end
     describe '@current_semester already set' do
       before(:each) do
         controller.instance_eval{@current_semester = "foo"}
       end
       it 'should not search again for the user' do
-        Semester.expects(:where).never
+        Semester.expects(:current).never
         controller.instance_eval{current_semester}
-      end
-    end
-    describe '#create new semester' do
-      before(:each) do
-
-      end
-      it 'should ' do
-        Date.stubs(:today).returns(Date.parse('28.2.2010'))
-        tmp=Semester.count
-        controller.instance_eval{current_semester}
-        Semester.count.should == tmp + 1
-        Semester.last.year.should == 2009
-        Semester.last.ws.should be_true
       end
     end
   end

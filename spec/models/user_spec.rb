@@ -41,27 +41,67 @@ describe User do
     end
   end
 
-  describe '#scopes' do
-    before do
-      Factory(:amy)#student
-      Factory(:intern)
-      Factory(:extern)
-      Factory(:admin)
+  describe '#role?' do
+    before(:each) do
+      @admin = Factory.build(:admin)
+      @student = Factory.build(:student)
+      @extern = Factory.build(:extern)
+      @intern = Factory(:student)
+      semester = Factory(:semester, :interns => [@intern])
+      Semester.stubs(:current).returns(semester)
     end
-    it 'should only return students' do
-      users = User.with_role("student").all
-      users.count.should == 2
-      users.each do |user|
-        user.role?("student").should be_true
+
+    describe 'should be true for the right role' do
+      it '#admin' do
+        @admin.role?(:admin).should be_true
+        @admin.role?(:student).should be_false
+        @admin.role?(:extern).should be_false
+        @admin.role?(:intern).should be_false
+      end
+      it '#student' do
+        @student.role?(:admin).should be_false
+        @student.role?(:student).should be_true
+        @student.role?(:extern).should be_false
+        @student.role?(:intern).should be_false
+      end
+      it '#extern' do
+        @extern.role?(:admin).should be_false
+        @extern.role?(:student).should be_false
+        @extern.role?(:extern).should be_true
+        @extern.role?(:intern).should be_false
+      end
+      it '#intern' do
+        @intern.role?(:admin).should be_false
+        @intern.role?(:student).should be_true
+        @intern.role?(:extern).should be_false
+        @intern.role?(:intern).should be_true
       end
     end
-    %w(intern extern admin).each do |role|
+  end
+
+
+  describe '#scopes' do
+    before do
+      Factory(:student)
+      Factory(:extern)
+      Factory(:admin)
+      i=Factory(:intern)
+      Semester.stubs(:current).returns(i.semesters.last)
+    end
+    %w(extern admin intern).each do |role|
       it "should only return #{role}s" do
-        users = User.with_role(role).all
+        users = User.with_role(role.to_sym).all
         users.count.should == 1
         users.each do |user|
           user.role?(role).should be_true
         end
+      end
+    end
+    it 'should only return students' do
+      users = User.with_role(:student).all
+      users.count.should == 2
+      users.each do |user|
+        user.role?(:student).should be_true
       end
     end
   end

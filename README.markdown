@@ -7,6 +7,7 @@ Wird im Rahmen einer Bachelorarbeit der HS Regensburg entwickelt.
 Neuste Features
 ---------------
 
+- Semester als eigenes Model
 - Pagination bei Suche und Userübersicht
 - Script zum seeden der Datenbank -> 1000-5000 User inkl FBs
 - Versionierung der Feedbackbögen
@@ -54,7 +55,7 @@ Features TODO
   - login count
   - ...
 - automatisiertes deployment auf Apache + Passanger
-
+- Orts und Umkreissuche anhand der Adresse
 
 Hintergrund
 -----------

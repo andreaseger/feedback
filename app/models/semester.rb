@@ -4,7 +4,7 @@ class Semester
   field :year, :type => Integer
   field :ws, :type => Boolean
 
-  field :interns, :type => Array
+  references_many :interns, :class_name => 'User', :stored_as => :array, :inverse_of => :semesters
 
   references_many :sheets
 
@@ -12,11 +12,11 @@ class Semester
   validates_inclusion_of :ws, :in => [true, false]
 
   def internslist
-    interns.join("\n")
+    #interns.join("\n")
   end
 
   def internslist=(value)
-    self.interns = value.split("\n")
+    #self.interns = value.split("\n")
   end
 
   def text
@@ -34,6 +34,25 @@ class Semester
       "Sommersemester #{text_year}"
     end
   end
+
+#class method
+
+  def self.current
+    date = Date.today
+    year = date.year
+    if date.month >= 3 && date.month <= 9
+      # Sommersemester
+      flag = false
+    else
+      # Wintersemester
+      flag = true
+      if date.month < 3
+        year = date.year - 1
+      end
+    end
+    find_or_create_by(:year => year, :ws => flag)
+  end
+
 
 private
 
