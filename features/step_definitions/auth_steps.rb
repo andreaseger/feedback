@@ -1,10 +1,11 @@
-Given /^(?:|I )have one\s+user "([^\"]*)" with the roles "([^\"]*)"$/ do |nds, roles|
+Given /^(?:|I )have one\s+user "([^\"]*)" with the roles "([^\"]*)"(?: and matnr "([^\"]*)")?$/ do |nds, roles, matnr|
+  matnr = 9898989 unless matnr
   if roles.include? 'intern'
     roles.gsub! 'intern',''
-    u=User.create!(:nds => nds, :roles => roles.split(' '), :email => "foo@bar.com", :name => "foobar", :matnr => 98798765)
+    u=User.create!(:nds => nds, :roles => roles.split(' '), :email => "foo@bar.com", :name => "foobar", :matnr => matnr)
     Semester.current.interns << u
   else
-    User.create!(:nds => nds, :roles => roles.split(' '), :email => "foo@bar.com", :name => "foobar", :matnr => 98798765)
+    User.create!(:nds => nds, :roles => roles.split(' '), :email => "foo@bar.com", :name => "foobar", :matnr => matnr)
   end
 end
 
