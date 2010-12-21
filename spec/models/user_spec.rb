@@ -2,11 +2,18 @@ require 'spec_helper'
 
 describe User do
   describe '#validations' do
-    it 'nds should be unique' do
+    it 'should check that nds is unique' do
       Factory(:bob, :nds => "abc12345")
       user = Factory.build(:amy, :nds => "abc12345")
       user.should_not be_valid
     end
+
+    it 'should check that matnr is unique' do
+      Factory(:bob, :matnr => "1111111")
+      user = Factory.build(:amy, :matnr => "1111111")
+      user.should_not be_valid
+    end
+
     %w(nds email name).each do |attrib|
       it "##{attrib} should be present" do
         user = Factory.build(:bob, attrib => nil)

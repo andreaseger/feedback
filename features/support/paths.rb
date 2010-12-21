@@ -29,6 +29,8 @@ module NavigationHelpers
 
     when /search page/
       search_sheets_path
+    when /semesters index page/
+      admin_semesters_path
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

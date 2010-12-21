@@ -1,5 +1,5 @@
 Given /^(?:|I )have one\s+user "([^\"]*)" with the roles "([^\"]*)"(?: and matnr "([^\"]*)")?$/ do |nds, roles, matnr|
-  matnr = 9898989 unless matnr
+  matnr = rand(9999999) unless matnr
   if roles.include? 'intern'
     roles.gsub! 'intern',''
     u=User.create!(:nds => nds, :roles => roles.split(' '), :email => "foo@bar.com", :name => "foobar", :matnr => matnr)

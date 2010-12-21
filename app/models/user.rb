@@ -21,6 +21,7 @@ class User
 
   validates_presence_of :nds, :email, :name
   validates_uniqueness_of :nds
+  validates_uniqueness_of :matnr, :unless => Proc.new{self.matnr.nil?}
 
   validates_presence_of :matnr, :if => Proc.new{ self.role? :student}
 

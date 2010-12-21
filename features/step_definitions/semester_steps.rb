@@ -1,20 +1,30 @@
 Then /^I should have a Semester for "([^"]*)" (\d+)$/ do |type, year|
-  Semester.last.year.should == year
   if type.match(/ss/i)
-    Semester.last.ws.should be_false
+    semester = Semester.where(:year => year.to_i, :ws => false).first
   else
-    Semester.last.ws.should be_true
+    semester = Semester.where(:year => year.to_i, :ws => true).first
   end
+  semester.should_not be_nil
 end
 
 
-Then /^the Semester should have (\d+) interns$/ do |num|
-  Semester.last.should have(num.to_i).interns
+Then /^the Semester "([^"]*)" (\d+) should have (\d+) interns$/ do |type, year, num|
+  if type.match(/ss/i)
+    semester = Semester.where(:year => year.to_i, :ws => false).first
+  else
+    semester = Semester.where(:year => year.to_i, :ws => true).first
+  end
+  semester.interns.count.should == num.to_i
 end
 
-Then /^the interns should be the following:$/ do |table|
-  Semester.last.interns.each do |intern|
-    table.should.include?(intern.nds)
+Then /^the Semester "([^"]*)" (\d+) should have this interns:$/ do |type, year, table|
+  if type.match(/ss/i)
+    semester = Semester.where(:year => year.to_i, :ws => false).first
+  else
+    semester = Semester.where(:year => year.to_i, :ws => true).first
+  end
+  semester.interns.each do |intern|
+    table.raw.flatten.include?(intern.nds).should be_true
   end
 end
 

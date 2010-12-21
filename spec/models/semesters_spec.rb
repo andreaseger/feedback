@@ -4,22 +4,51 @@ describe Semester do
   describe '#validations' do
     %w(year ws).each do |attrib|
       it "##{attrib} should be present" do
-        semester = Factory.build(:ws2010, attrib => nil)
+        semester = Factory.build(:semester, attrib => nil)
         semester.should_not be_valid
       end
     end
+
+    it 'should check that [year,ws] is unique' do
+      Semester.delete_all
+      Factory(:semester, :year => 2000, :ws =>true)
+      semester = Factory.build(:semester, :year => 2000, :ws =>true)
+      semester2 = Factory.build(:semester, :year => 2000, :ws =>false)
+      semester.should_not be_valid
+      semester2.should be_valid
+    end
   end
 
-  describe '#internslist' do
-    it 'should return the interns one by one' do
-      semester = Factory.build(:semester)#, :interns => ['1231231', '1231232', '1231233'])
-      semester.internslist.should == "1231231\n1231232\n1231233"
+  describe '#matrlist' do
+    before(:each) do
+      @u1=Factory(:student, :matnr => '3333333')
+      @u2=Factory(:bob, :matnr => '5555555')
+    end
+    it 'should return the interns by there matnr' do
+      semester = Factory.build(:semester, :interns => [@u1, @u2])
+      semester.matrlist.should == "3333333\n5555555"
     end
     it 'should split the text on linebreaks' do
-      semester = Factory.build(:semester)#, :internslist => "1231231\n1231232\n1231233")
-      semester.interns.should == ['1231231', '1231232', '1231233']
+      semester = Factory.build(:semester, :matrlist => "3333333\r\n5555555")
+      semester.interns.should == [@u1, @u2]
+    end
+    it 'should remove no longer set interns' do
+      semester = Factory.build(:semester, :interns => [@u1, @u2])
+      semester.matrlist = "3333333"
+      semester.interns.should == [@u1]
+    end
+    it 'should add new interns' do
+      semester = Factory.build(:semester, :interns => [@u1])
+      semester.matrlist = "3333333\n5555555"
+      semester.interns.should == [@u1, @u2]
+    end
+    it 'should update the interns via update_attributes' do
+      semester = Factory(:semester, :interns => [@u1])
+      semester.update_attributes(:matrlist => "3333333\n5555555")
+      Semester.last.interns.should == [@u1, @u2]
     end
   end
+
   describe '#text' do
     it 'should return SS2010' do
       semester = Factory.build(:semester, :year => 2010, :ws => false)

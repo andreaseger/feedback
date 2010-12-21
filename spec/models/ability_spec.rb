@@ -65,6 +65,9 @@ describe Ability do
       @ability.should be_able_to(:manage, @sheet)
       @ability.should be_able_to(:manage, Sheet.new)
     end
+    it "should be able to manage semesters" do
+      @ability.should be_able_to(:manage, Semester.new)
+    end
   end
 
   describe '#extern' do

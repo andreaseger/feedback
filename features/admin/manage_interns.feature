@@ -4,23 +4,23 @@ Feature: Manage Intern
   I want to be able to set the interns for the current semester in one simple step
 
 Background:
-  Given I have one user "amy11111" with the roles "student" and matnr "1111111"
-    And I have one user "bob22222" with the roles "student" and matnr "2222222"
-    And I have one user "joe33333" with the roles "student" and matnr "3333333"
-    And I have one user "tom44444" with the roles "student" and matnr "4444444"
+  Given I have one user "amy11111" with the roles "student" and matnr "9111111"
+    And I have one user "bob22222" with the roles "student" and matnr "9222222"
+    And I have one user "joe33333" with the roles "student" and matnr "9333333"
+    And I have one user "tom44444" with the roles "student" and matnr "9444444"
   Given I am authenticated as "admin"
-    And I am on the interns admin page
-
+    And I am on the semesters index page
+  Given I should have no "Semester"
 
 Scenario: Create a new Semester and add a list of Interns
-  Given I press "New Semester"
+  Given I follow "New Semester"
    When I select "2012" from "semester_year"
-    And I select "Sommersemester" from "semester_ws"
-    And I fill in "semester_internslist" with "1111111\n3333333\n4444444"
-    And I press "Save"
+    And choose "semester_ws_false"
+    And I enter in "semester_matrlist" with "9111111\r\n9333333\r\n9444444"
+    And I press "Create Semester"
    Then I should have a Semester for "SS" 2012
-    And the Semester should have 3 interns
-    And the interns should be the following:
+    And the Semester "SS" 2012 should have 3 interns
+    And the Semester "SS" 2012 should have this interns:
       | amy11111 |
       | joe33333 |
       | tom44444 |

@@ -10,13 +10,16 @@ class Semester
 
   validates_presence_of :year
   validates_inclusion_of :ws, :in => [true, false]
+  validates_uniqueness_of :year, :scope => :ws
 
-  def internslist
-    #interns.join("\n")
+  def matrlist
+    interns.map(&:matnr).join("\n")
   end
 
-  def internslist=(value)
-    #self.interns = value.split("\n")
+  def matrlist=(value)
+    m=value.split("\n").map{|i| i.chomp}
+    #debugger
+    self.interns = User.any_in(:matnr => m).asc(:matnr).entries
   end
 
   def text

@@ -1,0 +1,13 @@
+- title @semester.long_text
+%ul.semester
+  %li
+    = @semester.interns.count
+    = 'intern'.titleize.pluralize
+  %li
+    %p= @semester.matrlist
+
+%ul.controls
+  - if can? :update, @semester
+    %li= link_to "Edit", edit_admin_semester_path(@semester)
+  %li= link_to "View All", admin_semesters_path
+

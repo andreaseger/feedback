@@ -14,3 +14,15 @@ Given /debugger/ do
   puts "foo"
 end
 
+
+Given /^(?:|I )should have no "([^"]*)"$/ do |klass|
+  klass.constantize.delete_all
+end
+
+When /^(?:|I )enter in "([^"]*)" with "([^"]*)"(?: within "([^"]*)")?$/ do |field, value, selector|
+  value.gsub!('\r\n',"\r\n")
+  with_scope(selector) do
+    fill_in(field, :with => value)
+  end
+end
+

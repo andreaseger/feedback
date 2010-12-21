@@ -14,6 +14,7 @@ Feedback::Application.routes.draw do
         put  :update_multiple
       end
     end
+    resources :semesters
   end
 
   resources :sheets do

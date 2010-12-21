@@ -118,24 +118,24 @@ describe Sheet do
 
     context '#mixed attributes' do
       it 'should work with text and boolean attributes' do
-        s = {"vacation" => "false", "semester" => "SS2010"}
-        Sheet.search(s).should == Sheet.where(:semester => /SS2010/i).and(:vacation => false)
+        s = {"vacation" => "false", "company" => "audi"}
+        Sheet.search(s).should == Sheet.where(:company => /audi/i).and(:vacation => false)
       end
       it 'should work with text and number attributes' do
-        s = {"semester" => "SS2010", "apartment_market" => 2}
-        Sheet.search(s).should == Sheet.where(:semester => /SS2010/i).and(:apartment_market.gte => 2)
+        s = {"company" => "audi", "apartment_market" => 2}
+        Sheet.search(s).should == Sheet.where(:company => /audi/i).and(:apartment_market.gte => 2)
       end
       it 'should work with boolean and number attributes' do
         s = {"vacation" => "false", "apartment_market" => 2}
         Sheet.search(s).should == Sheet.where(:vacation => false).and(:apartment_market.gte => 2)
       end
       it 'should work with text, boolean and number attributes' do
-        s = {"semester" => "SS2010", "vacation" => "false", "apartment_market" => 2}
-        Sheet.search(s).should == Sheet.where(:semester => /SS2010/i).and(:apartment_market.gte => 2).and(:vacation => false)
+        s = {"company" => "audi", "vacation" => "false", "apartment_market" => 2}
+        Sheet.search(s).should == Sheet.where(:company => /audi/i).and(:apartment_market.gte => 2).and(:vacation => false)
       end
       it 'should work with all sorts of attributes' do
-        s = {"semester" => "SS2010", "vacation" => "false", "apartment_market" => 2, "people" => "foo"}
-        Sheet.search(s).should == Sheet.where(:semester => /SS2010/i).and(:apartment_market.gte => 2).and(:vacation => false).any_of({:handler => /foo/i},{:boss => /foo/i})
+        s = {"company" => "audi", "vacation" => "false", "apartment_market" => 2, "people" => "foo"}
+        Sheet.search(s).should == Sheet.where(:company => /audi/i).and(:apartment_market.gte => 2).and(:vacation => false).any_of({:handler => /foo/i},{:boss => /foo/i})
       end
     end
 

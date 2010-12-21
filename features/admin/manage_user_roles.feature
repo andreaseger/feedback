@@ -12,10 +12,10 @@ Background:
 
 Scenario: Edit one User
    When I follow "Edit" within "#user_amy11111"
-    And check "Intern"
+    And check "Admin"
     And press "Update User"
    Then I should be on the user admin page
-    And I should have a user "amy11111" with the role "intern"
+    And I should have a user "amy11111" with the role "admin"
 
 Scenario Outline: Scope Students
    When I follow "<role>"
@@ -40,8 +40,8 @@ Scenario: Edit multiple
   When I check "edit" within "#user_amy11111"
    And check "edit" within "#user_bob22222"
    And press "Edit Checked"
-   And check "user_roles_intern"
+   And check "user_roles_admin"
    And press "Save User"
-  Then I should have a user "amy11111" with the role "intern"
-   And I should have a user "bob22222" with the role "intern"
+  Then I should have a user "amy11111" with the role "admin"
+   And I should have a user "bob22222" with the role "admin"
 

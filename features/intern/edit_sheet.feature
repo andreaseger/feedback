@@ -4,6 +4,7 @@ Feature: Create a sheet
 
 Background:
   Given I am authenticated as "intern"
+    And There are no sheets
     And The user "intern" has a sheet
 
 Scenario: Edit my sheet

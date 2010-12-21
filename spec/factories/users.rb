@@ -44,7 +44,7 @@ FactoryGirl.define do
     roles ["student"]
     matnr
     #association :semesters, :factory => :ws2010
-    semesters [Factory(:ws2010)]
+    semesters [Semester.current]
   end
 
   factory :extern, :parent => :user do

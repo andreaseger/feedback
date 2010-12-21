@@ -1,0 +1,10 @@
+- title "Edit Semester"
+
+= simple_form_for @semester, :url => admin_semester_path(@semester) do |ff|
+  = render :partial => 'form', :locals => {:f => ff}
+
+%p
+  = link_to "Show", admin_semester_path(@semesters)
+  |
+  = link_to "View All", admin_semesters_path
+
