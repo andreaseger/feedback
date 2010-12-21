@@ -37,7 +37,15 @@ class User
     else
       where(:roles => /#{role}/i)
     end
-      }
+  }
+  scope :search, lambda {|query|
+    any_of({:name => /#{query}/i}, {:nds => /#{query}/i}, {:matnr => /#{query}/i})
+  }
+
+  #def self.search(query)
+  #  return any_of({:name => /#{query}/i}, {:nds => /#{query}/i}, {:matnr => /#{query}/i})
+  #end
+
 
 
   ROLES = %w[admin student extern]
@@ -86,9 +94,9 @@ class User
 
   private
   def check_roles
-    if self.role?("intern") && !self.role?("student")
-      errors.add :roles, "a intern has to be a student too"
-    end
+    #if self.role?("intern") && !self.role?("student")
+    #  errors.add :roles, "a intern has to be a student too"
+    #end
     if self.role?("extern") && self.role?("student")
       errors.add :roles, "a student can't be extern at the same time"
     end

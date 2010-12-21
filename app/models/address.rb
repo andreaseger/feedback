@@ -4,7 +4,8 @@ class Address
   field :city
   field :post_code
   field :country
-  embedded_in :addressable, :inverse_of => :address
+  embedded_in :addressable, :inverse_of => :application_address
+  embedded_in :addressable, :inverse_of => :job_site_address
 
   validates_presence_of :street,
                         :city,

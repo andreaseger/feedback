@@ -13,40 +13,99 @@
     %li=@sheet.job_site_address.city
     %li=@sheet.job_site_address.post_code
     %li=@sheet.job_site_address.country
-  %li=@sheet.department
-  %li=@sheet.boss
-  %li=@sheet.handler
-  %li=@sheet.note_company
+  %li
+    Department
+    =@sheet.department
+  %li
+    Boss
+    =@sheet.boss
+  %li
+    Handler
+    =@sheet.handler
+  %li
+    %p=@sheet.note_company
   %br
-  %li=@sheet.intership_length
-  %li=@sheet.extendable
-  %li=@sheet.vacation
-  %li=@sheet.release
-  %li=@sheet.working_hours
-  %li=@sheet.flextime?
-  %li=@sheet.salary
-  %li=@sheet.required_languages
-  %li=@sheet.reachability
-  %li=@sheet.accessibility
-  %li=@sheet.note_conditions
+  %li
+    Internship Length
+    =@sheet.internship_length
+  %li
+    Extendable possible?
+    =@sheet.extendable
+  %li
+    Vacation possible?
+    =@sheet.vacation
+  %li
+    Release possible?
+    =@sheet.release
+  %li
+    Working Hours:
+    =@sheet.working_hours
+  %li
+    -if @sheet.flextime?
+      Flextime
+    -else
+      Fixedtime
+  %li
+    Salary:
+    =@sheet.salary
+  %li
+    Required Languages
+    =@sheet.required_languages
+  %li
+    Reachability
+    =@sheet.reachability
+  %li
+    Accessability
+    =@sheet.accessability
+  %li
+    %p=@sheet.note_conditions
   %br
-  %li=@sheet.percentage_of_women
-  %li=@sheet.working_atmosphere
-  %li=@sheet.satisfaction_with_support
-  %li=@sheet.stress_factor
-  %li=@sheet.apartment_market
-  %li=@sheet.satisfaction_with_internship
-  %li=@sheet.note_personal_impression
+  %li
+    Percentage of Women:
+    =@sheet.percentage_of_women
+  %li
+    Working Atmosphere
+    =@sheet.working_atmosphere
+  %li
+    Satisfaction with Support
+    =@sheet.satisfaction_with_support
+  %li
+    Stress Factor
+    =@sheet.stress_factor
+  %li
+    Apartment Market
+    =@sheet.apartment_market
+  %li
+    Satisfaction with Internship
+    =@sheet.satisfaction_with_internship
+  %li
+    %p=@sheet.note_personal_impression
   %br
-  %li=@sheet.big_project?
-  %li=@sheet.teamsize
-  %li=@sheet.independent_work
-  %li=@sheet.reference_to_the_study
-  %li=@sheet.learning_effect
-  %li=@sheet.required_previous_knowledge
+  %li
+    -if @sheet.big_project?
+      Big Project
+    -else
+      Small Projects
+  %li
+    Teamsize:
+    =@sheet.teamsize
+  %li
+    Independent Work
+    =@sheet.independent_work
+  %li
+    Reference to the Study
+    =@sheet.reference_to_the_study
+  %li
+    Learning Effect
+    =@sheet.learning_effect
+  %li
+    Required previous knowledge
+    =@sheet.required_previous_knowledge
   %br
-  %li=@sheet.note_project
-  %li=@sheet.note_general
+  %li
+    %p=@sheet.note_project
+  %li
+    %p=@sheet.note_general
 
 
 

@@ -7,9 +7,9 @@ FactoryGirl.define do
     company "BMW"
     boss  "Mr White"
     handler "Mr Black"
-    intership_length  18
+    internship_length  18
     reachability 2
-    accessibility 1
+    accessability 1
     working_atmosphere 3
     satisfaction_with_support 2
     stress_factor 4
@@ -29,7 +29,6 @@ FactoryGirl.define do
     job_site_address  {Factory.attributes_for(:job_site_address)}
     department  "ER TD HT FB"
     note_company "Lorem Ipsum"
-    intership_length  18
     extendable  true
     vacation false
     release true

@@ -6,10 +6,10 @@ class Admin::UsersController < InheritedResources::Base
   before_filter :remove_empty_roles, :only => [:update, :update_multiple]
 
   actions :all, :except => [:show, :new, :create, :destroy]
-  has_scope :with_role
+  has_scope :with_role, :search
 
   def index
-    @users = apply_scopes(User).order_by(:lastname.asc).paginate(:per_page => 20, :page => params[:page])
+    @users = apply_scopes(User).order_by(:lastname.asc, :firstname.asc).paginate(:per_page => 20, :page => params[:page])
   end
 
   def update

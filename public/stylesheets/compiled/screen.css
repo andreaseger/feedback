@@ -649,7 +649,8 @@ body #header #banner {
   margin: 0 auto;
 }
 /* line 44, ../../../app/stylesheets/screen.sass */
-body #header #user_nav {
+body #header #user_nav,
+body #header #admin_nav {
   font-size: 0.8em;
   background-color: black;
   border-radius: 6px;
@@ -659,8 +660,9 @@ body #header #user_nav {
   padding-right: 35px;
   color: white;
 }
-/* line 45, ../../../app/stylesheets/screen.sass */
-body #header #user_nav ul {
+/* line 46, ../../../app/stylesheets/screen.sass */
+body #header #user_nav ul,
+body #header #admin_nav ul {
   margin: 0;
   padding: 0;
   border: 0;
@@ -673,7 +675,8 @@ body #header #user_nav ul {
   padding-right: 20px;
 }
 /* line 56, ../../../../../.rvm/gems/ree-1.8.7-2010.02@feedback/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body #header #user_nav ul li {
+body #header #user_nav ul li,
+body #header #admin_nav ul li {
   list-style-image: none;
   list-style-type: none;
   margin-left: 0px;
@@ -684,15 +687,20 @@ body #header #user_nav ul li {
   padding-right: 4px;
 }
 /* line 45, ../../../../../.rvm/gems/ree-1.8.7-2010.02@feedback/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body #header #user_nav ul li:first-child, body #header #user_nav ul li.first {
+body #header #user_nav ul li:first-child, body #header #user_nav ul li.first,
+body #header #admin_nav ul li:first-child,
+body #header #admin_nav ul li.first {
   padding-left: 0;
 }
 /* line 46, ../../../../../.rvm/gems/ree-1.8.7-2010.02@feedback/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/utilities/lists/_horizontal-list.scss */
-body #header #user_nav ul li:last-child, body #header #user_nav ul li.last {
+body #header #user_nav ul li:last-child, body #header #user_nav ul li.last,
+body #header #admin_nav ul li:last-child,
+body #header #admin_nav ul li.last {
   padding-right: 0;
 }
-/* line 52, ../../../app/stylesheets/screen.sass */
-body #header #user_nav ul #logo {
+/* line 53, ../../../app/stylesheets/screen.sass */
+body #header #user_nav ul #logo,
+body #header #admin_nav ul #logo {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
@@ -705,13 +713,15 @@ body #header #user_nav ul #logo {
   margin-right: 10px;
 }
 /* line 61, ../../../app/stylesheets/screen.sass */
-body #header #user_nav ul li {
+body #header #user_nav ul li,
+body #header #admin_nav ul li {
   margin: auto;
   padding-top: 6px;
   padding-bottom: 6px;
 }
 /* line 66, ../../../app/stylesheets/screen.sass */
-body #header #user_nav ul li a {
+body #header #user_nav ul li a,
+body #header #admin_nav ul li a {
   padding: 3px 6px;
   color: white;
   text-decoration: none;
@@ -721,11 +731,27 @@ body #header #user_nav ul li a {
   border-radius: 11px;
 }
 /* line 75, ../../../app/stylesheets/screen.sass */
-body #header #user_nav ul li a:hover {
+body #header #user_nav ul li a:hover,
+body #header #admin_nav ul li a:hover {
   background-color: black;
   border-color: white;
 }
 /* line 89, ../../../app/stylesheets/screen.sass */
+body #header #admin_nav {
+  background-color: #650021;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+/* line 93, ../../../app/stylesheets/screen.sass */
+body #header #admin_nav ul li a {
+  border-color: #650021;
+}
+/* line 96, ../../../app/stylesheets/screen.sass */
+body #header #admin_nav ul li a:hover {
+  background-color: #650021;
+  border-color: white;
+}
+/* line 104, ../../../app/stylesheets/screen.sass */
 body #container {
   width: 950px;
   margin: 0 auto;
@@ -738,7 +764,7 @@ body #container {
   background-color: white;
   border-style: none;
 }
-/* line 101, ../../../app/stylesheets/screen.sass */
+/* line 116, ../../../app/stylesheets/screen.sass */
 body #container ul {
   list-style: none;
 }
@@ -748,7 +774,7 @@ body #container ul li {
   list-style-type: none;
   margin-left: 0px;
 }
-/* line 103, ../../../app/stylesheets/screen.sass */
+/* line 118, ../../../app/stylesheets/screen.sass */
 body #container .controls, body #container .horizontal {
   margin: 0;
   padding: 0;
@@ -776,12 +802,12 @@ body #container .controls li:first-child, body #container .controls li.first, bo
 body #container .controls li:last-child, body #container .controls li.last, body #container .horizontal li:last-child, body #container .horizontal li.last {
   padding-right: 0;
 }
-/* line 106, ../../../app/stylesheets/screen.sass */
+/* line 121, ../../../app/stylesheets/screen.sass */
 body #container i {
   color: #c5c9c7;
   font-size: 0.7em;
 }
-/* line 110, ../../../app/stylesheets/screen.sass */
+/* line 125, ../../../app/stylesheets/screen.sass */
 body #container #sheets {
   display: inline;
   float: left;
@@ -792,7 +818,7 @@ body #container #sheets {
 * html body #container #sheets {
   overflow-x: hidden;
 }
-/* line 112, ../../../app/stylesheets/screen.sass */
+/* line 127, ../../../app/stylesheets/screen.sass */
 body #container #sheets .sheet {
   padding-left: 5px;
   padding-top: 5px;
@@ -806,16 +832,16 @@ body #container #sheets .sheet {
   border-radius: 1px;
   border-bottom-width: 2px;
 }
-/* line 127, ../../../app/stylesheets/screen.sass */
+/* line 142, ../../../app/stylesheets/screen.sass */
 body #container #sheets .sheet p {
   margin-bottom: 5px;
 }
-/* line 131, ../../../app/stylesheets/screen.sass */
+/* line 146, ../../../app/stylesheets/screen.sass */
 body #container #sheets .sheet .horizontal {
   width: 710px;
   float: left;
 }
-/* line 134, ../../../app/stylesheets/screen.sass */
+/* line 149, ../../../app/stylesheets/screen.sass */
 body #container #sheets .sheet .controls {
   margin: 0;
   padding: 0;
@@ -844,24 +870,24 @@ body #container #sheets .sheet .controls li:first-child, body #container #sheets
 body #container #sheets .sheet .controls li:last-child, body #container #sheets .sheet .controls li.last {
   padding-right: 0;
 }
-/* line 139, ../../../app/stylesheets/screen.sass */
+/* line 154, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search input.string {
   width: 18em;
 }
-/* line 141, ../../../app/stylesheets/screen.sass */
+/* line 156, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search label {
   width: 170px;
   font-size: 80%;
 }
-/* line 144, ../../../app/stylesheets/screen.sass */
+/* line 159, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search div.input {
   margin-bottom: 2px;
 }
-/* line 146, ../../../app/stylesheets/screen.sass */
+/* line 161, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search .no_label {
   padding-left: 170px;
 }
-/* line 149, ../../../app/stylesheets/screen.sass */
+/* line 164, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search #left {
   display: inline;
   float: left;
@@ -875,7 +901,7 @@ body #container #sheets_search #left {
 * html body #container #sheets_search #left {
   overflow-x: hidden;
 }
-/* line 155, ../../../app/stylesheets/screen.sass */
+/* line 170, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search #right {
   display: inline;
   float: left;
@@ -886,7 +912,7 @@ body #container #sheets_search #right {
 * html body #container #sheets_search #right {
   overflow-x: hidden;
 }
-/* line 157, ../../../app/stylesheets/screen.sass */
+/* line 172, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search #full {
   display: inline;
   float: left;
@@ -898,16 +924,16 @@ body #container #sheets_search #full {
 * html body #container #sheets_search #full {
   overflow-x: hidden;
 }
-/* line 163, ../../../app/stylesheets/screen.sass */
+/* line 178, ../../../app/stylesheets/screen.sass */
 body #container #users .mail {
   font-size: 80%;
 }
-/* line 170, ../../../app/stylesheets/screen.sass */
+/* line 185, ../../../app/stylesheets/screen.sass */
 body #container #login {
   padding-top: 20px;
   padding-left: 10px;
 }
-/* line 174, ../../../app/stylesheets/screen.sass */
+/* line 189, ../../../app/stylesheets/screen.sass */
 body #container #login .input {
   margin-bottom: 5px;
 }

@@ -19,7 +19,7 @@ Feedback::Application.routes.draw do
 
   resources :sheets do
     collection do
-      get 'search'
+      get :search
     end
   end
 

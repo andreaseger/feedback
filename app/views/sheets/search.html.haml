@@ -6,6 +6,8 @@
     = f.input :company, :required => false
     = f.input :handler, :label => "People", :required => false
     = f.input :required_languages, :required => false
+    -# I needed a not used text attribute, not nice but its working
+    = f.input :boss, :label => "Location", :required => false
     -#boolean
     = f.input :extendable, :as => :radio, :required => false
     = f.input :vacation, :as => :radio, :required => false

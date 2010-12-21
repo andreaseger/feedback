@@ -186,5 +186,31 @@ urrzsurname: Doe"
       end
     end
   end
+
+  describe '#search' do
+    before(:each) do
+      @u1 = Factory(:bob, :nds => 'tyu23232', :matnr => '8878878')
+      @u2 = Factory(:amy, :nds => 'sdf53535', :matnr => '7747747')
+      @u3 = Factory(:student, :nds => 'ghj92929', :matnr => '2202202')
+      @u4 = Factory(:extern, :nds => 'okl012322', :matnr => '6616616')
+      @u5 = Factory(:admin, :nds => 'pel18181', :matnr => '5535535')
+    end
+    it 'should find users named like the query' do
+      q = 'Doe'
+      User.search(q).entries.should == [@u1, @u2, @u3, @u4, @u5]
+    end
+    it 'should find users named like the query' do
+      q = 'Amy'
+      User.search(q).should == [@u2]
+    end
+    it 'should find users with nds like the query' do
+      q = 'ghj'
+      User.search(q).entries.should == [@u3]
+    end
+    it 'should find users with nds like the query' do
+      q = '8878'
+      User.search(q).entries.should == [@u1]
+    end
+  end
 end
 

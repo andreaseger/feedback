@@ -1,0 +1,25 @@
+= hidden_field_tag :with_role, params[:with_role]
+= will_paginate @users
+= form_tag edit_multiple_admin_users_path do
+  %table
+    %tr
+      %th Name
+      %th email
+      %th nds
+      %th Roles
+      %th Sheet
+      %th ---
+      %th Edit
+    - @users.each do |user|
+      %tr.user{:id => "user_#{user.nds}"}
+        %td.name=user.name
+        %td.mail=user.email
+        %td.nds=user.nds
+        %td.roles=user.roles.join(" & ").titleize
+        %td.link_sheet
+          - if user.sheet
+            =link_to "Sheet", sheet_path(user.sheet)
+        %td.cb_edit= check_box_tag "user_ids[]", user.id, false, :id => "edit"
+        %td.link_edit= link_to "Edit", edit_admin_user_path(user)
+  = submit_tag "Edit Checked"
+

@@ -8,6 +8,8 @@
       #banner
         banner
       = render :partial => '/shared/user_nav'
+      - if user_signed_in? && current_user.role?(:admin)
+        = render :partial => '/shared/admin_nav'
     #container
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"

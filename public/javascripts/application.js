@@ -7,6 +7,28 @@ $(function () {
   //  }
   //);
 
+// user search
+  // ajax scopes
+  $('#roles a').live('click',
+    function () {
+      $.getScript(this.href);
+      return false;
+    }
+  );
+  $('#users_search').submit(function () {
+    $.get(this.action, $(this).serialize(), null, 'script');
+    return false;
+  });
+
+  //yeah thats realy heavy on requests and only works on the input felds
+  $('#users_search input').keyup(function () {
+    $.get($('#users_search').attr('action'),  $('#users_search').serialize(), null, 'script');
+    return false;
+  });
+
+
+
+// Sheets Search
   // Search form.
   $('#sheets_search').submit(function () {
     $.get(this.action, $(this).serialize(), null, 'script');

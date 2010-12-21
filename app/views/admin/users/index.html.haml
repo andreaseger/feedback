@@ -3,33 +3,15 @@
 - else
   - title "#{User.count} Users"
 
-%ul{:class => "scope horizontal"}
-  - User::ROLES.each do |role|
-    %li= link_to role.titleize.pluralize, params.merge(:with_role => role)
-  %li= link_to 'intern'.titleize.pluralize, params.merge(:with_role => :intern)
-  %li= link_to "All", params.merge(:with_role => "")    # or link_to "All" admin_users_path
+= form_tag admin_users_path, :method => 'get', :id => 'users_search' do
+  = text_field_tag :search, params[:search]
+  = submit_tag "Search", :name => nil
+  %ul{:class => "scope horizontal", :id => 'roles'}
+    - User::ROLES.each do |role|
+      %li= link_to role.titleize.pluralize, params.merge(:with_role => role)
+    %li= link_to 'intern'.titleize.pluralize, params.merge(:with_role => :intern)
+    %li= link_to "All", params.merge(:with_role => "")    # or link_to "All" admin_users_path
 
-= will_paginate @users
-= form_tag edit_multiple_admin_users_path do
-  %table#users
-    %tr
-      %th Name
-      %th email
-      %th nds
-      %th Roles
-      %th Sheet
-      %th ---
-      %th Edit
-    - @users.each do |user|
-      %tr.user{:id => "user_#{user.nds}"}
-        %td.name=user.name
-        %td.mail=user.email
-        %td.nds=user.nds
-        %td.roles=user.roles.join(" & ").titleize
-        %td.link_sheet
-          - if user.sheet
-            =link_to "Sheet", sheet_path(user.sheet)
-        %td.cb_edit= check_box_tag "user_ids[]", user.id, false, :id => "edit"
-        %td.link_edit= link_to "Edit", edit_admin_user_path(user)
-  = submit_tag "Edit Checked"
+  #users
+    = render 'users'
 

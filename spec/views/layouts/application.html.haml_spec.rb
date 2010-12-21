@@ -23,6 +23,7 @@ describe '/layouts/application.html.haml' do
     before :each do
       @view.stubs(:user_signed_in?).returns(true)
       current_user = Factory.stub(:bob)
+      current_user.stubs(:role?).with(:admin).returns(true)
       @view.stubs(:current_user).returns(current_user)
     end
     it 'should show the usernav for logged in user' do

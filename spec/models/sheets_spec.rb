@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Sheet do
   describe '#validations' do
-    %w(reachability accessibility working_atmosphere satisfaction_with_support stress_factor apartment_market satisfaction_with_internship independent_work reference_to_the_study learning_effect required_previous_knowledge).each do |attrib|
+    %w(reachability accessability working_atmosphere satisfaction_with_support stress_factor apartment_market satisfaction_with_internship independent_work reference_to_the_study learning_effect required_previous_knowledge).each do |attrib|
       describe "##{attrib}" do
         it "should be invalid if greater than 4" do
           sheet = Factory.build(:valid_sheet, attrib => 5)
@@ -53,6 +53,7 @@ describe Sheet do
 
   describe 'search' do
     # the attributes are sorted in arrays
+    # not really  TDD like, because this only tests the implementation
     context '#text attributes' do
       it 'should create a criteria where for text attributes' do
         s = {"company" => "audi"}
@@ -112,6 +113,20 @@ describe Sheet do
       it 'should search for both boss and handler' do
         s = {"required_languages" => "foo bar"}
         Sheet.search(s).should == Sheet.any_in(:speeches => [/foo/i, /bar/i])
+      end
+    end
+
+    context '#addresses' do
+      it 'should search in the addresses' do
+        s = {"application_address" => "foo"}
+        Sheet.search(s).should == Sheet.any_of( {'application_address.city' => /foo/i},
+                                                {'application_address.street' => /foo/i},
+                                                {'application_address.post_code' => /foo/i},
+                                                {'application_address.country' => /foo/i},
+                                                {'job_site_address.city' => /foo/i},
+                                                {'job_site_address.street' => /foo/i},
+                                                {'job_site_address.post_code' => /foo/i},
+                                                {'job_site_address.country' => /foo/i} )
       end
     end
 

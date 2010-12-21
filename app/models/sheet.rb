@@ -18,7 +18,7 @@ class Sheet
   field :handler
   field :note_company
 
-  field :intership_length
+  field :internship_length
   field :extendable, :type => Boolean
   field :vacation, :type => Boolean
   field :release, :type => Boolean
@@ -27,7 +27,7 @@ class Sheet
   field :salary, :type => Integer
   field :speeches, :type => Array
   field :reachability, :type => Integer
-  field :accessibility, :type => Integer
+  field :accessability, :type => Integer
   field :note_conditions
 
   field :percentage_of_women, :type => Integer            #Prozent
@@ -56,9 +56,9 @@ class Sheet
   validates_presence_of :company,
                         :boss,
                         :handler,
-                        :intership_length,
+                        :internship_length,
                         :reachability,
-                        :accessibility,
+                        :accessability,
                         :working_atmosphere,
                         :satisfaction_with_support,
                         :stress_factor,
@@ -72,7 +72,7 @@ class Sheet
   validates_inclusion_of :big_project, :in => [true, false]
 
   validates_each  :reachability,
-                  :accessibility,
+                  :accessability,
                   :working_atmosphere,
                   :satisfaction_with_support,
                   :stress_factor,
@@ -111,6 +111,15 @@ class Sheet
         aa.push(Sheet.any_of({:handler => /#{value}/i}, {:boss => /#{value}/i}))
       when "speeches", "required_languages"
         aa.push(Sheet.any_in(:speeches => split_languages(value).collect{|x| /#{x}/i} ))
+      when "application_address", "boss"
+        aa.push(Sheet.any_of( {'application_address.city'       => /#{value}/i},
+                              {'application_address.street'     => /#{value}/i},
+                              {'application_address.post_code'  => /#{value}/i},
+                              {'application_address.country'    => /#{value}/i},
+                              {'job_site_address.city'          => /#{value}/i},
+                              {'job_site_address.street'        => /#{value}/i},
+                              {'job_site_address.post_code'     => /#{value}/i},
+                              {'job_site_address.country'       => /#{value}/i} ) )
       end
     end
     c = all
@@ -128,7 +137,7 @@ class Sheet
 private
   STEXT=%w(company semester note_project note_company note_personal_impression note_conditions note_general department)
   SBOOLEAN=%w(vacation extendable flextime big_project release)
-  SNUMBER_MIN=%w(apartment_market satisfaction_with_support teamsize reference_to_the_study independent_work satisfaction_with_internship intership_length reachability percentage_of_women accessibility salary learning_effect working_atmosphere)
+  SNUMBER_MIN=%w(apartment_market satisfaction_with_support teamsize reference_to_the_study independent_work satisfaction_with_internship internship_length reachability percentage_of_women accessability salary learning_effect working_atmosphere)
   SNUMBER_MAX=%w(working_hours stress_factor required_previous_knowledge)
 end
 

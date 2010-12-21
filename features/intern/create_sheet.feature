@@ -21,7 +21,7 @@ Scenario: Creating a new sheet
       | sheet_boss                                     | Mr Black              |
       | sheet_handler                                  | Mr White              |
       | sheet_note_company                             | Lorem Ipsum           |
-      | sheet_intership_length                         | 18                    |
+      | sheet_internship_length                         | 18                    |
       | sheet_required_languages                       | greek                 |
       | sheet_note_conditions                          | In id nisi dolor      |
       | sheet_note_personal_impression                 | Aliquam a tellus      |
@@ -41,7 +41,7 @@ Scenario: Creating a new sheet
     And select "35" from "sheet_percentage_of_women"
 
     And choose "sheet_reachability_1"
-    And choose "sheet_accessibility_3"
+    And choose "sheet_accessability_3"
     And choose "sheet_working_atmosphere_1"
     And choose "sheet_satisfaction_with_support_4"
     And choose "sheet_stress_factor_3"
