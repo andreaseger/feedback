@@ -2,9 +2,9 @@
   = f.input :semester_id, :collection => Semester.order_by(:year.desc, :ws.asc), :label_method => :long_text
   = f.input :company
   = f.simple_fields_for :application_address do |ff|
-    = render :partial => 'address', :locals => {:f => ff}
+    .address= render :partial => 'address', :locals => {:f => ff}
   = f.simple_fields_for :job_site_address do |ff|
-    = render :partial => 'address', :locals => {:f => ff}
+    .address= render :partial => 'address', :locals => {:f => ff}
   = f.input :department
   = f.input :boss
   = f.input :handler

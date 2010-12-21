@@ -1,44 +1,60 @@
 - title "Sheet"
 
-%ul
+%ul#sheet
   %li=@sheet.semester.long_text
   %li=@sheet.company
-  %ul.address
-    %li=@sheet.application_address.street
-    %li=@sheet.application_address.city
-    %li=@sheet.application_address.post_code
-    %li=@sheet.application_address.country
+  %li
+    %strong
+      Application Address
+    %ul.address
+      %li=@sheet.application_address.street
+      %li
+        =@sheet.application_address.post_code
+        =@sheet.application_address.city
+      %li=@sheet.application_address.country
+  %li
+    %strong
+      Job Site Address
   %ul.address
     %li=@sheet.job_site_address.street
-    %li=@sheet.job_site_address.city
-    %li=@sheet.job_site_address.post_code
+    %li
+      =@sheet.job_site_address.post_code
+      =@sheet.job_site_address.city
     %li=@sheet.job_site_address.country
   %li
-    Department
+    %strong
+      Department:
     =@sheet.department
   %li
-    Boss
+    %strong
+      Boss:
     =@sheet.boss
   %li
-    Handler
+    %strong
+      Handler:
     =@sheet.handler
   %li
     %p=@sheet.note_company
   %br
   %li
-    Internship Length
+    %strong
+      Internship Length:
     =@sheet.internship_length
   %li
-    Extendable possible?
+    %strong
+      Extendable possible?
     =@sheet.extendable
   %li
-    Vacation possible?
+    %strong
+      Vacation possible?
     =@sheet.vacation
   %li
-    Release possible?
+    %strong
+      Release possible?
     =@sheet.release
   %li
-    Working Hours:
+    %strong
+      Working Hours:
     =@sheet.working_hours
   %li
     -if @sheet.flextime?
@@ -46,37 +62,47 @@
     -else
       Fixedtime
   %li
-    Salary:
+    %strong
+      Salary:
     =@sheet.salary
   %li
-    Required Languages
+    %strong
+      Required Languages:
     =@sheet.required_languages
   %li
-    Reachability
+    %strong
+      Reachability:
     =@sheet.reachability
   %li
-    Accessability
+    %strong
+      Accessability:
     =@sheet.accessability
   %li
     %p=@sheet.note_conditions
   %br
   %li
-    Percentage of Women:
+    %strong
+      Percentage of Women:
     =@sheet.percentage_of_women
   %li
-    Working Atmosphere
+    %strong
+      Working Atmosphere:
     =@sheet.working_atmosphere
   %li
-    Satisfaction with Support
+    %strong
+      Satisfaction with Support:
     =@sheet.satisfaction_with_support
   %li
-    Stress Factor
+    %strong
+      Stress Factor:
     =@sheet.stress_factor
   %li
-    Apartment Market
+    %strong
+      Apartment Market:
     =@sheet.apartment_market
   %li
-    Satisfaction with Internship
+    %strong
+      Satisfaction with Internship:
     =@sheet.satisfaction_with_internship
   %li
     %p=@sheet.note_personal_impression
@@ -87,19 +113,24 @@
     -else
       Small Projects
   %li
-    Teamsize:
+    %strong
+      Teamsize:
     =@sheet.teamsize
   %li
-    Independent Work
+    %strong
+      Independent Work:
     =@sheet.independent_work
   %li
-    Reference to the Study
+    %strong
+      Reference to the Study:
     =@sheet.reference_to_the_study
   %li
-    Learning Effect
+    %strong
+      Learning Effect:
     =@sheet.learning_effect
   %li
-    Required previous knowledge
+    %strong
+      Required previous knowledge:
     =@sheet.required_previous_knowledge
   %br
   %li

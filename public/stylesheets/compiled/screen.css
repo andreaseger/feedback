@@ -870,24 +870,24 @@ body #container #sheets .sheet .controls li:first-child, body #container #sheets
 body #container #sheets .sheet .controls li:last-child, body #container #sheets .sheet .controls li.last {
   padding-right: 0;
 }
-/* line 154, ../../../app/stylesheets/screen.sass */
+/* line 156, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search input.string {
   width: 18em;
 }
-/* line 156, ../../../app/stylesheets/screen.sass */
+/* line 158, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search label {
   width: 170px;
   font-size: 80%;
 }
-/* line 159, ../../../app/stylesheets/screen.sass */
+/* line 161, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search div.input {
   margin-bottom: 2px;
 }
-/* line 161, ../../../app/stylesheets/screen.sass */
+/* line 163, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search .no_label {
   padding-left: 170px;
 }
-/* line 164, ../../../app/stylesheets/screen.sass */
+/* line 166, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search #left {
   display: inline;
   float: left;
@@ -901,7 +901,7 @@ body #container #sheets_search #left {
 * html body #container #sheets_search #left {
   overflow-x: hidden;
 }
-/* line 170, ../../../app/stylesheets/screen.sass */
+/* line 172, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search #right {
   display: inline;
   float: left;
@@ -912,7 +912,7 @@ body #container #sheets_search #right {
 * html body #container #sheets_search #right {
   overflow-x: hidden;
 }
-/* line 172, ../../../app/stylesheets/screen.sass */
+/* line 174, ../../../app/stylesheets/screen.sass */
 body #container #sheets_search #full {
   display: inline;
   float: left;
@@ -924,16 +924,28 @@ body #container #sheets_search #full {
 * html body #container #sheets_search #full {
   overflow-x: hidden;
 }
-/* line 178, ../../../app/stylesheets/screen.sass */
+/* line 180, ../../../app/stylesheets/screen.sass */
 body #container #users .mail {
   font-size: 80%;
 }
-/* line 185, ../../../app/stylesheets/screen.sass */
+/* line 187, ../../../app/stylesheets/screen.sass */
 body #container #login {
   padding-top: 20px;
   padding-left: 10px;
 }
-/* line 189, ../../../app/stylesheets/screen.sass */
+/* line 191, ../../../app/stylesheets/screen.sass */
 body #container #login .input {
   margin-bottom: 5px;
+}
+/* line 197, ../../../app/stylesheets/screen.sass */
+body #container .simple_form label {
+  width: 250px;
+}
+/* line 199, ../../../app/stylesheets/screen.sass */
+body #container .simple_form .no_label {
+  padding-left: 300px;
+}
+/* line 201, ../../../app/stylesheets/screen.sass */
+body #container .simple_form .address {
+  margin-left: 30px;
 }

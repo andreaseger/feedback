@@ -4,39 +4,38 @@ namespace :db do
     require 'faker'
     require 'backports/1.9.2'
 
-    [Sheet, User].each(&:delete_all)
+    [Sheet, User, Semester].each(&:delete_all)
     load "#{::Rails.root.to_s}/db/seeds.rb"
-
+    semester = Semester.current
     r = Random.new(Time.now.hash)
+    mat_count = 2005000
 
-    (r.rand(1000..5000)).times do
+    (r.rand(2000..5000)).times do
+      mat_count += 1
       firstname  = Faker::Name.first_name
       lastname   = Faker::Name.last_name
       nds        = "#{lastname[0..1]}#{firstname[0..0]}#{r.rand(10000..90000)}".downcase
       name       = "#{firstname} #{lastname}"
       email      = Faker::Internet.email(name)
       case r.rand(0..30)
-      when 0..10
+      when 0..20
         roles = ['student']
-      when 10..20
-        roles = ['student', 'intern']
+        matnr = mat_count
       when 20..30
         roles = ['extern']
       end
 
-      user = User.create!(:firstname => firstname, :lastname => lastname, :nds => nds, :email => email, :name => name, :roles => roles, :created_at => r.rand(2.years.ago..Time.now))
-      if user.role? :intern
-        y=r.rand(1990..2020)
-        semester = r.rand(0..1) == 0 ? "SS#{y}" : "WS#{y}/#{y+1}"
-        Sheet.create!(
+      user = User.create!(:firstname => firstname, :lastname => lastname, :nds => nds, :matnr => matnr, :email => email, :name => name, :roles => roles, :created_at => r.rand(2.years.ago..Time.now))
+      if user.role?(:student) && r.rand(0..300) < 50
+        s=Sheet.create!(
           :user => user,
           :semester           => semester,
           :company            => Faker::Company.name,
           :boss               => Faker::Name.name,
           :handler            => Faker::Name.name,
-          :intership_length   => r.rand(18..22),
+          :internship_length   => r.rand(18..22),
           :reachability       => r.rand(1..4),
-          :accessibility      => r.rand(1..4),
+          :accessability      => r.rand(1..4),
           :working_atmosphere => r.rand(1..4),
           :satisfaction_with_support => r.rand(1..4),
           :stress_factor => r.rand(1..4),
@@ -64,6 +63,7 @@ namespace :db do
           :teamsize => r.rand(5..50),
           :note_project => Faker::Lorem.paragraph(r.rand(3..6)),
           :note_general => Faker::Lorem.paragraph(r.rand(5..10))   )
+        user.semesters << semester
       end
     end
     puts "#{User.count} User und "

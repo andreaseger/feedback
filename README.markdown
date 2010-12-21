@@ -27,12 +27,12 @@ Implementierte Features
 - LDAP Authentifizierung
 - Suche
 - Versionierung der Feedbackbögen
+- Script zum seeden der Datenbank
 
 Known Issues / Bugs
 -------------------
 
 - Länderliste im Moment noch mit englischen Namen
-- Script zum seeden der Datenbank funktioniert seit umstellung der Praktikantenverwaltung nicht mehr
 - Praktikant muss Student sein: wir nicht direkt geprüft, allerdings haben nur Studenten Matrikelnummern
 
 
