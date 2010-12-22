@@ -5,13 +5,15 @@ describe UsersController do
     @nds = "foo12345"
     @dn = "cn=#{@nds},ou=3,ou=stud,o=dev-test,c=de"
     @mail = "john.doe@stud.dev-test.de"
+    @matnr = 3332224
     ldif = "dn: #{@dn}
 urrzfullname: John Doe
 mail: #{@mail}
 urrzgivenname: John
 cn: #{@nds}
 uid: #{@nds}
-urrzsurname: Doe"
+urrzsurname: Doe
+urrzmatrikelid: #{@matnr}"
     @entry = Net::LDAP::Entry.from_single_ldif_string(ldif)
   end
   before(:each) do

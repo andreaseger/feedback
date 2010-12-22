@@ -7,6 +7,7 @@ Wird im Rahmen einer Bachelorarbeit der HS Regensburg entwickelt.
 Neuste Features
 ---------------
 
+- Matrikelnummer aus LDAP
 - Adminitrationsbereich für Semester
 - Umstellung der Praktikantenverwaltung
 - Semester als eigenes Model
@@ -58,7 +59,7 @@ Hintergrund
 - Mocha
 - Cucumber
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">feedback</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/sch1zo/feedback" rel="dct:source">github.com</a>.
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
 
 Eger Andreas 2010
 

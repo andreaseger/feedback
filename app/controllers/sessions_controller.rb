@@ -28,8 +28,9 @@ class SessionsController < ApplicationController
         redirect_to new_session_url, :error => "Login failed"
       end
     else
-      data = ldap.fetchData(nds)
-      if data && ldap.authenticate(data.dn, password)
+      #data = ldap.fetchData(nds)
+      #if data && ldap.authenticate(data.dn, password)
+      if data = ldap.authenticate_and_fetch(nds, password)
         # successfully authenticated
         user = User.create_with_ldap!(data)
         if user

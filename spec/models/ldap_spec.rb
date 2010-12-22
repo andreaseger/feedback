@@ -19,7 +19,7 @@ describe Ldap do
   end
 
   describe '#fetchData' do
-    # ask the LDAP server for the full DN of the user with the given nds
+    # ask the LDAP server for all infos on the user
     before(:each) do
       @entry = Net::LDAP::Entry.new(@dn)
       Net::LDAP.any_instance.stubs(:search).returns([@entry])
@@ -120,7 +120,43 @@ describe Ldap do
       @ldap.expects(:bind).returns(false)
       @connection.authenticate(@dn, @password).should be_false
     end
+  end
+  describe '#AuthenticateAndFetch' do
+    before(:each) do
+      @entry = Net::LDAP::Entry.new(@dn)
+      @connection.stubs(:fetchDN).returns(@dn)
+    end
 
+    it 'should call fetchDN' do
+      Net::LDAP.stubs(:new).returns(@ldap)
+      @ldap.stubs(:bind).returns(false)
+      @connection.expects(:fetchDN).with(@nds).returns(@dn)
+      @connection.authenticate_and_fetch(@nds, @password)
+    end
+
+    it 'should initialize with ssl' do
+      config = @connection.config.merge(:encryption => :simple_tls, :port => LDAP_CONFIG["ssl"])
+      ldap = Net::LDAP.new(config)
+      ldap.stubs(:bind).returns(true)
+      ldap.stubs(:search).returns([@entry])
+      Net::LDAP.expects(:new).with(config).returns(ldap)
+      @connection.authenticate_and_fetch(@nds, @password)
+    end
+
+    it 'should authenticate with the ldap server' do
+      Net::LDAP.stubs(:new).returns(@ldap)
+      @ldap.expects(:auth).with(@dn, @password)
+      @ldap.expects(:bind)
+      @connection.authenticate_and_fetch(@nds, @password)
+    end
+    it 'should search for the users data' do
+      Net::LDAP.stubs(:new).returns(@ldap)
+      @ldap.stubs(:bind).returns(true)
+      fil = Net::LDAP::Filter.eq("dn", @nds)
+      Net::LDAP::Filter.expects(:eq).returns(fil)
+      @ldap.expects(:search).returns([@entry])
+      @connection.authenticate_and_fetch(@nds, @password)
+    end
   end
 end
 

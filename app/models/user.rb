@@ -86,7 +86,10 @@ class User
                 :lastname => entry.urrzsurname,
                 :name => entry.urrzfullname,
                 :email => entry.mail,
-                :roles => entry.dn.include?("stud") ? ["student"] : ["extern"] )
+                :roles => entry.dn.include?("stud") ? ["student"] : ["extern"])
+      if entry.respond_to?(:urrzmatrikelid)
+        u.matnr = entry.urrzmatrikelid
+      end
       return u
     end
     new

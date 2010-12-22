@@ -11,7 +11,7 @@ describe SessionsController do
     end
     before(:each) do
       @ldap = Ldap.new
-      @ldap.stubs(:fetchData).returns(@entry)
+      @ldap.stubs(:authenticate_and_fetch).returns(@entry)
       @ldap.stubs(:authenticate).returns(true)
       Ldap.stubs(:new).returns(@ldap)
     end
@@ -73,20 +73,16 @@ describe SessionsController do
         post :create, :user => {:nds => @nds}
       end
 
-      it 'should try to fetch the user data' do
+      it 'should try to fetch the user data and authenticate him' do
         User.stubs(:create_with_ldap!).returns(nil)
-        @ldap.expects(:fetchData).with(@nds).returns(@entry)
-        post :create, :user => {:nds => @nds}
-      end
-
-      it 'should authenticate the user' do
-        @ldap.expects(:authenticate).with(@dn, @password)
+        @ldap.expects(:authenticate_and_fetch).with(@nds, @password).returns(@entry)
         post :create, :user => {:nds => @nds, :password => @password}
       end
 
       describe '#successfull user login' do
         before(:each) do
-          @ldap.stubs(:authenticate).returns(true)
+          @ldap.stubs(:authenticate_and_fetch).returns(@entry)
+          #@ldap.stubs(:authenticate).returns(true)
         end
         it 'should create a new user' do
           User.expects(:create_with_ldap!).with(@entry)
@@ -114,7 +110,7 @@ describe SessionsController do
           end
 
           it 'should save the data to the session' do
-            @ldap.stubs(:fetchData).returns(@entry)
+            #@ldap.stubs(:fetchData).returns(@entry)
             User.stubs(:create_with_ldap!).returns(nil)
             post :create, :user => {:nds => @nds}
             session[:user_info].should == @entry
@@ -123,7 +119,7 @@ describe SessionsController do
       end
       describe '#failure' do
         before(:each) do
-          @ldap.stubs(:authenticate).returns(false)
+          @ldap.stubs(:authenticate_and_fetch).returns(nil)
         end
         it 'should redirect_to the login form' do
           post :create, :user => {:nds => @nds}

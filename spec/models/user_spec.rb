@@ -143,13 +143,15 @@ describe User do
       @nds = "foo12345"
       @dn = "cn=#{@nds},ou=3,ou=stud,o=dev-test,c=de"
       @mail = "john.doe@stud.dev-test.de"
+      @matnr = 3332224
       ldif = "dn: #{@dn}
 urrzfullname: John Doe
 mail: #{@mail}
 urrzgivenname: John
 cn: #{@nds}
 uid: #{@nds}
-urrzsurname: Doe"
+urrzsurname: Doe
+urrzmatrikelid: #{@matnr}"
       @entry = Net::LDAP::Entry.from_single_ldif_string(ldif)
     end
 
@@ -163,6 +165,7 @@ urrzsurname: Doe"
       user.nds.should == @nds
       user.dn.should == @dn
       user.email.should == @mail
+      user.matnr.should == @matnr.to_s
     end
 
     it 'should be a student if stud in dn' do
