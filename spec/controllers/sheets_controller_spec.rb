@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe SheetsController do
-  describe '#logged in' do
+  context '#logged in' do
     before(:each) do
       @user = Factory.stub(:bob)
       @controller.stubs(:authenticate!).returns(true)
       @controller.stubs(:current_user).returns(@user)
     end
-    describe '#GET new' do
+    context '#GET new' do
       it 'should create new Address Objects' do
         pending "kA wie ich das testen soll, schaff es nicht @sheet richtig zu mocken"
         # ich kann weder testen ob @sheet dann 2 Adressen hat noch
@@ -20,7 +20,7 @@ describe SheetsController do
         get :new
       end
     end
-    describe '#POST create' do
+    context '#POST create' do
       it 'should set the user to current_user' do
         pending "foo, bekomm keinen test hin der das überprüft"
         controller.stubs(:current_user).returns(@user)
@@ -33,7 +33,7 @@ describe SheetsController do
     end
   end
 
-  describe '#not logged in' do
+  context '#not logged in' do
     before(:each) do
       controller.stubs(:user_signed_in?).returns(false)
     end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Address do
-  describe '#validations' do
+  context '#validations' do
     before(:each) do
       sheet = Factory(:valid_sheet)
     end

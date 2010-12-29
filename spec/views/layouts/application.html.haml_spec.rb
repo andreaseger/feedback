@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe '/layouts/application.html.haml' do
 
-  describe 'not authenticated' do
+  context 'not authenticated' do
     before :each do
       @view.stubs(:user_signed_in?).returns(false)
     end
@@ -19,7 +19,7 @@ describe '/layouts/application.html.haml' do
     end
   end
 
-  describe 'authenticated' do
+  context 'authenticated' do
     before :each do
       @view.stubs(:user_signed_in?).returns(true)
       current_user = Factory.stub(:bob)

@@ -9,7 +9,7 @@ describe Ldap do
     @ldap = Net::LDAP.new(@connection.config)
   end
 
-  describe '#initialize' do
+  context '#initialize' do
     it 'should use LDAP_CONFIG' do
       ldap = Ldap.new
       ldap.config[:host].should_not be_nil
@@ -18,7 +18,7 @@ describe Ldap do
     end
   end
 
-  describe '#fetchData' do
+  context '#fetchData' do
     # ask the LDAP server for all infos on the user
     before(:each) do
       @entry = Net::LDAP::Entry.new(@dn)
@@ -43,12 +43,12 @@ describe Ldap do
       @ldap.expects(:search).with(:filter => fil, :return_result => true)
       @connection.fetchData(@nds)
     end
-    describe '#only one entrie found' do
+    context '#only one entrie found' do
       it 'should return the entrie' do
         @connection.fetchData(@nds).should == @entry
       end
     end
-    describe '#multiple entries found' do
+    context '#multiple entries found' do
       before(:each) do
         entries = [Net::LDAP::Entry.new(@dn), Net::LDAP::Entry.new(@dn)]
         Net::LDAP.any_instance.stubs(:search).returns(entries)
@@ -59,7 +59,7 @@ describe Ldap do
     end
   end
 
-  describe '#fetchDN' do
+  context '#fetchDN' do
     before(:all) do
       @nds = "asd12345"
       @dn = "cn=#{@nds},ou=1,ou=stud,o=fooo,c=de"
@@ -84,7 +84,7 @@ describe Ldap do
   end
 
 
-  describe '#authenticate' do
+  context '#authenticate' do
     before(:each) do
       @ldap.stubs(:bind).returns(true)
     end
@@ -121,7 +121,7 @@ describe Ldap do
       @connection.authenticate(@dn, @password).should be_false
     end
   end
-  describe '#AuthenticateAndFetch' do
+  context '#AuthenticateAndFetch' do
     before(:each) do
       @entry = Net::LDAP::Entry.new(@dn)
       @connection.stubs(:fetchDN).returns(@dn)

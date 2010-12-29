@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Semester do
-  describe '#validations' do
+  context '#validations' do
     %w(year ws).each do |attrib|
       it "##{attrib} should be present" do
         semester = Factory.build(:semester, attrib => nil)
@@ -19,7 +19,7 @@ describe Semester do
     end
   end
 
-  describe '#matrlist' do
+  context '#matrlist' do
     before(:each) do
       @u1=Factory(:student, :matnr => '3333333')
       @u2=Factory(:bob, :matnr => '5555555')
@@ -47,9 +47,15 @@ describe Semester do
       semester.update_attributes(:matrlist => "3333333\n5555555")
       Semester.last.interns.should == [@u1, @u2]
     end
+    it 'should assign the user also if the user gets created after the semester' do
+      semester = Factory(:semester, :matrlist => "3333333\r\n7777777")
+      Semester.stubs(:current).returns(semester)
+      u3=Factory(:student, :matnr => '7777777')
+      Semester.current.interns.should == [@u1, u3]
+    end
   end
 
-  describe '#text' do
+  context '#text' do
     it 'should return SS2010' do
       semester = Factory.build(:semester, :year => 2010, :ws => false)
       semester.text.should == "SS2010"
@@ -59,7 +65,7 @@ describe Semester do
       semester.text.should == "WS2010/11"
     end
   end
-  describe '#long_text' do
+  context '#long_text' do
     it 'should return Sommersemester 2010' do
       semester = Factory.build(:semester, :year => 2010, :ws => false)
       semester.long_text.should == "Sommersemester 2010"
@@ -70,8 +76,8 @@ describe Semester do
     end
   end
 
-  describe '#current' do
-    describe 'should be SS between March and September' do
+  context '#current' do
+    context 'should be SS between March and September' do
       before(:each) do
         @ws2009 = Semester.create!(:year => 2009, :ws => true  )
         @ss2010 = Semester.create!(:year => 2010, :ws => false )
@@ -100,7 +106,7 @@ describe Semester do
       end
     end
 
-    describe '#create new semester' do
+    context '#create new semester' do
       before(:each) do
       end
       it 'should ' do

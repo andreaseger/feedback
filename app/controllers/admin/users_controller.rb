@@ -5,7 +5,7 @@ class Admin::UsersController < InheritedResources::Base
   before_filter :load_and_authorize_for_multiple, :only => [:edit_multiple, :update_multiple]
   before_filter :remove_empty_roles, :only => [:update, :update_multiple]
 
-  actions :all, :except => [:show, :new, :create, :destroy]
+  actions :all, :only => [:index, :update]
   has_scope :with_role, :search
 
   def index
@@ -32,7 +32,7 @@ class Admin::UsersController < InheritedResources::Base
   def update_multiple
     @users.each do |user|
       unless user.update_attributes(params[:user])
-        flash[:error] = user.errors.full_messages.join("\n")
+        flash[:error] = user.nds + user.errors.full_messages.join("\n") 
         @user = User.new(:roles => @users.map{|u| u.roles}.inject(:&))
         render :edit_multiple
         return

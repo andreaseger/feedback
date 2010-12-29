@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  describe '#validations' do
+  context '#validations' do
     it 'should check that nds is unique' do
       Factory(:bob, :nds => "abc12345")
       user = Factory.build(:amy, :nds => "abc12345")
@@ -32,7 +32,7 @@ describe User do
       user.should be_valid
     end
 
-    describe '#roles' do
+    context '#roles' do
       # removed
       #it 'should not allow interns who are no students' do
       #  user = Factory.build(:bob, :roles => ["intern"])
@@ -49,7 +49,7 @@ describe User do
     end
   end
 
-  describe '#role?' do
+  context '#role?' do
     before(:each) do
       @admin = Factory.build(:admin)
       @student = Factory.build(:student)
@@ -59,7 +59,7 @@ describe User do
       Semester.stubs(:current).returns(semester)
     end
 
-    describe 'should be true for the right role' do
+    context 'should be true for the right role' do
       it '#admin' do
         @admin.role?(:admin).should be_true
         @admin.role?(:student).should be_false
@@ -88,7 +88,7 @@ describe User do
   end
 
 
-  describe '#scopes' do
+  context '#scopes' do
     before do
       Factory(:student)
       Factory(:extern)
@@ -114,7 +114,7 @@ describe User do
     end
   end
 
-  describe '#DN' do
+  context '#DN' do
     before(:each) do
       @dn = "cn=amy12345,ou=1,ou=stud,o=fooo,c=de"
     end
@@ -138,7 +138,7 @@ describe User do
     end
   end
 
-  describe '#new_with_ldap' do
+  context '#new_with_ldap' do
     before(:all) do
       @nds = "foo12345"
       @dn = "cn=#{@nds},ou=3,ou=stud,o=dev-test,c=de"
@@ -190,7 +190,7 @@ urrzmatrikelid: #{@matnr}"
     end
   end
 
-  describe '#search' do
+  context '#search' do
     before(:each) do
       @u1 = Factory(:bob, :nds => 'tyu23232', :matnr => '8878878')
       @u2 = Factory(:amy, :nds => 'sdf53535', :matnr => '7747747')

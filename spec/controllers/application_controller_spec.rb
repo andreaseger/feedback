@@ -4,8 +4,8 @@ describe ApplicationController do
   before(:each) do
     @user = Factory(:bob)
   end
-  describe '#current_user' do
-    describe '@current_user = nil' do
+  context '#current_user' do
+    context '@current_user = nil' do
       before(:each) do
         @current_user = nil
       end
@@ -26,7 +26,7 @@ describe ApplicationController do
         controller.instance_eval{ @current_user }.should == @user
       end
     end
-    describe '@current_user already set' do
+    context '@current_user already set' do
       before(:each) do
         controller.instance_eval{@current_user = "foo"}
         # i cant access @user in the scope of the controller so I just make @current_user return true
@@ -43,7 +43,7 @@ describe ApplicationController do
     end
   end
 
-  describe '#user_signed_in?' do
+  context '#user_signed_in?' do
     it 'should be true if current_user is set' do
       controller.stubs(:current_user).returns(@user)
       controller.instance_eval{user_signed_in?}.should be_true
@@ -59,8 +59,8 @@ describe ApplicationController do
     end
   end
 
-  describe '#current_semester' do
-    describe '@current_semester already set' do
+  context '#current_semester' do
+    context '@current_semester already set' do
       before(:each) do
         controller.instance_eval{@current_semester = "foo"}
       end

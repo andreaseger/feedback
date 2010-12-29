@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Sheet do
-  describe '#validations' do
+  context '#validations' do
     %w(reachability accessability working_atmosphere satisfaction_with_support stress_factor apartment_market satisfaction_with_internship independent_work reference_to_the_study learning_effect required_previous_knowledge).each do |attrib|
-      describe "##{attrib}" do
+      context "##{attrib}" do
         it "should be invalid if greater than 4" do
           sheet = Factory.build(:valid_sheet, attrib => 5)
           sheet.should_not be_valid
@@ -26,7 +26,7 @@ describe Sheet do
     end
   end
 
-  describe '#languages' do
+  context '#languages' do
     context '#split' do
       it 'should split strings with a dot correctly' do
         v = "foo. lorem"
@@ -51,7 +51,7 @@ describe Sheet do
     end
   end
 
-  describe 'search' do
+  context 'search' do
     # the attributes are sorted in arrays
     # not really  TDD like, because this only tests the implementation
     context '#text attributes' do

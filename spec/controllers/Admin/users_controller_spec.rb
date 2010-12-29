@@ -12,7 +12,7 @@ describe Admin::UsersController do
     @mock_user ||= Factory.stub(:bob)
   end
 
-  describe "GET index" do
+  context "GET index" do
     #it "assigns all users as @users" do
     #  User.stubs(:all).returns([mock_user])
     #  get :index
@@ -20,7 +20,7 @@ describe Admin::UsersController do
     #end
   end
 
-  describe 'PUT update' do
+  context 'PUT update' do
     before(:each) do
       @u = Factory.stub(:amy)
       User.stubs(:find).returns(@u)
@@ -34,7 +34,7 @@ describe Admin::UsersController do
       response.should redirect_to(admin_users_path)
     end
   end
-  describe 'POST edit_multiple' do
+  context 'POST edit_multiple' do
     before(:each) do
       @u = Factory.stub(:amy)
       @uu = Factory.stub(:bob)
@@ -56,7 +56,7 @@ describe Admin::UsersController do
     end
   end
 
-  describe 'PUT update_multiple' do
+  context 'PUT update_multiple' do
     before(:each) do
       @u = Factory.stub(:amy)
       @uu = Factory.stub(:bob)

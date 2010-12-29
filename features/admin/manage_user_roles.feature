@@ -30,7 +30,7 @@ Scenario Outline: Scope Students
     | Extern   | tom44444     | joe33333   |
 
 
-Scenario: Edit multiple
+Scenario: roles which are shared between the users should be pre-checked
   When I check "edit" within "#user_amy11111"
    And check "edit" within "#user_bob22222"
    And press "Edit Checked"

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SessionsController do
-  describe '#POST create' do
+  context '#POST create' do
     before(:all) do
       @nds = "asd12345"
       @password = "secret"
@@ -22,7 +22,7 @@ describe SessionsController do
       post :create, :user => {:nds => @nds}
     end
 
-    describe '#user exists in db and has a cached DN(, or will it fetch on the way anyway)' do
+    context '#user exists in db and has a cached DN(, or will it fetch on the way anyway)' do
       before(:each) do
         User.stubs(:where).returns([@user])
       end
@@ -37,7 +37,7 @@ describe SessionsController do
         post :create, :user => {:nds => @nds, :password => @password}
       end
 
-      describe '#success' do
+      context '#success' do
         before(:all) do
           @ldap.stubs(:authenticate).returns(true)
         end
@@ -51,7 +51,7 @@ describe SessionsController do
         end
       end
 
-      describe '#failure' do
+      context '#failure' do
         before(:each) do
           @ldap.stubs(:authenticate).returns(false)
         end
@@ -62,7 +62,7 @@ describe SessionsController do
       end
     end
 
-    describe '#user exists not yet' do
+    context '#user exists not yet' do
       before(:each) do
         User.stubs(:where).returns([])
       end
@@ -79,7 +79,7 @@ describe SessionsController do
         post :create, :user => {:nds => @nds, :password => @password}
       end
 
-      describe '#successfull user login' do
+      context '#successfull user login' do
         before(:each) do
           @ldap.stubs(:authenticate_and_fetch).returns(@entry)
           #@ldap.stubs(:authenticate).returns(true)
@@ -106,7 +106,7 @@ describe SessionsController do
           it 'should redirect_to new_user_url' do
             User.stubs(:create_with_ldap!).returns(nil)
             post :create, :user => {:nds => @nds}
-            response.should redirect_to(new_user_url)
+            response.should redirect_to(new_session_url)
           end
 
           it 'should save the data to the session' do
@@ -117,7 +117,7 @@ describe SessionsController do
           end
         end
       end
-      describe '#failure' do
+      context '#failure' do
         before(:each) do
           @ldap.stubs(:authenticate_and_fetch).returns(nil)
         end
@@ -129,7 +129,7 @@ describe SessionsController do
     end
   end
 
-  describe '#destroy' do
+  context '#destroy' do
     before(:each) do
       controller.stubs(:user_signed_in?).returns(true)
       session[:user_id] = "foo"

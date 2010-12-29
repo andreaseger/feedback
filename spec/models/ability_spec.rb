@@ -6,7 +6,7 @@ describe Ability do
     Factory(:valid_sheet)
   end
 
-  describe '#student' do
+  context '#student' do
     before(:each) do
       user = Factory(:student, :roles => ["student"])
       @ability = Ability.new(user)
@@ -21,7 +21,7 @@ describe Ability do
     end
   end
 
-  describe '#intern' do
+  context '#intern' do
     before(:each) do
       @user = Factory(:student, :roles => ["student"])
       @semester = Factory(:semester, :interns =>[@user])
@@ -53,7 +53,7 @@ describe Ability do
     end
   end
 
-  describe '#admin' do
+  context '#admin' do
     before(:each) do
       @user = Factory(:admin, :roles => ["admin"])
       @ability = Ability.new(@user)
@@ -70,7 +70,7 @@ describe Ability do
     end
   end
 
-  describe '#extern' do
+  context '#extern' do
     before(:each) do
       user = Factory(:extern, :roles => ["extern"])
       @ability = Ability.new(user)
