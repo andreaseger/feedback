@@ -9,28 +9,28 @@ module NavigationHelpers
     case page_name
 
     when /the home\s?page/
-      '/'
+      '/en'
 
     when /Anzeigeseite des Feedbackbogens/
-      sheet_path(Sheet.last.id)
+      sheet_path(Sheet.last.id, :locale => 'en')
 
     when /the sheets show page/
-      sheet_path(Sheet.last)
+      sheet_path(Sheet.last, :locale => 'en')
     when /the last sheets show page/
-      sheet_path(Sheet.last)
+      sheet_path(Sheet.last, :locale => 'en')
     when /login/
-      new_session_path
+      new_session_path(:locale => 'en')
 
     when /sheets edit page/
-      edit_sheet_path(Sheet.last)
+      edit_sheet_path(Sheet.last, :locale => 'en')
 
     when /user admin page/
-      admin_users_path
+      admin_users_path(:locale => 'en')
 
     when /search page/
-      search_sheets_path
+      search_sheets_path(:locale => 'en')
     when /semesters index page/
-      admin_semesters_path
+      admin_semesters_path(:locale => 'en')
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

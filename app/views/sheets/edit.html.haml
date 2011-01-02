@@ -1,8 +1,8 @@
-- title "Edit Sheet"
+- title t('.title')
 
 = render 'form'
 
 %p
-  = link_to "Show", sheet_path(@sheet)
+  = link_to t(".show"), sheet_path(@sheet)
   |
-  = link_to "View All", sheets_path
+  = link_to t("sheets.viewall"), sheets_path

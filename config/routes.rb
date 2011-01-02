@@ -1,28 +1,28 @@
 Feedback::Application.routes.draw do
-  #devise_for :users
+  
+  scope '(:locale)' do
+    resources :sessions
+    get "users/new" => "users#new", :as => "new_user"
+    post "users" => "users#create"
 
-  resources :sessions
-  get "users/new" => "users#new", :as => "new_user"
-  post "users" => "users#create"
-#  match "/auth/ldap/callback" => "sessions#create"
-#  match "/auth/ldap/failure" => "sessions#create"
+    namespace :admin do
+      resources :users do
+        collection do
+          post :edit_multiple
+          put  :update_multiple
+        end
+      end
+      resources :semesters
+    end
 
-  namespace :admin do
-    resources :users do
+    resources :sheets do
       collection do
-        post :edit_multiple
-        put  :update_multiple
+        get :search
       end
     end
-    resources :semesters
-  end
 
-  resources :sheets do
-    collection do
-      get :search
-    end
+    root :to => "sheets#index"
   end
-
-  root :to => "sheets#index"
+  match '/:locale' => 'sheets#index'
 end
 

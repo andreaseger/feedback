@@ -33,16 +33,18 @@ class User
 
   #scopes
   scope :with_role, lambda { |role|
-    if role.to_sym == :intern
+    if !role.blank? && role.to_sym == :intern
       Semester.current.interns
     else
       where(:roles => /#{role}/i)
     end
   }
   scope :search, lambda {|query|
-    any_of({:name => /#{query}/i}, {:nds => /#{query}/i}, {:matnr => /#{query}/i})
+    any_of( {:name  => /#{query}/i },
+            {:nds   => /#{query}/i },
+            {:matnr => /#{query}/i }
+            )
   }
-
 
   ROLES = %w[admin student extern]
 

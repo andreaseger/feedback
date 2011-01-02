@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   before_filter :authenticate!, :only => :destroy
   def new
-    #shows the login form
   end
 
   def create

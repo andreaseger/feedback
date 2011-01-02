@@ -17,17 +17,18 @@ Scenario: Edit one User
    Then I should be on the user admin page
     And I should have a user "amy11111" with the role "admin"
 
-Scenario Outline: Scope Students
-   When I follow "<role>"
-   Then I should see "<positive>"
-    And I should not see "<negative>"
-
-  Examples:
-    | role     | positive     | negative   |
-    | Students | amy11111     | tom44444   |
-    | Interns  | bob22222     | amy11111   |
-    | Admins   | joe33333     | bob22222   |
-    | Extern   | tom44444     | joe33333   |
+#
+#Scenario Outline: Scope Students
+#   When I follow "<role>"
+#   Then I should see "<positive>"
+#    And I should not see "<negative>"
+#
+#  Examples:
+#    | role     | positive     | negative   |
+#    | Students | amy11111     | tom44444   |
+#    | Interns  | bob22222     | amy11111   |
+#    | Admins   | joe33333     | bob22222   |
+#    | Extern   | tom44444     | joe33333   |
 
 
 Scenario: roles which are shared between the users should be pre-checked

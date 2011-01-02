@@ -5,8 +5,8 @@
 
 = form_tag admin_users_path, :method => 'get', :id => 'users_search' do
   = text_field_tag :search, params[:search]
-  = submit_tag "Search", :name => nil
-  %ul{:class => "scope horizontal", :id => 'roles'}
+  = submit_tag t('search'), :name => nil
+  -#%ul{:class => "scope horizontal", :id => 'roles'}
     - User::ROLES.each do |role|
       %li= link_to role.titleize.pluralize, params.merge(:with_role => role)
     %li= link_to 'intern'.titleize.pluralize, params.merge(:with_role => :intern)

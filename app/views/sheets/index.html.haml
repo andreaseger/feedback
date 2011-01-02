@@ -1,7 +1,7 @@
-- title "Sheets"
+- title t('.title')
 
 - if can? :create, Sheet.new
-  %p= link_to "New Sheet", new_sheet_path
+  %p= link_to t('.new'), new_sheet_path
 = will_paginate @sheets
 = render 'sheets'
 

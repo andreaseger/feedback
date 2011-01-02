@@ -15,7 +15,7 @@
   = f.input :release, :as => :radio
   = f.input :working_hours, :collection => 32..45
   %div{:class => 'input radio optional no_label'}
-    = f.collection_radio :flextime, [[true, 'Flextime'] ,[false, 'Fixed Time']], :first, :last
+    = f.collection_radio :flextime, [[true, t('sheets.flextime')] ,[false, t('sheets.fixed_time')]], :first, :last
   = f.input :salary, :collection => (400..1000).step(50)
   = f.input :required_languages
   = f.input :reachability, :collection => 1..4, :as => :radio

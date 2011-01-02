@@ -8,9 +8,7 @@
     %li
       %ul.semester
         %li= link_to_unless_current semester.long_text, admin_semester_path(semester)
-        %li
-          = semester.interns.count
-          = 'intern'.titleize.pluralize
+        %li= t('intern', :count => semester.interns.count)
         - if can? :update, @semester
           %li= link_to "Edit", edit_admin_semester_path(semester)
 

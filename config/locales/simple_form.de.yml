@@ -21,4 +21,44 @@ de:
     # hints:
     #   username: 'User name to sign in.'
     #   password: 'No special characters, please.'
-
+    labels:
+      semester: Semester
+      company: Firma    
+      application_address: Kontaktadresse (Bewerbung)
+      street: Straße
+      city: Ort
+      post_code: Postleitzahl
+      country: Land
+      job_site_address: Einsatzort
+      department: Abteilung
+      boss: Vorgesetzter
+      handler: Betreuer
+      internship_length: Praktikumsdauer
+      extendable: Verlängerung möglich
+      vacation: Urlaub möglich
+      release: Freistellung für Vorlesungen
+      working_hours: Arbeitszeit
+      flextime: Gleitzeit
+      fixed_time: Fixzeit
+      salary: Gehalt
+      required_languages: Erforderliche Sprachen
+      reachability: Erreichbarkeit (öffentl. Verkehr)
+      accessability: Barrierefreiheit
+      percentage_of_women: Frauenanteil
+      working_atmosphere: Arbeitsklima
+      satisfaction_with_support: Zufriedenheit mit Betreuung
+      stress_factor: Stressfaktor
+      apartment_market: Wohnungsmarkt
+      satisfaction_with_internship: Persönliche Zufriedenheit
+      big_project: Ein großes Prjekt
+      small_project: Viele kleine Projekte
+      teamsize: Teamgröße
+      independent_work: selbstständiges Arbeiten
+      reference_to_the_study: Bezug zum Studium
+      learning_effect: Lerneffekt
+      required_previous_knowledge: Persönliches Vorwissen
+      note_company: Anmerkung Firma
+      note_personal_impression: Anmerkung Persönliche Eindrücke
+      note_general: Anmerkung Gesamt
+      note_conditions: Anmerkung Rahmenbedingungen
+      note_project: Anmerkung Projekt

@@ -1,4 +1,4 @@
-- title "Edit #{@user.email}"
+- title t('.title', :email =>@user.email)
 
 = simple_form_for @user, :url => admin_user_path(@user) do |f|
   - roles = User::ROLES.map{|r| [r.titleize, r]}

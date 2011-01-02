@@ -1,32 +1,32 @@
-- title "Search"
+- title t('.title')
 
 = simple_form_for :search, :url => {:controller => :sheets, :action => 'search'}, :html =>{:method => :get,  :id => "sheets_search" } do |f|
   #left
-    = f.input :semester, :required => false
+    =# f.input :semester, :required => false
     = f.input :company, :required => false
-    = f.input :handler, :label => "People", :required => false
+    = f.input :handler, :label => t('.people'), :required => false
     = f.input :required_languages, :required => false
     -# I needed a not used text attribute, not nice but its working
-    = f.input :boss, :label => "Location", :required => false
+    = f.input :boss, :label => t (".location"), :required => false
     -#boolean
     = f.input :extendable, :as => :radio, :required => false
     = f.input :vacation, :as => :radio, :required => false
     = f.input :release, :as => :radio, :required => false
     = f.input :big_project, :as => :radio, :required => false
     %div{:class => 'input radio optional no_label'}
-      = f.collection_radio :flextime, [[true, 'Flextime'] ,[false, 'Fixed Time']], :first, :last
+      = f.collection_radio :flextime, [[true, t('sheets.flextime')] ,[false, t('sheets.fixed_time')]], :first, :last
     %strong
-      ="...should be less than"
+      =t '.less_than'
     = f.input :working_hours, :required => false, :collection => 32..45
     = f.input :stress_factor, :collection => 1..4, :as => :radio, :required => false
     = f.input :required_previous_knowledge, :collection => 1..4, :as => :radio, :required => false
   #right
     %strong
-      ="...should be greater than"
+      =t '.greater_than'
     = f.input :salary, :required => false, :collection => (400..1000).step(50)
     = f.input :percentage_of_women, :required => false, :collection => (0..100).step(5)
     = f.input :reachability, :collection => 1..4, :as => :radio, :required => false
-    = f.input :accessibility, :collection => 1..4, :as => :radio, :required => false
+    = f.input :accessability, :collection => 1..4, :as => :radio, :required => false
     = f.input :working_atmosphere, :collection => 1..4, :as => :radio, :required => false
     = f.input :satisfaction_with_support, :collection => 1..4, :as => :radio, :required => false
     = f.input :apartment_market, :collection => 1..4, :as => :radio, :required => false
@@ -35,9 +35,9 @@
     = f.input :reference_to_the_study, :collection => 1..4, :as => :radio, :required => false
     = f.input :learning_effect, :collection => 1..4, :as => :radio, :required => false
   #full
-    = f.submit "Search"
+    = f.submit t 'search'
     %h2
-      Results
+      = t('.results')
     #results
       = render 'sheets'
 

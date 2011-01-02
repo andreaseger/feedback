@@ -1,6 +1,6 @@
 = f.input :year, :collection => 2010..2050
 %div{:class => 'input radio optional no_label'}
-  = f.collection_radio :ws, [[false, 'Sommersemester'], [true, 'Wintersemester']], :first, :last
+  = f.collection_radio :ws, [[false, t('ss')], [true, t('ws')]], :first, :last
 = f.input :matrlist, :as => :text
 = f.button :submit
 

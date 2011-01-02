@@ -21,4 +21,47 @@ en:
     # hints:
     #   username: 'User name to sign in.'
     #   password: 'No special characters, please.'
-
+    labels:
+      semester: Semester
+      company: Company
+      application_address: Application Address
+      street: Street
+      city: City
+      post_code: Post Code
+      country: Country
+      job_site_address: Job Site Address
+      department: Department
+      boss: Boss
+      handler: Handler
+      internship_length: Internship Length
+      extendable: Extendable possible
+      vacation: Vacation possible
+      release: Release for lecture
+      working_hours: Working Hours
+      flextime: Flextime
+      fixed_time: Fixed Time    
+      salary: Salary
+      required_languages: Required Languages
+      reachability: Reachability
+      accessability: Accessability
+      percentage_of_women: Percentage of Women
+      working_atmosphere: Working Atmosphere
+      satisfaction_with_support: Satisfaction with Support
+      stress_factor: Stress Factor
+      apartment_market: Apartment Market
+      satisfaction_with_internship: Satisfaction with Internship
+      big_project: One big Project
+      small_project: Many small Projects
+      teamsize: Teamsize
+      independent_work: Independent Work
+      reference_to_the_study: Reference to the Study
+      learning_effect: Learning Effect
+      required_previous_knowledge: Required previous knowledge
+      note_company: Note Company
+      note_personal_impression: Note Personal Impression
+      note_general: Note General
+      note_conditions: Note Conditions
+      note_project: Note Project
+      
+      
+      

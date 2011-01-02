@@ -1,8 +1,8 @@
 #admin_nav
   %ul.controls
     %li.first
-      Administrierungsbereich
-    %li= link_to "Users", admin_users_path
-    %li= link_to "Semesters", admin_semesters_path
-    %li.last= link_to "Current Semester", admin_semester_path(Semester.current)
+      =t('adminarea')
+    %li= link_to t('wusers'), admin_users_path
+    %li= link_to t('wsemesters'), admin_semesters_path
+    %li.last= link_to t('current_semester'), admin_semester_path(Semester.current)
 

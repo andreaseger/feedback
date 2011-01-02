@@ -60,8 +60,8 @@ describe Sheet do
         Sheet.search(s).should == Sheet.where(:company => /audi/i)
       end
       it 'should merge the criteria for multiple text attribues' do
-        s = {"company" => "audi", "semester" => "SS2010"}
-        Sheet.search(s).should == Sheet.where(:company => /audi/i).and(:semester => /SS2010/i)
+        s = {"company" => "audi", "department" => "aa BB cc"}
+        Sheet.search(s).should == Sheet.where(:company => /audi/i).and(:department => /aa BB cc/i)
       end
     end
     context '#boolean attributes' do

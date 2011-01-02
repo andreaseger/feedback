@@ -108,18 +108,21 @@ class Sheet
       when *SNUMBER_MAX
         aa.push(Sheet.where(key.to_sym.lte => value))
       when "people", "handler" #workaround um das suchattribut wieder anzuzeigen
-        aa.push(Sheet.any_of({:handler => /#{value}/i}, {:boss => /#{value}/i}))
+        aa.push(Sheet.any_of( {:handler => /#{value}/i },
+                              {:boss    => /#{value}/i }))
       when "speeches", "required_languages"
-        aa.push(Sheet.any_in(:speeches => split_languages(value).collect{|x| /#{x}/i} ))
+        aa.push(Sheet.any_in(:speeches => split_languages(value).collect{|x| /#{x}/i } ))
       when "application_address", "boss"
-        aa.push(Sheet.any_of( {'application_address.city'       => /#{value}/i},
-                              {'application_address.street'     => /#{value}/i},
-                              {'application_address.post_code'  => /#{value}/i},
-                              {'application_address.country'    => /#{value}/i},
-                              {'job_site_address.city'          => /#{value}/i},
-                              {'job_site_address.street'        => /#{value}/i},
-                              {'job_site_address.post_code'     => /#{value}/i},
-                              {'job_site_address.country'       => /#{value}/i} ) )
+        aa.push(Sheet.any_of( {'application_address.city'       => /#{value}/i },
+                              {'application_address.street'     => /#{value}/i },
+                              {'application_address.post_code'  => /#{value}/i },
+                              {'application_address.country'    => /#{value}/i },
+                              {'job_site_address.city'          => /#{value}/i },
+                              {'job_site_address.street'        => /#{value}/i },
+                              {'job_site_address.post_code'     => /#{value}/i },
+                              {'job_site_address.country'       => /#{value}/i } ) )
+      #when "semester"
+      #  aa.push(Sheet.where('semester.year' => value))
       end
     end
     c = all
@@ -135,7 +138,7 @@ class Sheet
 
 
 private
-  STEXT=%w(company semester note_project note_company note_personal_impression note_conditions note_general department)
+  STEXT=%w(company note_project note_company note_personal_impression note_conditions note_general department)
   SBOOLEAN=%w(vacation extendable flextime big_project release)
   SNUMBER_MIN=%w(apartment_market satisfaction_with_support teamsize reference_to_the_study independent_work satisfaction_with_internship internship_length reachability percentage_of_women accessability salary learning_effect working_atmosphere)
   SNUMBER_MAX=%w(working_hours stress_factor required_previous_knowledge)

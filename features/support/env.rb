@@ -36,7 +36,6 @@ Spork.prefork do
   # default production environment. It's not recommended to do this for all
   # of your scenarios, as this makes it hard to discover errors in your application.
   ActionController::Base.allow_rescue = false
-
 end
 
 Spork.each_run do

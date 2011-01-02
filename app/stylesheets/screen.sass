@@ -85,6 +85,25 @@ body
         bottom: 10px
         right: 35px
       color: white
+      #language_switcher
+        float: right
+        font-size: 50%
+        margin: auto
+        padding:
+          top: 6px
+          bottom: 6px
+        a
+          padding: 3px 6px
+          color: white
+          text-decoration: none
+          border:
+            color: black
+            style: solid
+            width: 2px
+            radius: 11px
+          &:hover
+            background-color: black
+            border-color: white
 
     #admin_nav
       background-color: $maroon
@@ -176,13 +195,10 @@ body
         margin-top: 10px
 
     #users
-      .name
-      .mail
+      .small
         font-size: 80%
-      .nds
-      .link_sheet
-      .cb_edit
-      .link_edit
+      .tiny
+        font-size: 60%
 
     #login
       padding:

@@ -1,11 +1,11 @@
-- title "Sheet"
+- title t('.title')
 
 %ul#sheet
   %li=@sheet.semester.long_text
   %li=@sheet.company
   %li
     %strong
-      Application Address
+      =t 'sheets.app_address'
     %ul.address
       %li=@sheet.application_address.street
       %li
@@ -14,7 +14,7 @@
       %li=@sheet.application_address.country
   %li
     %strong
-      Job Site Address
+      =t 'sheets.job_address'
   %ul.address
     %li=@sheet.job_site_address.street
     %li
@@ -23,114 +23,114 @@
     %li=@sheet.job_site_address.country
   %li
     %strong
-      Department:
+      = t 'sheets.dept'
     =@sheet.department
   %li
     %strong
-      Boss:
+      = t 'sheets.boss'
     =@sheet.boss
   %li
     %strong
-      Handler:
+      = t 'sheets.handler'
     =@sheet.handler
   %li
     %p=@sheet.note_company
   %br
   %li
     %strong
-      Internship Length:
+      = t 'sheets.length'
     =@sheet.internship_length
   %li
     %strong
-      Extendable possible?
+      = t 'sheets.extendable'
     =@sheet.extendable
   %li
     %strong
-      Vacation possible?
+      = t 'sheets.vacation'
     =@sheet.vacation
   %li
     %strong
-      Release possible?
+      = t 'sheets.release'
     =@sheet.release
   %li
     %strong
-      Working Hours:
+      = t 'sheets.hours'
     =@sheet.working_hours
   %li
     -if @sheet.flextime?
-      Flextime
+      = t 'sheets.flextime'
     -else
-      Fixedtime
+      = t 'sheets.fixed_time'
   %li
     %strong
-      Salary:
+      = t 'sheets.salary'
     =@sheet.salary
   %li
     %strong
-      Required Languages:
+      = t 'sheets.languages'
     =@sheet.required_languages
   %li
     %strong
-      Reachability:
+      = t 'sheets.reachability'
     =@sheet.reachability
   %li
     %strong
-      Accessability:
+      = t 'sheets.accessability'
     =@sheet.accessability
   %li
     %p=@sheet.note_conditions
   %br
   %li
     %strong
-      Percentage of Women:
+      = t 'sheets.per_women'
     =@sheet.percentage_of_women
   %li
     %strong
-      Working Atmosphere:
+      = t 'sheets.atmo'
     =@sheet.working_atmosphere
   %li
     %strong
-      Satisfaction with Support:
+      = t 'sheets.satisfaction_with_support'
     =@sheet.satisfaction_with_support
   %li
     %strong
-      Stress Factor:
+      = t 'sheets.stress'
     =@sheet.stress_factor
   %li
     %strong
-      Apartment Market:
+      = t 'sheets.apartment_market'
     =@sheet.apartment_market
   %li
     %strong
-      Satisfaction with Internship:
+      = t 'sheets.satisfaction_with_internship'
     =@sheet.satisfaction_with_internship
   %li
     %p=@sheet.note_personal_impression
   %br
   %li
     -if @sheet.big_project?
-      Big Project
+      = t 'sheets.big_project'
     -else
-      Small Projects
+      = t 'sheets.small_project'
   %li
     %strong
-      Teamsize:
+      = t 'sheets.teamsize'
     =@sheet.teamsize
   %li
     %strong
-      Independent Work:
+      = t 'sheets.independent_work'
     =@sheet.independent_work
   %li
     %strong
-      Reference to the Study:
+      = t 'sheets.reference_to_the_study'
     =@sheet.reference_to_the_study
   %li
     %strong
-      Learning Effect:
+      = t 'sheets.learning_effect'
     =@sheet.learning_effect
   %li
     %strong
-      Required previous knowledge:
+      = t 'sheets.required_previous_knowledge'
     =@sheet.required_previous_knowledge
   %br
   %li
@@ -142,8 +142,8 @@
 
 %ul.controls
   - if can? :update, @sheet
-    %li= link_to "Edit", edit_sheet_path(@sheet)
+    %li= link_to t('sheets.wedit'), edit_sheet_path(@sheet)
   - if can? :destroy, @sheet
-    %li= link_to "Destroy", @sheet, :confirm => 'Are you sure?', :method => :delete
-  %li= link_to "View All", sheets_path
+    %li= link_to t('sheets.wdestroy'), @sheet, :confirm => t('sheets.wsure'), :method => :delete
+  %li= link_to t('sheets.wviewall'), sheets_path
 

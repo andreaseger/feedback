@@ -8,10 +8,10 @@
           %li.company
             %strong= sheet.company
         %ul.controls
-          %li= link_to 'Show', sheet
+          %li= link_to t('sheets.wshow'), sheet
           - if can? :update, sheet
-            %li= link_to 'Edit', edit_sheet_path(sheet)
+            %li= link_to t('sheets.wedit'), edit_sheet_path(sheet)
           - if can? :destroy, sheet
-            %li= link_to 'Destroy', sheet, :confirm => 'Are you sure?', :method => :delete
+            %li= link_to t('sheets.wdestroy'), sheet, :confirm => t('sheets.wsure'), :method => :delete
         %p= sheet.note_general.truncate(150)
 

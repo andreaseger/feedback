@@ -1,0 +1,109 @@
+en:
+  login:  Login
+  logout: Logout
+  search: Search
+  adminarea: Admin Area
+  wusers:  Users
+  wsemesters: Semesters
+  current_semester: Current Semester
+  cu: See you later
+  
+  ws: Summer Semester
+  ss: Winter Semester
+
+  intern:
+    one: "1 Intern"
+    other: "%{count} Interns"
+
+  
+  admin:
+    semesters:
+      edit:
+        title: Edit Semester
+        show: Show
+        viewall: View All
+      index:
+        title: Semester
+        new: New
+      show:
+        edit: Edit
+        viewall: View All
+      new:
+        title: New Semester
+        back: Back to List
+    users:
+      edit:
+        title: "Edit %{email}"
+      edit_multiple:
+        title: Edit Users
+      index:
+        edit_checked: Edit Checked
+        edit: Edit
+  users:
+    name: Name
+    email: E-Mail
+    nds:  NDS
+    matnr: Matrikel Number
+    roles: Roles
+    sheet: Sheet
+    edit: Edit
+  sheets:
+    app_address: Application Address
+    job_address: Job Site Address
+    dept: Department
+    boss: Boss
+    handler: Handler
+    length: Internship Length
+    extendable: Extendable possible
+    vacation: Vacation possible
+    release: Release for lecture
+    hours: Working Hours
+    flextime: Flextime
+    fixed_time: Fixed Time    
+    salary: Salary
+    languages: Required Languages
+    reachability: Reachability
+    accessability: Accessability
+    per_women: Percentage of Women
+    atmo: Working Atmosphere
+    satisfaction_with_support: Satisfaction with Support
+    stress: Stress Factor
+    apartment_market: Apartment Market
+    satisfaction_with_internship: Satisfaction with Internship
+    big_project: One big Project
+    small_project: Many small Projects
+    teamsize: Teamsize
+    independent_work: Independent Work
+    reference_to_the_study: Reference to the Study
+    learning_effect: Learning Effect
+    required_previous_knowledge: Required previous knowledge
+
+    wshow: Show
+    wedit: Edit
+    wdestroy: Delete
+    wsure: Are you sure?
+    wviewall: View All
+
+
+    index:
+      title: Sheets
+      new: New Sheet
+    search:
+      title: Sheets Search
+      people: People
+      location: Location
+      less_than: ...should be less than
+      greater_than: ...should be greater than
+      results: Results
+    edit:
+      title: Edit Sheet
+      show: Show
+    new:
+      title: New Sheet
+      back: Back to List
+    show:
+      title: Sheet
+
+
+
+
