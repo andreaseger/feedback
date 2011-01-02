@@ -47,9 +47,13 @@ describe Semester do
       semester.update_attributes(:matrlist => "3333333\n5555555")
       Semester.last.interns.should == [@u1, @u2]
     end
-    it 'should assign the user also if the user gets created after the semester' do
+    it 'should save unknown matnumbers' do
       semester = Factory(:semester, :matrlist => "3333333\r\n7777777")
       Semester.stubs(:current).returns(semester)
+      Semester.current.unknown.should == ["7777777"]
+    end
+    it 'should assign the user also if the user gets created after the semester' do
+      semester = Factory(:current, :matrlist => "3333333\r\n7777777")
       u3=Factory(:student, :matnr => '7777777')
       Semester.current.interns.should == [@u1, u3]
     end

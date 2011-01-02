@@ -7,5 +7,9 @@ FactoryGirl.define do
     year 2009
     ws true
   end
+  factory :current, :class => :semester do
+    year 2010
+    ws true
+  end
 end
 

@@ -215,5 +215,12 @@ urrzmatrikelid: #{@matnr}"
       User.search(q).entries.should == [@u1]
     end
   end
+  context '#create' do
+    it 'should look for students if the matnr is in the list of the currently unknown of the current semester' do
+      semester = Factory(:current, :matrlist => "7777777")
+      u3=Factory(:student, :matnr => "7777777")
+      Semester.current.interns.should == [u3]
+    end
+  end
 end
 

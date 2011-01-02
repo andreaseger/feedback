@@ -22,11 +22,12 @@ class User
   validates_presence_of :nds, :email, :name
   validates_uniqueness_of :nds
   validates_uniqueness_of :matnr, :unless => Proc.new{self.matnr.nil?}
-
   validates_presence_of :matnr, :if => Proc.new{ self.role? :student}
 
   references_many :semesters, :stored_as => :array, :inverse_of => :interns
   field :roles, :type => Array, :default => ["extern"]
+
+  after_create :assign_semester, :if => Proc.new{self.role? :student}
 
   validate :check_roles
 
@@ -41,11 +42,6 @@ class User
   scope :search, lambda {|query|
     any_of({:name => /#{query}/i}, {:nds => /#{query}/i}, {:matnr => /#{query}/i})
   }
-
-  #def self.search(query)
-  #  return any_of({:name => /#{query}/i}, {:nds => /#{query}/i}, {:matnr => /#{query}/i})
-  #end
-
 
 
   ROLES = %w[admin student extern]
@@ -109,6 +105,17 @@ class User
       end
     end
   end
-
+  
+  def assign_semester
+    all_semester = Semester.where(:unknown => self.matnr)
+    unless all_semester == []
+      all_semester.each do |semester|
+        semester.unknown.delete_if{|m| m == self.matnr}
+        semester.interns << self
+        semester.save
+      end
+    end
+    true
+  end
 end
 

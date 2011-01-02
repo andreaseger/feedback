@@ -3,9 +3,9 @@ class Semester
   cache
   field :year, :type => Integer
   field :ws, :type => Boolean
-
+  field :unknown, :type => Array
+  
   references_many :interns, :class_name => 'User', :stored_as => :array, :inverse_of => :semesters
-
   references_many :sheets
 
   validates_presence_of :year
@@ -18,8 +18,15 @@ class Semester
 
   def matrlist=(value)
     m=value.split("\n").map{|i| i.chomp}
-    #debugger
     self.interns = User.any_in(:matnr => m).asc(:matnr).entries
+    # find unknown matnumbers
+    u=m-interns.map(&:matnr)
+    self.unknown = case u
+    when []
+      nil
+    else
+      u
+    end
   end
 
   def text
