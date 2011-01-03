@@ -40,7 +40,7 @@ group :test, :development do
   gem 'cucumber'
   gem 'cucumber-rails'
   #gem 'launchy'
-  gem 'ruby-debug'
+  #gem 'ruby-debug'
   #gem 'ruby-debug19', :require => 'ruby-debug'
 
   #irb stuff

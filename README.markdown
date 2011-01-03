@@ -7,10 +7,7 @@ Wird im Rahmen einer Bachelorarbeit der HS Regensburg entwickelt.
 Neuste Features
 ---------------
 
-- Matrikelnummer aus LDAP
-- Adminitrationsbereich für Semester
-- Umstellung der Praktikantenverwaltung
-- Semester als eigenes Model
+- deutsche Lokalisierung
 
 
 Implementierte Features
@@ -29,6 +26,11 @@ Implementierte Features
 - Suche
 - Versionierung der Feedbackbögen
 - Script zum seeden der Datenbank
+- Matrikelnummer aus LDAP
+- Adminitrationsbereich für Semester
+- Umstellung der Praktikantenverwaltung
+- Semester als eigenes Model
+
 
 Known Issues / Bugs
 -------------------
@@ -45,7 +47,6 @@ Features TODO
 - Multistep Formular für den FB, entweder über JS oder über ne StateMachine
 - Indexe zur schnelleren suche einbauen
 - Sortierung der Suchergebnisse
-- deutsche Lokalisierung
 - Adminitrationsbereich, mehr Funktionen
 - automatisiertes deployment auf Apache + Passanger
 - Orts und Umkreissuche anhand der Adresse

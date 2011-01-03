@@ -78,15 +78,15 @@ class User
 
   def self.new_with_ldap(entry)
     if entry.class == Net::LDAP::Entry.new.class
-      u = new( :nds => entry.cn,
+      u = new(  :nds => entry.cn.first,
                 :dn  => entry.dn,
-                :firstname => entry.urrzgivenname,
-                :lastname => entry.urrzsurname,
-                :name => entry.urrzfullname,
-                :email => entry.mail,
+                :firstname => entry.urrzgivenname.first,
+                :lastname => entry.urrzsurname.first,
+                :name => entry.urrzfullname.first,
+                :email => entry.mail.first,
                 :roles => entry.dn.include?("stud") ? ["student"] : ["extern"])
       if entry.respond_to?(:urrzmatrikelid)
-        u.matnr = entry.urrzmatrikelid
+        u.matnr = entry.urrzmatrikelid.first
       end
       return u
     end
