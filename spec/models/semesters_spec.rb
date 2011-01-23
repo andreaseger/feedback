@@ -57,6 +57,10 @@ describe Semester do
       u3=Factory(:student, :matnr => '7777777')
       Semester.current.interns.should == [@u1, u3]
     end
+    it 'should show both found interns and unknown matrikelnumbers' do
+      semester = Factory(:current, :interns => [@u1], :unknown => [4444444])
+      semester.matrlist.should == "3333333\n4444444"
+    end
   end
 
   context '#text' do

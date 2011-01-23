@@ -37,18 +37,16 @@ Known Issues / Bugs
 
 - Länderliste im Moment noch mit englischen Namen
 - Praktikant muss Student sein: wir nicht direkt geprüft, allerdings haben nur Studenten Matrikelnummern
-
+- bei der ersten Anmeldung eines neuen Users wird nur das aktuelle Semester getestet ob er Praktikant ist. Also wenn das nächste Semester schon erstellt wurde und dort Praktikanten angelegt sind wird der neue User nicht zugewiesen. Könnte in einem Background worker gemacht werden: zb Beanstalkd and Stalker(http://railscasts.com/episodes/243-beanstalkd-and-stalker)
 
 Features TODO
 -------------
 
-- Cucumber Features für die Suche
-- Struktur des FB verbessern ...
-- Multistep Formular für den FB, entweder über JS oder über ne StateMachine
-- Indexe zur schnelleren suche einbauen
+- vollständige Lokalisierung
+- Multistep Formular für den FB, entweder über JS oder über ne StateMachine(http://railscasts.com/episodes/217-multistep-forms)
+- Indexe zur schnelleren Suche einbauen oder Volltextsuche via SORL Sphinx
 - Sortierung der Suchergebnisse
-- Adminitrationsbereich, mehr Funktionen
-- automatisiertes deployment auf Apache + Passanger
+- Adminitrationsbereich, weitere Funktionen
 - Orts und Umkreissuche anhand der Adresse
 
 Hintergrund

@@ -13,7 +13,12 @@ class Semester
   validates_uniqueness_of :year, :scope => :ws
 
   def matrlist
-    interns.map(&:matnr).join("\n")
+    list = interns.map(&:matnr).join("\n")
+    if unknown
+      list << "\n"
+      list << unknown.join("\n")
+    end
+    list
   end
 
   def matrlist=(value)
