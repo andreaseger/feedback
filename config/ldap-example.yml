@@ -1,0 +1,23 @@
+development:
+  backdoor: "backdoor"
+  name: 'some Name'
+  host: 'ldap.example.com'
+  port: 389
+  ssl: 636
+  base: 'o=example,c=com'
+
+test:
+  backdoor: "backdoor"
+  name: 'some Name'
+  host: 'ldap.example.com'
+  port: 389
+  ssl: 636
+  base: 'o=example,c=com'
+
+productive:
+  name: 'some Name'
+  host: 'ldap.example.com'
+  port: 389
+  ssl: 636
+  base: 'o=example,c=com'
+
