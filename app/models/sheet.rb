@@ -126,7 +126,7 @@ class Sheet
       end
     end
     c = all
-    aa.each {|a| c.merge(a)}
+    aa.each {|a| c=c.merge(a)}
     return c
   end
 

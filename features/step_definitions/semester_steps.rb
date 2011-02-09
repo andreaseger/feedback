@@ -14,7 +14,8 @@ Then /^the Semester "([^"]*)" (\d+) should have (\d+) interns$/ do |type, year, 
   else
     semester = Semester.where(:year => year.to_i, :ws => true).first
   end
-  semester.interns.count.should == num.to_i
+  debugger
+  semester.interns.length.should == num.to_i
 end
 
 Then /^the Semester "([^"]*)" (\d+) should have this interns:$/ do |type, year, table|

@@ -4,12 +4,6 @@ Feedback
 Eine Webapplikation zur Erstellung, Verwaltung und organisation von Feedbackbögen im Praktikumssemester.
 Wird im Rahmen einer Bachelorarbeit der HS Regensburg entwickelt.
 
-Neuste Features
----------------
-
-- deutsche Lokalisierung
-
-
 Implementierte Features
 -----------------------
 
@@ -20,8 +14,8 @@ Implementierte Features
 - Adressen in eigenes Dokument
 - Authentifizierung als Student, Praktiant, Extern und Admin
 - Administrieren einzelner User möglich
-- Administrieren mehrer User gleichzeitig möglich
-- Student darf kein extern sein
+- Administrieren mehrerer User gleichzeitig möglich
+- Student darf nicht gleichzeitig der Gruppe Extern angehören
 - LDAP Authentifizierung
 - Suche
 - Versionierung der Feedbackbögen
@@ -30,6 +24,7 @@ Implementierte Features
 - Adminitrationsbereich für Semester
 - Umstellung der Praktikantenverwaltung
 - Semester als eigenes Model
+- deutsche Lokalisierung
 
 
 Known Issues / Bugs
@@ -60,5 +55,5 @@ Hintergrund
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" /></a>
 
-Eger Andreas 2010
+Eger Andreas 2011
 

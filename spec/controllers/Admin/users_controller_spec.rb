@@ -30,6 +30,7 @@ describe Admin::UsersController do
       put :update, :id => @u.id, :user => { 'roles'=>["", "admin", "", "student", "", "intern", ""]}
     end
     it "redirects to the user admin page" do
+      @u.stubs(:update_attributes).returns(true)
       put :update, :id => @u.id, :user => {'email' => "foo@bar.com"}
       response.should redirect_to(admin_users_path)
     end
@@ -62,18 +63,32 @@ describe Admin::UsersController do
       @uu = Factory.stub(:bob)
       User.stubs(:find).returns([@u, @uu])
     end
-    it 'redirects to the user admin page' do
-      put :update_multiple, :user_ids => [@u.id, @uu.id], :user => {'roles' => ["admin"]}
-      response.should redirect_to(admin_users_path)
+    context 'when all goes well' do
+      before :each do
+        @u.stubs(:update_attributes).returns(true)
+        @uu.stubs(:update_attributes).returns(true)
+      end
+      it 'redirects to the user admin page' do
+        @u.stubs(:update_attributes).returns(true)
+        @uu.stubs(:update_attributes).returns(true)
+        put :update_multiple, :user_ids => [@u.id, @uu.id], :user => {'roles' => ["admin"]}
+        response.should redirect_to(admin_users_path)
+      end
+      it 'should change the attribute of all users' do
+        @u.expects(:update_attributes).with({'roles'=>['admin']}).returns(true)
+        @uu.expects(:update_attributes).with({'roles'=>['admin']}).returns(true)
+        put :update_multiple, :user_ids => [@u.id, @uu.id], :user => {'roles' => ["admin"]}
+      end
     end
-    it 'should change the attribute of all users' do
-      @u.expects(:update_attributes).with({'roles'=>['admin']}).returns(true)
-      @uu.expects(:update_attributes).with({'roles'=>['admin']}).returns(true)
-      put :update_multiple, :user_ids => [@u.id, @uu.id], :user => {'roles' => ["admin"]}
-    end
-    it 'should render the edit_multiple page if something goes wrong' do
-      put :update_multiple, :user_ids => [@u.id, @uu.id], :user => {'roles' => ["intern"]}
-      response.should render_template('admin/users/edit_multiple')
+    context 'when something goes wrong' do
+      before :each do
+        @u.stubs(:update_attributes).returns(false)
+        @uu.stubs(:update_attributes).returns(false)
+      end
+      it 'should render the edit_multiple page' do
+        put :update_multiple, :user_ids => [@u.id, @uu.id], :user => {'roles' => ["intern"]}
+        response.should render_template('admin/users/edit_multiple')
+      end
     end
   end
 end

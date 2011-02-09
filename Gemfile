@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.4'
 
 gem 'haml-rails'
 gem 'jquery-rails'
@@ -12,7 +12,7 @@ gem 'will_paginate', '3.0.pre2'
 
 #MongoDB
 gem 'bson_ext'
-gem "mongoid", ">= 2.0.0.beta.20"
+gem "mongoid", ">= 2.0.0.rc.7"
 
 #security
 gem 'net-ldap'
@@ -24,16 +24,14 @@ gem "compass", ">= 0.10.6"
 group :development do
   gem 'nifty-generators'
   gem 'rails3-generators'
-  #gem "hpricot", "0.8.2" # Only required for 'rails g devise:views'
-  #gem "ruby_parser", "2.0.5" # Only required for 'rails g devise:views'
   gem 'backports'   #for the new Randomclass from 1.9.2
   gem 'faker'
 end
 
 
 group :test, :development do
-  gem 'rspec-rails', '>= 2.0.0.beta.22'
-  gem 'spork', '>= 0.9.0.rc2'
+  gem 'rspec-rails'#, '>= 2.5.0'#'>= 2.0.0.beta.22'
+  gem 'spork', '>= 0.9.0.rc3'
   gem 'mocha'
   gem 'autotest'
   gem 'autotest-rails'
@@ -57,11 +55,10 @@ group :test, :development do
 end
 
 group :test do
-  gem 'simplecov', '>= 0.3.5', :require => false
+  #simplecov geht nur in 1.9
+  #gem 'simplecov', '>= 0.4.0', :require => false
   gem 'webrat'
   gem 'capybara'
   gem 'database_cleaner'
-  #gem 'rack-test',
-  #  :git => 'git://github.com/brynary/rack-test.git'
 end
 

@@ -5,7 +5,7 @@ class Semester
   field :ws, :type => Boolean
   field :unknown, :type => Array
   
-  references_many :interns, :class_name => 'User', :stored_as => :array, :inverse_of => :semesters
+  references_and_referenced_in_many :interns , :class_name => 'User'
   references_many :sheets
 
   validates_presence_of :year

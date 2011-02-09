@@ -24,7 +24,7 @@ class User
   validates_uniqueness_of :matnr, :unless => Proc.new{self.matnr.nil?}
   validates_presence_of :matnr, :if => Proc.new{ self.role? :student}
 
-  references_many :semesters, :stored_as => :array, :inverse_of => :interns
+  references_and_referenced_in_many :semesters
   field :roles, :type => Array, :default => ["extern"]
 
   after_create :assign_semester, :if => Proc.new{self.role? :student}
