@@ -6,6 +6,7 @@ en:
   wusers:  Users
   wsemesters: Semesters
   current_semester: Current Semester
+  my_sheet: My Sheet
   cu: See you later
   
   ws: Summer Semester
@@ -14,7 +15,6 @@ en:
   intern:
     one: "1 Intern"
     other: "%{count} Interns"
-
   
   admin:
     semesters:
@@ -28,6 +28,7 @@ en:
       show:
         edit: Edit
         viewall: View All
+        show_sheet: Show sheet
       new:
         title: New Semester
         back: Back to List

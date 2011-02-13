@@ -36,28 +36,26 @@ body
       left: 2px
       right: 2px
     #banner
-      +replace-text("dummyimage_990x30.png")
+      background:
+        image: image-url("header_background.jpg")
+        repeat: no-repeat
+        position: top left
       width: 990px
-      height: 30px
-      margin: 0 auto
+      height: 159px
+      h1
+        float: right
+        margin:
+          top: 70px
+          right: 200px
 
     #user_nav,
     #admin_nav
       ul
         +horizontal-list
         width: $blueprint-container-size
-        margin: 0 auto
+        //margin: 0 auto
         padding:
-          left: 10px
           right: 20px
-        #logo
-          +replace-text("logo30.png")
-          height: 30px
-          width: 30px
-          float: left
-          margin:
-            :right 10px
-
         li
           margin: auto
           padding:
@@ -77,48 +75,30 @@ body
               border-color: white
       font-size: 0.8em
       background-color: black
-      border:
-        radius: 6px
       padding:
-        top: 10px
+        top: 3px
         left: 35px
-        bottom: 10px
+        bottom: 3px
         right: 35px
       color: white
-      #language_switcher
-        float: right
-        font-size: 70%
-        margin: auto
-        padding:
-          top: 6px
-          bottom: 6px
-        a
-          padding: 3px 6px
-          color: white
-          text-decoration: none
-          border:
-            color: black
-            style: solid
-            width: 2px
-            radius: 11px
-          &:hover
-            background-color: black
-            border-color: white
-
     #admin_nav
-      background-color: $maroon
+      background-color: $admin_nav
       ul
         li
           a
             border:
-              color: $maroon
+              color: $admin_nav
             &:hover
-              background-color: $maroon
+              background-color: $admin_nav
               border-color: white
-      padding:
-        top:    3px
-        bottom: 3px
-
+  #footer
+    width: $blueprint-container-size
+    .horizontal
+      +horizontal-list
+      float: left
+    #language_switcher
+      float: right
+      font-size: 70%
 
   #container
     +container
@@ -127,7 +107,8 @@ body
       top: 5px
       left: 20px
       right: 20px
-    margin: 0 auto
+      bottom: 10px
+    margin: 0
 
     background-color: white
     border-style: none
@@ -140,9 +121,14 @@ body
     i
       color: $silver
       font-size: 0.7em
-
+    .pagination
+      margin-left: 10px
+      padding-left: 10px
+    
     #sheets
       +column(22,true)
+      margin-left: 10px
+      padding-left: 10px
       .sheet
         padding:
           left: 5px
@@ -191,7 +177,7 @@ body
       #right
         +column(12, true)
         label
-          width: 190px
+          width: 210px
       #full
         +column(22,true)
         margin-top: 10px
@@ -208,7 +194,10 @@ body
         left: 10px
       .input
         margin-bottom: 5px
-
+      #user_submit
+        margin:
+          left: 270px
+          bottom: 20px
 
 
     .simple_form

@@ -9,12 +9,12 @@ $blueprint-grid-margin: 10px;
 // Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
 $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
 
-// colors from the parent site
+// colors from the hsr site
 $background: #acb4c1;
 $header: #a5c6f2;
 $posts: #f5f5f5;
 $border: #999999;
-
+$admin_nav: #650021;
 
 
 

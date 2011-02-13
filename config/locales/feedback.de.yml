@@ -6,6 +6,7 @@ de:
   wusers:  Benutzer
   wsemesters: Semester
   current_semester: Aktuelles Semester
+  my_sheet: Mein Feedbackbogen
   cu: Bis später
   
   ws: Sommersemester
@@ -14,7 +15,6 @@ de:
   intern:
     one: '1 Praktikant'
     other: '%{count} Praktikanten'
-  
   
   admin:
     semesters:
@@ -28,6 +28,7 @@ de:
       show:
         edit: Semester bearbeiten
         viewall: Zeige alle Semester
+        show_sheet: Zeige Feedbackbogen
       new:
         title: Neues Semester
         back: Zurück zur Liste

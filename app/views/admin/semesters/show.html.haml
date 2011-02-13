@@ -1,9 +1,17 @@
 - title @semester.long_text
 %ul.semester
   %li= t('intern', :count => @semester.interns.count)
-  %li
-    %p= @semester.matrlist
-
+  %li    
+    %table
+      - @semester.interns.each do |intern|
+        %tr
+          %td=intern.name
+          %td=link_to t('.show_sheet'), sheet_path(intern.sheet)
+  -unless @semester.unknown.blank?
+    %li
+      %ul
+        -@semester.unknown.each do |unknown|
+          %li=unknown
 %ul.controls
   - if can? :update, @semester
     %li= link_to t('.edit'), edit_admin_semester_path(@semester)

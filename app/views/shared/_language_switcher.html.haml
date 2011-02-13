@@ -1,4 +1,5 @@
 #language_switcher
+  I18n:
   - LANGUAGES.each do |l|
     = link_to l[0], params.merge(:locale => l[1]) unless params[:locale] == l[1]
 

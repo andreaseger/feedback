@@ -1,14 +1,14 @@
 #user_nav
   %ul.controls
     %li.first= link_to "Home", root_url
+    -if user_signed_in? && current_user.sheet
+      %li
+        = link_to_unless_current t('my_sheet'), sheet_path(current_user.sheet)
+    %li= link_to t("search"), search_sheets_path
     - if user_signed_in?
       %li
-        = current_user.name
         = link_to t('logout'), {:controller => '/sessions', :action => :destroy, :id => "see_you_later"}, :method => :delete
     - else
       %li
         = link_to_unless_current t("login"), new_session_path
-    %li= link_to t("search"), search_sheets_path
-    %li.last About
-    = render :partial => '/shared/language_switcher'
 

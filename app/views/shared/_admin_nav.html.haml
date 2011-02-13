@@ -1,7 +1,7 @@
 #admin_nav
   %ul.controls
     %li.first
-      =t('adminarea')
+      %strong=t('adminarea')
     %li= link_to t('wusers'), admin_users_path
     %li= link_to t('wsemesters'), admin_semesters_path
     %li.last= link_to t('current_semester'), admin_semester_path(Semester.current)
