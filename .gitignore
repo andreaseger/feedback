@@ -4,4 +4,4 @@ log/*.log
 tmp/**/*
 coverage
 config/ldap.yml
-
+config/deploy.rb

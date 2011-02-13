@@ -22,6 +22,7 @@ gem "cancan"
 gem "compass", ">= 0.10.6"
 
 group :development do
+  gem 'capistrano'
   gem 'nifty-generators'
   gem 'rails3-generators'
   gem 'backports'   #for the new Randomclass from 1.9.2
