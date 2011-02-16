@@ -7,6 +7,10 @@ class Sheet
   max_versions 5
 
   referenced_in :semester
+  #cache semester for ordering
+  field :osemester, :type => Integer
+  before_save :set_osemester
+
 
   field :company
   embeds_one :application_address, :class_name => "Address"
@@ -135,12 +139,14 @@ class Sheet
     value.scan(/\w+|,|\./).delete_if{|t| t =~ /,|\./}
   end
 
-
-
 private
   STEXT=%w(company note_project note_company note_personal_impression note_conditions note_general department)
   SBOOLEAN=%w(vacation extendable flextime big_project release)
   SNUMBER_MIN=%w(apartment_market satisfaction_with_support teamsize reference_to_the_study independent_work satisfaction_with_internship internship_length reachability percentage_of_women accessability salary learning_effect working_atmosphere)
   SNUMBER_MAX=%w(working_hours stress_factor required_previous_knowledge)
+
+  def set_osemester
+    self.osemester = "#{semester.year}#{semester.ws ? 1 : 0}".to_i
+  end
 end
 

@@ -1,32 +1,36 @@
 namespace :db do
-  desc "Erase and fill database"
+  desc "Erase and fill database, only tested under ree"
   task :populate => :environment do
     require 'faker'
+    # for some reasons faker does only work with :en as local
+    I18n.locale = :en
+    # gets the better Random Method from 1.9.2 for REE
     require 'backports/1.9.2'
-
+    
     [Sheet, User, Semester].each(&:delete_all)
     load "#{::Rails.root.to_s}/db/seeds.rb"
-    semester = Semester.current
     r = Random.new(Time.now.hash)
     mat_count = 2005000
 
-    (r.rand(2000..5000)).times do
+    (r.rand(3000..3500)).times do
       mat_count += 1
       firstname  = Faker::Name.first_name
       lastname   = Faker::Name.last_name
       nds        = "#{lastname[0..1]}#{firstname[0..0]}#{r.rand(10000..90000)}".downcase
       name       = "#{firstname} #{lastname}"
       email      = Faker::Internet.email(name)
-      case r.rand(0..30)
-      when 0..20
+      case r.rand(0..4)
+      when 0..3
         roles = ['student']
         matnr = mat_count
-      when 20..30
+      when 4
         roles = ['extern']
       end
 
+      semester = Semester.find_or_create_by(:year => r.rand(1990..2011), :ws => [true, false].rand)
+
       user = User.create!(:firstname => firstname, :lastname => lastname, :nds => nds, :matnr => matnr, :email => email, :name => name, :roles => roles, :created_at => r.rand(2.years.ago..Time.now))
-      if user.role?(:student) && r.rand(0..300) < 50
+      if user.role?(:student) && r.rand(0..6) < 3
         s=Sheet.create!(
           :user => user,
           :semester           => semester,

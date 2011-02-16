@@ -3,7 +3,7 @@ class SheetsController < InheritedResources::Base
   load_and_authorize_resource :except => :search
 
   def index
-    @sheets = Sheet.order_by(:semester.desc).paginate(:per_page => 20, :page => params[:page])
+    @sheets = Sheet.desc(:osemester).paginate(:per_page => 20, :page => params[:page])
   end
 
   def new

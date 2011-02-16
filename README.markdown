@@ -33,6 +33,7 @@ Known Issues / Bugs
 - Länderliste im Moment noch mit englischen Namen
 - Praktikant muss Student sein: wir nicht direkt geprüft, allerdings haben nur Studenten Matrikelnummern
 - bei der ersten Anmeldung eines neuen Users wird nur das aktuelle Semester getestet ob er Praktikant ist. Also wenn das nächste Semester schon erstellt wurde und dort Praktikanten angelegt sind wird der neue User nicht zugewiesen. Könnte in einem Background worker gemacht werden: zb Beanstalkd and Stalker(http://railscasts.com/episodes/243-beanstalkd-and-stalker)
+- bislang keine Indexe vorhanden
 
 Features TODO
 -------------
@@ -48,7 +49,7 @@ Hintergrund
 -----------
 
 - Ruby 1.9.2 & REE
-- Rails 3.0.3
+- Rails 3.0.4
 - RSpec
 - Mocha
 - Cucumber

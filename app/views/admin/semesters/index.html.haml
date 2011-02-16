@@ -2,9 +2,9 @@
 
 - if can? :create, Semester.new
   %p= link_to "New Semester", new_admin_semester_path
-=# will_paginate @semesters
+= will_paginate @semesters
 %ul.semesters
-  - @semesters.order_by(:year.desc, :ws.asc).each do |semester|
+  - @semesters.each do |semester|
     %li
       %ul.semester
         %li= link_to_unless_current semester.long_text, admin_semester_path(semester)
